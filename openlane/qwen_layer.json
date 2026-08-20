@@ -1,0 +1,21 @@
+{
+  "DESIGN_NAME": "qwen_layer",
+  "VERILOG_FILES": [
+    "dir::../rtl/add_tree_bal.v",
+    "dir::../rtl/rsqrt_lut.v",
+    "dir::../rtl/inv_rsqrt.v",
+    "dir::../rtl/rmsnorm.v",
+    "dir::../rtl/gated_delta_step.v",
+    "dir::../rtl/attn_decode.v",
+    "dir::../rtl/ffn_tile_16x16_b4_reg.v",
+    "dir::../rtl/qwen_layer.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 50.0,
+  "FP_SIZING": "relative",
+  "FP_CORE_UTIL": 15,
+  "PL_TARGET_DENSITY_PCT": 25,
+  "MAX_FANOUT_CONSTRAINT": 16,
+  "RUN_LINTER": false,
+  "QUIT_ON_SYNTH_CHECKS": false
+}

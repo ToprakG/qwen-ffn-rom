@@ -1,0 +1,17 @@
+{
+  "DESIGN_NAME": "gated_delta_d16_fused",
+  "VERILOG_FILES": [
+    "dir::../rtl/delta_s_col_ram.v",
+    "dir::../rtl/add_tree_bal.v",
+    "dir::../rtl/gated_delta_fused.v",
+    "dir::../rtl/gated_delta_d16_fused.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 50.0,
+  "FP_SIZING": "relative",
+  "FP_CORE_UTIL": 18,
+  "PL_TARGET_DENSITY_PCT": 28,
+  "MAX_FANOUT_CONSTRAINT": 16,
+  "RUN_LINTER": false,
+  "QUIT_ON_SYNTH_CHECKS": false
+}

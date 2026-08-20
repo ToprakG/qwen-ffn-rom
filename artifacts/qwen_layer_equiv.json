@@ -1,0 +1,31 @@
+{
+  "gate": "qwen_layer == rms1 \u2192 4\u00d7(DeltaNet|attn) \u2192 residual \u2192 rms2 \u2192 16\u00d716 FFN \u2192 residual",
+  "status": "PASS",
+  "dut": "rtl/qwen_layer.v",
+  "hidden": 16,
+  "heads": 4,
+  "mixer_d": 4,
+  "s_max": 8,
+  "ffn": "ffn_tile 16x16 b4 from Qwen3.5-0.8B down_proj",
+  "tokens": 12,
+  "cycles_delta_layer": 308,
+  "cycles_attn_layer_mean": 68,
+  "cycles_attn_by_token": [
+    48,
+    56,
+    64,
+    72,
+    80,
+    88
+  ],
+  "cycles_delta_by_token": [
+    308,
+    308,
+    308,
+    308,
+    308,
+    308
+  ],
+  "simulator": "Verilator + cocotb",
+  "note": "Complete layer, not the H=8 toy. H=16 is 4 signed-off D=4 PEs + real 0.8B 16\u00d716 tile. 0.8B/27B clocks/token use this layer's RMS/FFN handshake plus measured D=128 mixer and attn ceil(S/512)+2, not these DUT mixer clocks."
+}

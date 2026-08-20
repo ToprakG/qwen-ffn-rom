@@ -1,0 +1,27 @@
+{
+  "gate": "NR RMSNorm |y-y_restoring|<= 1 and mean cosine vs fp32 >= 0.99 at H=8/16",
+  "status": "PASS",
+  "threshold_abs": 1,
+  "threshold_cosine": 0.99,
+  "rows": [
+    {
+      "h": 8,
+      "n": 400,
+      "max_abs_vs_restoring": 1,
+      "frac_diff_restoring": 0.285,
+      "mean_cosine_fp32": 0.9997328638301597,
+      "min_cosine_fp32": 0.997976388090407,
+      "pass": true
+    },
+    {
+      "h": 16,
+      "n": 400,
+      "max_abs_vs_restoring": 1,
+      "frac_diff_restoring": 0.25,
+      "mean_cosine_fp32": 0.9994884583806565,
+      "min_cosine_fp32": 0.9985712737318417,
+      "pass": true
+    }
+  ],
+  "note": "NR matches 1/sqrt(ssq) more closely than floor(sqrt) then divide; int8 output stays within 1 of restoring at DUT widths. H=5120 Q16 inv collapses both paths (not this gate)."
+}

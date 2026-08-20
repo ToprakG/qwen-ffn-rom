@@ -1,0 +1,8 @@
+(SAIFILE
+(SAIFVERSION "2.0")
+(DIRECTION "backward")
+(DESIGN "ffn_col_serial")
+(DURATION 2650000)
+(TIMESCALE 1 ps)
+(COMMENT "activity=0.070633 clocks=265 toggles=131585")
+)

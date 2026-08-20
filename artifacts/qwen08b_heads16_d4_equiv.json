@@ -1,0 +1,15 @@
+{
+  "gate": "16-head D=4 farm == numpy gated_delta_step per head",
+  "status": "PASS",
+  "dut": "rtl/qwen08b_heads16_d4.v",
+  "d": 4,
+  "n_heads": 16,
+  "n_layers": 24,
+  "tokens": 6,
+  "cycles_per_token": 721,
+  "cycles_min": 721,
+  "cycles_max": 721,
+  "cycles_per_model_token": 721,
+  "model_layers_08b": 24,
+  "simulator": "Verilator + cocotb"
+}

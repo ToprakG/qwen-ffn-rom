@@ -1,0 +1,156 @@
+{
+  "dense_q4_mm2": 1752.7,
+  "reticle_mm2": 858.0,
+  "keep_to_fit_packed_q4": 0.4895,
+  "sparsity_to_fit_packed_q4": 0.5105,
+  "methods": {
+    "unstruct_keep0.7": {
+      "e2e_swiglu": 0.055866699665784836,
+      "area_packed_q4": {
+        "keep": 0.7,
+        "rom_mm2": 1226.9,
+        "pct_reticle": 143.0,
+        "fits": false
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "unstruct_keep0.6": {
+      "e2e_swiglu": 0.09845981746912003,
+      "area_packed_q4": {
+        "keep": 0.6,
+        "rom_mm2": 1051.6,
+        "pct_reticle": 122.6,
+        "fits": false
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "unstruct_keep0.55": {
+      "e2e_swiglu": 0.12781000137329102,
+      "area_packed_q4": {
+        "keep": 0.55,
+        "rom_mm2": 964.0,
+        "pct_reticle": 112.4,
+        "fits": false
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "unstruct_keep0.5": {
+      "e2e_swiglu": 0.16307830810546875,
+      "area_packed_q4": {
+        "keep": 0.5,
+        "rom_mm2": 876.3,
+        "pct_reticle": 102.1,
+        "fits": false
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "unstruct_keep0.489": {
+      "e2e_swiglu": 0.17173165082931519,
+      "area_packed_q4": {
+        "keep": 0.489,
+        "rom_mm2": 857.1,
+        "pct_reticle": 99.9,
+        "fits": true
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "unstruct_keep0.4": {
+      "e2e_swiglu": 0.2563886046409607,
+      "area_packed_q4": {
+        "keep": 0.4,
+        "rom_mm2": 701.1,
+        "pct_reticle": 81.7,
+        "fits": true
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "unstruct_keep0.3": {
+      "e2e_swiglu": 0.3840426802635193,
+      "area_packed_q4": {
+        "keep": 0.3,
+        "rom_mm2": 525.8,
+        "pct_reticle": 61.3,
+        "fits": true
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "unstruct_keep0.25": {
+      "e2e_swiglu": 0.4640067219734192,
+      "area_packed_q4": {
+        "keep": 0.25,
+        "rom_mm2": 438.2,
+        "pct_reticle": 51.1,
+        "fits": true
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "nm_2_4": {
+      "e2e_swiglu": 0.4218771755695343,
+      "area_packed_q4": {
+        "keep": 0.5,
+        "rom_mm2": 876.3,
+        "pct_reticle": 102.1,
+        "fits": false
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "nm_2_8": {
+      "e2e_swiglu": 0.7655915021896362,
+      "area_packed_q4": {
+        "keep": 0.25,
+        "rom_mm2": 438.2,
+        "pct_reticle": 51.1,
+        "fits": true
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "nm_1_4": {
+      "e2e_swiglu": 0.8048281073570251,
+      "area_packed_q4": {
+        "keep": 0.25,
+        "rom_mm2": 438.2,
+        "pct_reticle": 51.1,
+        "fits": true
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "nm_4_8": {
+      "e2e_swiglu": 0.364010214805603,
+      "area_packed_q4": {
+        "keep": 0.5,
+        "rom_mm2": 876.3,
+        "pct_reticle": 102.1,
+        "fits": false
+      },
+      "note": "area assumes zeros are not instantiated in via-ROM"
+    },
+    "unstruct_mask_keep0.5": {
+      "e2e_swiglu": 0.16307830810546875,
+      "area_mask_plus_q4": {
+        "bits_per_weight": 3.0,
+        "rom_mm2": 1314.5,
+        "pct_reticle": 153.2,
+        "fits": false
+      }
+    },
+    "unstruct_mask_keep0.4": {
+      "e2e_swiglu": 0.2563886046409607,
+      "area_mask_plus_q4": {
+        "bits_per_weight": 2.6,
+        "rom_mm2": 1139.2,
+        "pct_reticle": 132.8,
+        "fits": false
+      }
+    },
+    "unstruct_mask_keep0.3": {
+      "e2e_swiglu": 0.3840426802635193,
+      "area_mask_plus_q4": {
+        "bits_per_weight": 2.2,
+        "rom_mm2": 964.0,
+        "pct_reticle": 112.4,
+        "fits": false
+      }
+    }
+  },
+  "elapsed_sec": 82.6
+}

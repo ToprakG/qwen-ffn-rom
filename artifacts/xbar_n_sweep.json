@@ -1,0 +1,227 @@
+{
+  "clock_ns": 50.0,
+  "wire_factor": 4.37,
+  "wire_factor_note": "pred_pnr_path = abc_delay * 4.37 from 8x8 CSD tile (OpenLane 13.32 ns / ABC 3.045 ns). sta_dies_50ns uses that prediction.",
+  "points": [
+    {
+      "n": 8,
+      "bits": 4,
+      "style": "wordpar_csd",
+      "top": "ffn_tile_reg",
+      "cycles_per_token": 1,
+      "yosys": {
+        "cell_count": 4427,
+        "area_um2": 27197.3344,
+        "sequential_cells": 14
+      },
+      "sta": {
+        "abc_delay_ns": 3.04476,
+        "abc_fmax_mhz": 328.43311131255007,
+        "pred_pnr_path_ns": 13.305601200000002,
+        "pred_pnr_fmax_mhz": 75.1563183781579,
+        "sta_dies_50ns": false,
+        "wire_factor": 4.37
+      },
+      "tok_s_pred": 75156318.3781579
+    },
+    {
+      "n": 8,
+      "bits": 4,
+      "style": "serial_csd",
+      "top": "ffn_col_serial",
+      "cycles_per_token": 9,
+      "yosys": {
+        "cell_count": 3094,
+        "area_um2": 20856.2528,
+        "sequential_cells": 4
+      },
+      "sta": {
+        "abc_delay_ns": 4.06078,
+        "abc_fmax_mhz": 246.25810804820748,
+        "pred_pnr_path_ns": 17.7456086,
+        "pred_pnr_fmax_mhz": 56.3519698050818,
+        "sta_dies_50ns": false,
+        "wire_factor": 4.37
+      },
+      "tok_s_pred": 6261329.978342422,
+      "equiv": {
+        "gate": "rtl_y == numpy(W_int @ x_int)",
+        "status": "PASS",
+        "dut": "rtl/ffn_col_serial.v",
+        "name": "ffn_col_serial_8x8_b4",
+        "n": 8,
+        "bits": 4,
+        "vectors": 29,
+        "cycles_per_token": 9,
+        "cycles_min": 9,
+        "cycles_max": 9,
+        "weights": "artifacts/tile8_int4_xbar.npy",
+        "simulator": "Verilator + cocotb"
+      }
+    },
+    {
+      "n": 16,
+      "bits": 4,
+      "style": "wordpar_csd",
+      "top": "ffn_tile_reg",
+      "cycles_per_token": 1,
+      "yosys": {
+        "cell_count": 15820,
+        "area_um2": 91102.3744,
+        "sequential_cells": 14
+      },
+      "sta": {
+        "abc_delay_ns": 3.89844,
+        "abc_fmax_mhz": 256.5128615548784,
+        "pred_pnr_path_ns": 17.0361828,
+        "pred_pnr_fmax_mhz": 58.698595321482465,
+        "sta_dies_50ns": false,
+        "wire_factor": 4.37
+      },
+      "tok_s_pred": 58698595.321482465,
+      "openlane": {
+        "instance_count": 21375,
+        "stdcell_count": 21375,
+        "area_um2": 119654,
+        "core_area_um2": 614029,
+        "die_area_um2": 640659,
+        "utilization": 0.194866,
+        "power_w": 0.0288745928555727,
+        "power_internal_w": 0.010582434944808483,
+        "power_switching_w": 0.018291998654603958,
+        "power_leakage_w": 1.5914373818759486e-07,
+        "setup_ws_ns": 31.672166230589553,
+        "hold_ws_ns": 0.24336267023744007,
+        "setup_wns_ns": 0,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 54.56182179418398,
+        "clock_period_ns": 50.0,
+        "drc": 0,
+        "lvs": 0,
+        "flow_errors": 0,
+        "returncode": 0,
+        "tag": "tile_16x16_b4",
+        "run_dir": "openlane/runs/tile_16x16_b4"
+      },
+      "tok_s_pnr": 54561821.79418398
+    },
+    {
+      "n": 16,
+      "bits": 4,
+      "style": "serial_csd",
+      "top": "ffn_col_serial",
+      "cycles_per_token": 9,
+      "yosys": {
+        "cell_count": 8050,
+        "area_um2": 50533.4656,
+        "sequential_cells": 12
+      },
+      "sta": {
+        "abc_delay_ns": 5.1857299999999995,
+        "abc_fmax_mhz": 192.83688121055283,
+        "pred_pnr_path_ns": 22.6616401,
+        "pred_pnr_fmax_mhz": 44.12743277129355,
+        "sta_dies_50ns": false,
+        "wire_factor": 4.37
+      },
+      "tok_s_pred": 4903048.0856992835,
+      "equiv": {
+        "gate": "rtl_y == numpy(W_int @ x_int)",
+        "status": "PASS",
+        "dut": "rtl/ffn_col_serial.v",
+        "name": "ffn_col_serial_16x16_b4",
+        "n": 16,
+        "bits": 4,
+        "vectors": 45,
+        "cycles_per_token": 9,
+        "cycles_min": 9,
+        "cycles_max": 9,
+        "weights": "artifacts/tile16_int4_xbar.npy",
+        "simulator": "Verilator + cocotb"
+      },
+      "openlane": {
+        "instance_count": 10735,
+        "stdcell_count": 10735,
+        "area_um2": 67725,
+        "core_area_um2": 288389,
+        "die_area_um2": 307785,
+        "utilization": 0.234839,
+        "power_w": 0.007412458769977093,
+        "power_internal_w": 0.0036432419437915087,
+        "power_switching_w": 0.0037691197358071804,
+        "power_leakage_w": 9.685167157158503e-08,
+        "setup_ws_ns": 30.444671645424954,
+        "hold_ws_ns": 0.11141088367204943,
+        "setup_wns_ns": 0,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 51.13695775740048,
+        "clock_period_ns": 50.0,
+        "drc": 0,
+        "lvs": 0,
+        "flow_errors": 0,
+        "returncode": 0,
+        "tag": "xbar_serial_16x16",
+        "run_dir": "openlane/runs/xbar_serial_16x16"
+      },
+      "tok_s_pnr": 5681884.19526672
+    },
+    {
+      "n": 32,
+      "bits": 4,
+      "style": "wordpar_csd",
+      "top": "ffn_tile_reg",
+      "cycles_per_token": 1,
+      "yosys": {
+        "cell_count": 60565,
+        "area_um2": 341830.3424,
+        "sequential_cells": 18
+      },
+      "sta": {
+        "abc_delay_ns": 4.8248999999999995,
+        "abc_fmax_mhz": 207.25818151671538,
+        "pred_pnr_path_ns": 21.084812999999997,
+        "pred_pnr_fmax_mhz": 47.42750149123922,
+        "sta_dies_50ns": false,
+        "wire_factor": 4.37
+      },
+      "tok_s_pred": 47427501.49123922
+    },
+    {
+      "n": 32,
+      "bits": 4,
+      "style": "serial_csd",
+      "top": "ffn_col_serial",
+      "cycles_per_token": 9,
+      "yosys": {
+        "cell_count": 23790,
+        "area_um2": 140763.7536,
+        "sequential_cells": 10
+      },
+      "sta": {
+        "abc_delay_ns": 7.41201,
+        "abc_fmax_mhz": 134.91616983787122,
+        "pred_pnr_path_ns": 32.390483700000004,
+        "pred_pnr_fmax_mhz": 30.87326540912385,
+        "sta_dies_50ns": false,
+        "wire_factor": 4.37
+      },
+      "tok_s_pred": 3430362.823235983,
+      "equiv": {
+        "gate": "rtl_y == numpy(W_int @ x_int)",
+        "status": "PASS",
+        "dut": "rtl/ffn_col_serial.v",
+        "name": "ffn_col_serial_32x32_b4",
+        "n": 32,
+        "bits": 4,
+        "vectors": 77,
+        "cycles_per_token": 9,
+        "cycles_min": 9,
+        "cycles_max": 9,
+        "weights": "artifacts/tile32_int4_xbar.npy",
+        "simulator": "Verilator + cocotb"
+      }
+    }
+  ]
+}

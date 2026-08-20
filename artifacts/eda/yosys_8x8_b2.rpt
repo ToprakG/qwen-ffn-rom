@@ -1,0 +1,1449 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 16.0.0.16000026)
+
+-- Running command `
+read_verilog -sv /Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v
+hierarchy -check -top ffn_tile_reg
+proc; flatten
+opt_expr; opt_clean
+synth -top ffn_tile_reg
+dfflibmap -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+opt_clean
+stat -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+' --
+
+1. Executing Verilog-2005 frontend: /Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v
+Parsing SystemVerilog input from `/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v' to AST representation.
+Generating RTLIL representation for module `\add_tree'.
+Generating RTLIL representation for module `\ffn_tile'.
+Generating RTLIL representation for module `\ffn_tile_reg'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \ffn_tile_reg
+Used module:     \ffn_tile
+Used module:         \add_tree
+Parameter \N = 8
+Parameter \W = 13
+
+2.2. Executing AST frontend in derive mode using pre-parsed AST for module `\add_tree'.
+Parameter \N = 8
+Parameter \W = 13
+Generating RTLIL representation for module `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree'.
+Parameter \N = 8
+Parameter \W = 13
+Found cached RTLIL representation for module `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree'.
+Parameter \N = 8
+Parameter \W = 13
+Found cached RTLIL representation for module `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree'.
+Parameter \N = 8
+Parameter \W = 13
+Found cached RTLIL representation for module `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree'.
+Parameter \N = 8
+Parameter \W = 13
+Found cached RTLIL representation for module `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree'.
+Parameter \N = 8
+Parameter \W = 13
+Found cached RTLIL representation for module `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree'.
+Parameter \N = 8
+Parameter \W = 13
+Found cached RTLIL representation for module `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree'.
+Parameter \N = 8
+Parameter \W = 13
+Found cached RTLIL representation for module `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree'.
+
+2.3. Analyzing design hierarchy..
+Top module:  \ffn_tile_reg
+Used module:     \ffn_tile
+Used module:         $paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree
+
+2.4. Analyzing design hierarchy..
+Top module:  \ffn_tile_reg
+Used module:     \ffn_tile
+Used module:         $paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree
+Removing unused module `\add_tree'.
+Removed 1 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$650'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$644'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$638'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$632'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$625'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$619'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$612'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$606'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$600'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$594'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$588'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$581'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$575'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$569'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$563'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$557'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$551'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$545'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$539'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$533'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$527'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$521'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$515'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$509'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$502'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$496'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$489'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$483'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$477'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$471'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$465'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$459'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$453'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$446'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$439'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$433'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$426'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$420'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$414'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$408'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$401'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$395'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$388'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$382'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$375'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$369'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$363'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$357'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$351'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$345'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$338'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$332'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$326'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$320'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$314'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$308'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$302'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$296'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$290'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$283'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$277'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$271'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$265'.
+Found and cleaned up 1 empty switch in `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$259'.
+Cleaned up 64 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 397 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\ffn_tile_reg.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:111$728'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$727'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$726'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$725'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$724'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$723'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$722'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$721'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$720'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$719'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$718'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$717'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$716'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$715'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$714'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$713'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$712'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$711'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$710'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$709'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$708'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$707'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$706'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$705'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$704'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$703'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$702'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$701'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$700'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$699'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$698'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$697'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$696'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$695'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$694'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$693'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$692'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$691'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$690'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$689'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$688'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$687'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$686'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$685'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$684'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$683'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$682'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$681'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$680'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$679'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$678'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$677'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$676'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$675'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$674'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$673'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$672'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$671'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$670'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$669'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$668'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$667'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$666'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$665'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$664'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$663'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$662'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$661'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$660'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$659'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$658'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$657'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$656'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$650'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$644'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$638'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$632'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$625'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$619'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$612'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$606'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$600'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$594'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$588'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$581'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$575'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$569'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$563'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$557'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$551'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$545'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$539'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$533'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$527'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$521'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$515'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$509'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$502'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$496'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$489'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$483'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$477'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$471'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$465'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$459'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$453'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$446'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$439'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$433'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$426'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$420'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$414'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$408'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$401'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$395'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$388'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$382'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$375'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$369'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$363'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$357'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$351'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$345'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$338'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$332'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$326'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$320'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$314'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$308'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$302'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$296'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$290'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$283'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$277'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$271'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$265'.
+Creating decoders for process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$259'.
+Creating decoders for process `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:17$729'.
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\ffn_tile.\g_row[7].prods[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$727'.
+No latch inferred for signal `\ffn_tile.\g_row[7].prods[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$726'.
+No latch inferred for signal `\ffn_tile.\g_row[7].prods[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$725'.
+No latch inferred for signal `\ffn_tile.\g_row[7].prods[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$724'.
+No latch inferred for signal `\ffn_tile.\g_row[7].prods[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$723'.
+No latch inferred for signal `\ffn_tile.\g_row[7].prods[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$722'.
+No latch inferred for signal `\ffn_tile.\g_row[7].prods[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$721'.
+No latch inferred for signal `\ffn_tile.\g_row[7].prods[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$720'.
+No latch inferred for signal `\ffn_tile.\g_row[6].prods[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$719'.
+No latch inferred for signal `\ffn_tile.\g_row[6].prods[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$718'.
+No latch inferred for signal `\ffn_tile.\g_row[6].prods[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$717'.
+No latch inferred for signal `\ffn_tile.\g_row[6].prods[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$716'.
+No latch inferred for signal `\ffn_tile.\g_row[6].prods[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$715'.
+No latch inferred for signal `\ffn_tile.\g_row[6].prods[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$714'.
+No latch inferred for signal `\ffn_tile.\g_row[6].prods[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$713'.
+No latch inferred for signal `\ffn_tile.\g_row[6].prods[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$712'.
+No latch inferred for signal `\ffn_tile.\g_row[5].prods[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$711'.
+No latch inferred for signal `\ffn_tile.\g_row[5].prods[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$710'.
+No latch inferred for signal `\ffn_tile.\g_row[5].prods[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$709'.
+No latch inferred for signal `\ffn_tile.\g_row[5].prods[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$708'.
+No latch inferred for signal `\ffn_tile.\g_row[5].prods[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$707'.
+No latch inferred for signal `\ffn_tile.\g_row[5].prods[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$706'.
+No latch inferred for signal `\ffn_tile.\g_row[5].prods[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$705'.
+No latch inferred for signal `\ffn_tile.\g_row[5].prods[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$704'.
+No latch inferred for signal `\ffn_tile.\g_row[4].prods[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$703'.
+No latch inferred for signal `\ffn_tile.\g_row[4].prods[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$702'.
+No latch inferred for signal `\ffn_tile.\g_row[4].prods[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$701'.
+No latch inferred for signal `\ffn_tile.\g_row[4].prods[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$700'.
+No latch inferred for signal `\ffn_tile.\g_row[4].prods[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$699'.
+No latch inferred for signal `\ffn_tile.\g_row[4].prods[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$698'.
+No latch inferred for signal `\ffn_tile.\g_row[4].prods[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$697'.
+No latch inferred for signal `\ffn_tile.\g_row[4].prods[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$696'.
+No latch inferred for signal `\ffn_tile.\g_row[3].prods[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$695'.
+No latch inferred for signal `\ffn_tile.\g_row[3].prods[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$694'.
+No latch inferred for signal `\ffn_tile.\g_row[3].prods[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$693'.
+No latch inferred for signal `\ffn_tile.\g_row[3].prods[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$692'.
+No latch inferred for signal `\ffn_tile.\g_row[3].prods[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$691'.
+No latch inferred for signal `\ffn_tile.\g_row[3].prods[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$690'.
+No latch inferred for signal `\ffn_tile.\g_row[3].prods[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$689'.
+No latch inferred for signal `\ffn_tile.\g_row[3].prods[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$688'.
+No latch inferred for signal `\ffn_tile.\g_row[2].prods[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$687'.
+No latch inferred for signal `\ffn_tile.\g_row[2].prods[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$686'.
+No latch inferred for signal `\ffn_tile.\g_row[2].prods[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$685'.
+No latch inferred for signal `\ffn_tile.\g_row[2].prods[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$684'.
+No latch inferred for signal `\ffn_tile.\g_row[2].prods[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$683'.
+No latch inferred for signal `\ffn_tile.\g_row[2].prods[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$682'.
+No latch inferred for signal `\ffn_tile.\g_row[2].prods[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$681'.
+No latch inferred for signal `\ffn_tile.\g_row[2].prods[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$680'.
+No latch inferred for signal `\ffn_tile.\g_row[1].prods[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$679'.
+No latch inferred for signal `\ffn_tile.\g_row[1].prods[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$678'.
+No latch inferred for signal `\ffn_tile.\g_row[1].prods[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$677'.
+No latch inferred for signal `\ffn_tile.\g_row[1].prods[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$676'.
+No latch inferred for signal `\ffn_tile.\g_row[1].prods[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$675'.
+No latch inferred for signal `\ffn_tile.\g_row[1].prods[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$674'.
+No latch inferred for signal `\ffn_tile.\g_row[1].prods[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$673'.
+No latch inferred for signal `\ffn_tile.\g_row[1].prods[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$672'.
+No latch inferred for signal `\ffn_tile.\g_row[0].prods[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$671'.
+No latch inferred for signal `\ffn_tile.\g_row[0].prods[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$670'.
+No latch inferred for signal `\ffn_tile.\g_row[0].prods[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$669'.
+No latch inferred for signal `\ffn_tile.\g_row[0].prods[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$668'.
+No latch inferred for signal `\ffn_tile.\g_row[0].prods[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$667'.
+No latch inferred for signal `\ffn_tile.\g_row[0].prods[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$666'.
+No latch inferred for signal `\ffn_tile.\g_row[0].prods[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$665'.
+No latch inferred for signal `\ffn_tile.\g_row[0].prods[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$664'.
+No latch inferred for signal `\ffn_tile.\x[7]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$663'.
+No latch inferred for signal `\ffn_tile.\x[6]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$662'.
+No latch inferred for signal `\ffn_tile.\x[5]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$661'.
+No latch inferred for signal `\ffn_tile.\x[4]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$660'.
+No latch inferred for signal `\ffn_tile.\x[3]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$659'.
+No latch inferred for signal `\ffn_tile.\x[2]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$658'.
+No latch inferred for signal `\ffn_tile.\x[1]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$657'.
+No latch inferred for signal `\ffn_tile.\x[0]' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$656'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$194.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$650'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$193.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$644'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$192.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$638'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$191.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$632'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$190.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$625'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$189.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$619'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$188.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$612'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$187.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$606'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$186.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$600'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$185.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$594'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$184.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$588'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$183.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$581'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$182.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$575'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$181.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$569'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$180.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$563'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$179.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$557'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$178.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$551'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$177.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$545'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$176.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$539'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$175.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$533'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$174.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$527'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$173.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$521'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$172.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$515'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$171.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$509'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$170.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$502'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$169.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$496'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$168.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$489'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$167.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$483'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$166.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$477'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$165.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$471'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$164.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$465'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$163.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$459'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$162.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$453'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$161.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$446'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$160.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$439'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$159.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$433'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$158.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$426'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$157.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$420'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$156.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$414'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$155.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$408'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$154.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$401'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$153.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$395'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$152.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$388'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$151.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$382'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$150.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$375'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$149.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$369'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$148.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$363'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$147.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$357'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$146.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$351'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$145.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$345'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$144.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$338'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$143.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$332'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$142.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$326'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$141.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$320'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$140.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$314'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$139.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$308'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$138.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$302'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$137.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$296'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$136.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$290'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$135.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$283'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$134.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$277'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$133.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$271'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$132.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$265'.
+No latch inferred for signal `\ffn_tile.\csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$131.$result' from process `\ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$259'.
+No latch inferred for signal `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.\y' from process `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:17$729'.
+No latch inferred for signal `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.\k' from process `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:17$729'.
+No latch inferred for signal `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.\acc' from process `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:17$729'.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\ffn_tile_reg.\y_flat' using process `\ffn_tile_reg.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:111$728'.
+  created $dff cell `$procdff$738' with positive edge clock.
+Creating register for signal `\ffn_tile_reg.\x_q' using process `\ffn_tile_reg.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:111$728'.
+  created $dff cell `$procdff$739' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `ffn_tile_reg.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:111$728'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$727'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$726'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$725'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$724'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$723'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$722'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$721'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$720'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$719'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$718'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$717'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$716'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$715'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$714'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$713'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$712'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$711'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$710'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$709'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$708'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$707'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$706'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$705'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$704'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$703'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$702'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$701'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$700'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$699'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$698'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$697'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$696'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$695'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$694'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$693'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$692'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$691'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$690'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$689'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$688'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$687'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$686'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$685'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$684'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$683'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$682'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$681'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$680'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$679'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$678'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$677'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$676'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$675'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$674'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$673'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$672'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$671'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$670'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$669'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$668'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$667'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$666'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$665'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:88$664'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$663'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$662'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$661'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$660'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$659'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$658'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$657'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:76$656'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$650'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$644'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$638'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$632'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$625'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$619'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$612'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$606'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$600'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$594'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$588'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$581'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$575'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$569'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$563'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$557'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$551'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$545'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$539'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$533'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$527'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$521'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$515'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$509'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$502'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$496'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$489'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$483'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$477'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$471'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$465'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$459'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$453'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$446'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$439'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$433'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$426'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$420'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$414'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$408'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$401'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$395'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$388'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$382'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$375'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$369'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$363'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$357'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$351'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$345'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$338'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$332'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$326'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$320'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$314'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$308'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$302'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$296'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$290'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$283'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$277'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$271'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$265'.
+Removing empty process `ffn_tile.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$259'.
+Removing empty process `$paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:17$729'.
+Cleaned up 0 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+Optimizing module ffn_tile.
+Optimizing module $paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.
+
+4. Executing FLATTEN pass (flatten design).
+Deleting now unused module ffn_tile.
+Deleting now unused module $paramod$bb4ee74c2bacf4d0fbd8d3c53bd96c1a7ba996d9\add_tree.
+<suppressed ~9 debug messages>
+
+5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+<suppressed ~48 debug messages>
+
+6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+Removed 0 unused cells and 601 unused wires.
+<suppressed ~35 debug messages>
+
+7. Executing SYNTH pass.
+
+7.1. Executing HIERARCHY pass (managing design hierarchy).
+
+7.1.1. Analyzing design hierarchy..
+Top module:  \ffn_tile_reg
+
+7.1.2. Analyzing design hierarchy..
+Top module:  \ffn_tile_reg
+Removed 0 unused modules.
+
+7.2. Executing PROC pass (convert processes to netlists).
+
+7.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+7.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+7.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+7.2.4. Executing PROC_INIT pass (extract init attributes).
+
+7.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+7.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+7.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+7.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+7.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+7.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+7.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+7.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.5. Executing CHECK pass (checking for obvious problems).
+Checking module ffn_tile_reg...
+Found and reported 0 problems.
+
+7.6. Executing OPT pass (performing simple optimizations).
+
+7.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 40 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 33 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 32 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+<suppressed ~24 debug messages>
+Removed a total of 8 cells.
+
+7.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_tile_reg..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_tile_reg.
+Performed a total of 0 changes.
+
+7.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 32 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+7.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_tile_reg..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_tile_reg.
+Performed a total of 0 changes.
+
+7.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 32 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+7.7. Executing FSM pass (extract and optimize FSM).
+
+7.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+7.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+7.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+7.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+7.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+7.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+7.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+7.8. Executing OPT pass (performing simple optimizations).
+
+7.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 32 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_tile_reg..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_tile_reg.
+Performed a total of 0 changes.
+
+7.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 32 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.8.9. Finished fast OPT passes. (There is nothing left to do.)
+
+7.9. Executing WREDUCE pass (reducing word size of cells).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add) from unsigned to signed.
+Removed top 3 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Removed top 2 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add) from unsigned to signed.
+Removed top 2 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Removed top 5 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Removed top 1 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[6].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add) from unsigned to signed.
+Removed top 5 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[6].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[6].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add).
+Removed top 2 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[6].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$732 ($add) from unsigned to signed.
+Removed top 5 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$732 ($add).
+Removed top 5 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$732 ($add).
+Removed top 4 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$732 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add) from unsigned to signed.
+Removed top 4 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Removed top 5 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Removed top 3 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add) from unsigned to signed.
+Removed top 3 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Removed top 5 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Removed top 2 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add) from unsigned to signed.
+Removed top 5 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 2 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add) from unsigned to signed.
+Removed top 2 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Removed top 1 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add) from unsigned to signed.
+Removed top 5 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Removed top 2 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add) from unsigned to signed.
+Removed top 2 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 1 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$736 ($add) from unsigned to signed.
+Removed top 1 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$736 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$736 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add) from unsigned to signed.
+Removed top 2 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add).
+Removed top 5 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add).
+Removed top 1 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add) from unsigned to signed.
+Removed top 1 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+Converting cell ffn_tile_reg.$flatten\u_comb.\g_row[1].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add) from unsigned to signed.
+Removed top 5 bits (of 13) from port A of cell ffn_tile_reg.$flatten\u_comb.\g_row[1].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 3 bits (of 13) from port B of cell ffn_tile_reg.$flatten\u_comb.\g_row[1].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 2 bits (of 13) from port Y of cell ffn_tile_reg.$flatten\u_comb.\g_row[1].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+Removed top 2 bits (of 10) from port A of cell ffn_tile_reg.$flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$618 ($neg).
+Removed top 2 bits (of 10) from port A of cell ffn_tile_reg.$flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$587 ($neg).
+Removed top 2 bits (of 10) from port A of cell ffn_tile_reg.$flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$452 ($neg).
+Removed top 2 bits (of 10) from port A of cell ffn_tile_reg.$flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$407 ($neg).
+Removed top 2 bits (of 10) from port A of cell ffn_tile_reg.$flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$381 ($neg).
+Removed top 2 bits (of 10) from port A of cell ffn_tile_reg.$flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$344 ($neg).
+Removed top 1 bits (of 104) from FF cell ffn_tile_reg.$procdff$738 ($dff).
+
+7.10. Executing PEEPOPT pass (run peephole optimizers).
+
+7.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module ffn_tile_reg:
+  creating $macc model for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$452 ($neg).
+  creating $macc model for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$381 ($neg).
+  creating $macc model for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$407 ($neg).
+  creating $macc model for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$344 ($neg).
+  creating $macc model for $flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+  creating $macc model for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$618 ($neg).
+  creating $macc model for $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$732 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[6].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+  creating $macc model for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$587 ($neg).
+  creating $macc model for $flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$736 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+  creating $macc model for $flatten\u_comb.\g_row[1].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 ($add).
+  merging $macc model for $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 into $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$736.
+  merging $macc model for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$452 into $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$736.
+  merging $macc model for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$618 into $flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733.
+  merging $macc model for $flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 into $flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737.
+  merging $macc model for $flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 into $flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737.
+  merging $macc model for $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734 into $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735.
+  merging $macc model for $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735 into $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737.
+  merging $macc model for $flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$732 into $flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733.
+  merging $macc model for $flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733 into $flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737.
+  creating $alu model for $macc $flatten\u_comb.\g_row[6].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734.
+  creating $alu model for $macc $flatten\u_comb.\g_row[1].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735.
+  creating $alu model for $macc $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733.
+  creating $macc cell for $flatten\u_comb.\g_row[4].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737: $auto$alumacc.cc:399:replace_macc$749
+  creating $macc cell for $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$736: $auto$alumacc.cc:399:replace_macc$750
+  creating $macc cell for $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737: $auto$alumacc.cc:399:replace_macc$751
+  creating $macc cell for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$587: $auto$alumacc.cc:399:replace_macc$752
+  creating $macc cell for $flatten\u_comb.\g_row[5].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737: $auto$alumacc.cc:399:replace_macc$753
+  creating $macc cell for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$344: $auto$alumacc.cc:399:replace_macc$754
+  creating $macc cell for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$407: $auto$alumacc.cc:399:replace_macc$755
+  creating $macc cell for $flatten\u_comb.$neg$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:64$381: $auto$alumacc.cc:399:replace_macc$756
+  creating $macc cell for $flatten\u_comb.\g_row[7].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$737: $auto$alumacc.cc:399:replace_macc$757
+  creating $alu cell for $flatten\u_comb.\g_row[3].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733: $auto$alumacc.cc:548:replace_alu$758
+  creating $alu cell for $flatten\u_comb.\g_row[1].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$735: $auto$alumacc.cc:548:replace_alu$761
+  creating $alu cell for $flatten\u_comb.\g_row[6].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$734: $auto$alumacc.cc:548:replace_alu$764
+  created 3 $alu and 9 $macc cells.
+
+7.13. Executing SHARE pass (SAT-based resource sharing).
+
+7.14. Executing OPT pass (performing simple optimizations).
+
+7.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 32 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_tile_reg..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_tile_reg.
+Performed a total of 0 changes.
+
+7.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 32 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+Removed 9 unused cells and 13 unused wires.
+<suppressed ~14 debug messages>
+
+7.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_tile_reg..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_tile_reg.
+Performed a total of 0 changes.
+
+7.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 23 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.14.16. Finished fast OPT passes. (There is nothing left to do.)
+
+7.15. Executing MEMORY pass.
+
+7.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+7.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+7.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+7.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+7.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+7.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+7.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+7.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+7.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.17. Executing OPT pass (performing simple optimizations).
+
+7.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+<suppressed ~16 debug messages>
+
+7.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 23 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.17.5. Finished fast OPT passes.
+
+7.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+7.19. Executing OPT pass (performing simple optimizations).
+
+7.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 23 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_tile_reg..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_tile_reg.
+Performed a total of 0 changes.
+
+7.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 23 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Removed a total of 0 cells.
+
+7.19.6. Executing OPT_SHARE pass.
+
+7.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+
+7.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+
+7.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+7.20. Executing TECHMAP pass (map to technology primitives).
+
+7.20.1. Executing Verilog-2005 frontend: /opt/homebrew/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+7.20.2. Continuing TECHMAP pass.
+Using template $paramod$8105d46316cb99041c6dc3f486b2ad084df41ba8\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc_v2.
+  sub \x_q [15:8] (8 bits, signed)
+  add \x_q [63:56] (8 bits, signed)
+  add \u_comb.csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$150.$result (10 bits, signed)
+  packed 1 (1) bits / 1 words into adder tree
+  sub \x_q [31:24] (8 bits, signed)
+  sub \x_q [63:56] (8 bits, signed)
+  sub \x_q [47:40] (8 bits, signed)
+  add \x_q [7:0] (8 bits, signed)
+  add \x_q [63:56] (8 bits, signed)
+  add \x_q [31:24] (8 bits, signed)
+  add \x_q [23:16] (8 bits, signed)
+  sub \x_q [39:32] (8 bits, signed)
+  add $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733_Y [10:0] (11 bits, signed)
+  add \u_comb.csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$154.$result (10 bits, signed)
+  add \u_comb.csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$144.$result (10 bits, signed)
+  add \x_q [39:32] (8 bits, signed)
+  add $flatten\u_comb.\g_row[2].u_tree.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:20$733_Y [10:0] (11 bits, signed)
+  sub \x_q [55:48] (8 bits, signed)
+  add \u_comb.csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$144.$result (10 bits, signed)
+  packed 1 (1) bits / 1 words into adder tree
+  add \x_q [39:32] (8 bits, signed)
+  add \u_comb.csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$154.$result (10 bits, signed)
+  add \u_comb.csd_mul2$func$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_tile_8x8_b2_reg.v:87$144.$result (10 bits, signed)
+Using extmapper simplemap for cells of type $dff.
+Using template $paramod$484d51534650924b7ed4c69e46eed3a56904771f\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001100 for cells of type $fa.
+Using template $paramod$ee3d784672cdb1cb32d9a801a3af776716f16b74\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001101 for cells of type $fa.
+Using template $paramod$2780480d52179e2db572a6e5133edf36e733d32e\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001011 for cells of type $fa.
+Using template $paramod$ec32b97001540459632a2df9accd677d3703ea0f\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001100 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001010 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001101 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1377 debug messages>
+
+7.21. Executing OPT pass (performing simple optimizations).
+
+7.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+<suppressed ~814 debug messages>
+
+7.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 1414 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 1358 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 1332 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 1317 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 1304 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 1292 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 1289 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 1286 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+<suppressed ~384 debug messages>
+Removed a total of 128 cells.
+
+7.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+Removed 117 unused cells and 658 unused wires.
+<suppressed ~118 debug messages>
+
+7.21.5. Finished fast OPT passes.
+
+7.22. Executing ABC pass (technology mapping using ABC).
+
+7.22.1. Extracting gate netlist of module `\ffn_tile_reg' to `<abc-temp-dir>/input.blif'..
+
+7.22.1.1. Executed ABC.
+Extracted 1003 gates and 1067 wires to a netlist network with 64 inputs and 92 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+7.22.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       69
+ABC RESULTS:            ANDNOT cells:       71
+ABC RESULTS:               MUX cells:        2
+ABC RESULTS:              NAND cells:      189
+ABC RESULTS:               NOR cells:       12
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:       78
+ABC RESULTS:             ORNOT cells:       22
+ABC RESULTS:              XNOR cells:      136
+ABC RESULTS:               XOR cells:      125
+ABC RESULTS:        internal signals:      911
+ABC RESULTS:           input signals:       64
+ABC RESULTS:          output signals:       92
+Removing temp directory.
+Removing global temp directory.
+
+7.23. Executing OPT pass (performing simple optimizations).
+
+7.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_tile_reg.
+<suppressed ~1 debug messages>
+
+7.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_tile_reg'.
+Computing hashes of 872 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 857 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+Computing hashes of 842 cells of `\ffn_tile_reg'.
+Finding duplicate cells in `\ffn_tile_reg'.
+<suppressed ~90 debug messages>
+Removed a total of 30 cells.
+
+7.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+Removed 0 unused cells and 458 unused wires.
+<suppressed ~1 debug messages>
+
+7.23.5. Finished fast OPT passes.
+
+7.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `ffn_tile_reg'. Setting top module to ffn_tile_reg.
+
+7.24.1. Analyzing design hierarchy..
+Top module:  \ffn_tile_reg
+
+7.24.2. Analyzing design hierarchy..
+Top module:  \ffn_tile_reg
+Removed 0 unused modules.
+
+7.25. Printing statistics.
+
+=== ffn_tile_reg ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      930 wires
+     6003 wire bits
+      316 public wires
+     5389 public wire bits
+        3 ports
+      169 port bits
+      842 cells
+       71   $_ANDNOT_
+       66   $_AND_
+      142   $_DFF_P_
+        2   $_MUX_
+      181   $_NAND_
+       11   $_NOR_
+        2   $_NOT_
+       22   $_ORNOT_
+       77   $_OR_
+      134   $_XNOR_
+      125   $_XOR_
+        9   $scopeinfo
+
+7.26. Executing CHECK pass (checking for obvious problems).
+Checking module ffn_tile_reg...
+Found and reported 0 problems.
+
+8. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__edfxtp_1 (noninv, pins=4, area=30.03) is a direct match for cell type $_DFFE_PP_.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    \sky130_fd_sc_hd__edfxtp_1 _DFFE_PP_ (.CLK( C), .D( D), .DE( E), .Q( Q));
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+8.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~24 debug messages>
+Mapping DFF cells in module `\ffn_tile_reg':
+  mapped 142 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
+
+9. Executing ABC pass (technology mapping using ABC).
+
+9.1. Extracting gate netlist of module `\ffn_tile_reg' to `<abc-temp-dir>/input.blif'..
+ABC: using cached merged SCL: /var/folders/8g/t_1gk85s4m70jtjyvhs3xc5h0000gn/T/yosys-liberty-scl-cache/yosys_merged_5e93c8fc.scl (1 files)
+
+9.1.1. Executed ABC.
+Extracted 691 gates and 755 wires to a netlist network with 64 inputs and 77 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_scl /var/folders/8g/t_1gk85s4m70jtjyvhs3xc5h0000gn/T/yosys-liberty-scl-cache/yosys_merged_5e93c8fc.scl 
+ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+9.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a21bo_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_0 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__a21o_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a31o_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__and3_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:       14
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_inputiso1p_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_isobufsrc_1 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__maj3_1 cells:       63
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:       32
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_1 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:       54
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_0 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or3_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or4_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:      149
+ABC RESULTS:   sky130_fd_sc_hd__xnor3_1 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:       58
+ABC RESULTS:   sky130_fd_sc_hd__xor3_1 cells:       10
+ABC RESULTS:        internal signals:      614
+ABC RESULTS:           input signals:       64
+ABC RESULTS:          output signals:       77
+Removing temp directory.
+Removing global temp directory.
+
+10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_tile_reg..
+Removed 0 unused cells and 755 unused wires.
+<suppressed ~1 debug messages>
+
+11. Printing statistics.
+
+=== ffn_tile_reg ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      766        - wires
+     5839        - wire bits
+      316        - public wires
+     5389        - public wire bits
+        3        - ports
+      169        - port bits
+      678 6.91E+03 cells
+        9        -   $scopeinfo
+        1    10.01   sky130_fd_sc_hd__a21bo_1
+        4   30.029   sky130_fd_sc_hd__a21boi_0
+        5   37.536   sky130_fd_sc_hd__a21o_1
+       16   80.077   sky130_fd_sc_hd__a21oi_1
+        1    8.758   sky130_fd_sc_hd__a221oi_1
+        2   17.517   sky130_fd_sc_hd__a31o_1
+       10    62.56   sky130_fd_sc_hd__and2_0
+        4   25.024   sky130_fd_sc_hd__and3_1
+       14    52.55   sky130_fd_sc_hd__clkinv_1
+      142 2.84E+03   sky130_fd_sc_hd__dfxtp_1
+        3   18.768   sky130_fd_sc_hd__lpflow_inputiso1p_1
+       16  100.096   sky130_fd_sc_hd__lpflow_isobufsrc_1
+       63  630.605   sky130_fd_sc_hd__maj3_1
+       32  120.115   sky130_fd_sc_hd__nand2_1
+       16  100.096   sky130_fd_sc_hd__nand2b_1
+        5   25.024   sky130_fd_sc_hd__nand3_1
+        1    7.507   sky130_fd_sc_hd__nand3b_1
+       54  202.694   sky130_fd_sc_hd__nor2_1
+       17   85.082   sky130_fd_sc_hd__nor3_1
+        1    7.507   sky130_fd_sc_hd__nor3b_1
+        4   25.024   sky130_fd_sc_hd__nor4_1
+       11   82.579   sky130_fd_sc_hd__o21a_1
+       16   80.077   sky130_fd_sc_hd__o21ai_0
+        2   15.014   sky130_fd_sc_hd__o21bai_1
+        1    6.256   sky130_fd_sc_hd__o22ai_1
+        2   15.014   sky130_fd_sc_hd__o31ai_1
+        1    6.256   sky130_fd_sc_hd__or3_1
+        1    7.507   sky130_fd_sc_hd__or4_1
+      149 1.31E+03   sky130_fd_sc_hd__xnor2_1
+        7  157.651   sky130_fd_sc_hd__xnor3_1
+       58  507.987   sky130_fd_sc_hd__xor2_1
+       10  237.728   sky130_fd_sc_hd__xor3_1
+
+   Area for cell type $scopeinfo is unknown!
+
+   Chip area for module '\ffn_tile_reg': 6910.377600
+     of which used for sequential elements: 2842.726400 (41.14%)
+
+End of script. Logfile hash: ec6024abd8, time: 1.69s, user: 0.68s, system: 0.08s, MEM: 50.64 MB peak
+Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 16.0.0.16000026)
+Time spent: 45% 2x abc (0 sec), 10% 3x read_verilog (0 sec), ...
+
+

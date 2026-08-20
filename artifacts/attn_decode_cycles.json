@@ -1,0 +1,37 @@
+{
+  "gate": "attn_decode == (K@q)>>8 then (V.T@scores)>>8 (no softmax)",
+  "status": "PASS",
+  "dut": "rtl/attn_decode.v",
+  "d": 4,
+  "measured": [
+    {
+      "S": 8,
+      "cycles": 18,
+      "two_S": 16,
+      "overhead": 2
+    },
+    {
+      "S": 16,
+      "cycles": 34,
+      "two_S": 32,
+      "overhead": 2
+    },
+    {
+      "S": 32,
+      "cycles": 66,
+      "two_S": 64,
+      "overhead": 2
+    }
+  ],
+  "fit": {
+    "intercept": 1.9999999999999805,
+    "slope_per_S": 2.0,
+    "formula": "cycles = intercept + slope * S"
+  },
+  "extrapolated_one_head": {
+    "4096": 8194,
+    "32768": 65538
+  },
+  "note": "D-wide inner product, one cache row per clock. Softmax is not in RTL; serial softmax would add about S clocks more per head.",
+  "simulator": "Verilator + cocotb"
+}

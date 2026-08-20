@@ -1,0 +1,22 @@
+{
+  "gate": "rtl_o == numpy gated_delta_step (integer Q0.8)",
+  "status": "PASS",
+  "dut": "rtl/qwen08b_farm_d4.v",
+  "d": 4,
+  "qk_w": 8,
+  "v_w": 8,
+  "o_w": 24,
+  "shift": 8,
+  "sequences": 7,
+  "tokens": 31,
+  "cycles_per_token": 720,
+  "cycles_min": 720,
+  "cycles_max": 720,
+  "mac": 4,
+  "n_layers": 24,
+  "model_layers_08b": 24,
+  "model_layers_27b": 64,
+  "cycles_per_layer": 30,
+  "cycles_per_model_token": 720,
+  "simulator": "Verilator + cocotb"
+}

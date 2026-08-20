@@ -1,0 +1,45 @@
+Startpoint: _1859_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _2001_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+    Delay      Time   Description
+-------------------------------------------------------------
+   0.0000    0.0000   clock clk (rise edge)
+   0.0000    0.0000   clock network delay (ideal)
+   0.0000    0.0000 ^ _1859_/CLK (sky130_fd_sc_hd__dfxtp_2)
+   0.3548    0.3548 v _1859_/Q (sky130_fd_sc_hd__dfxtp_2)
+   0.2237    0.5785 v fanout229/X (sky130_fd_sc_hd__buf_4)
+   0.3816    0.9601 v _1441_/X (sky130_fd_sc_hd__or2_2)
+   0.3975    1.3576 v _1453_/X (sky130_fd_sc_hd__or3b_1)
+   0.3151    1.6727 v _1489_/X (sky130_fd_sc_hd__a32o_1)
+   0.4245    2.0971 v _1491_/X (sky130_fd_sc_hd__or3_4)
+   0.5865    2.6836 v _1607_/X (sky130_fd_sc_hd__or4_1)
+   0.1941    2.8777 v _1616_/X (sky130_fd_sc_hd__a21o_1)
+   0.2063    3.0839 v _1619_/X (sky130_fd_sc_hd__a21o_1)
+   0.1908    3.2747 v _1621_/X (sky130_fd_sc_hd__a21o_1)
+   0.2062    3.4809 v _1623_/X (sky130_fd_sc_hd__and3_1)
+   0.3058    3.7866 ^ _1625_/Y (sky130_fd_sc_hd__nor3_2)
+   0.1070    3.8936 v _1627_/Y (sky130_fd_sc_hd__a211oi_1)
+   0.5190    4.4126 v _1630_/X (sky130_fd_sc_hd__or3_2)
+   0.4541    4.8667 v _0866_/X (sky130_fd_sc_hd__a311o_2)
+   0.4423    5.3090 v _0989_/X (sky130_fd_sc_hd__a311o_2)
+   0.3864    5.6955 v _1039_/X (sky130_fd_sc_hd__a211o_2)
+   0.4818    6.1772 v _1079_/X (sky130_fd_sc_hd__a311o_2)
+   0.2902    6.4675 v _1385_/X (sky130_fd_sc_hd__a32o_1)
+   0.0001    6.4676 v _2001_/D (sky130_fd_sc_hd__dfxtp_1)
+             6.4676   data arrival time
+
+  50.0000   50.0000   clock clk (rise edge)
+   0.0000   50.0000   clock network delay (ideal)
+   0.0000   50.0000   clock reconvergence pessimism
+            50.0000 ^ _2001_/CLK (sky130_fd_sc_hd__dfxtp_1)
+  -0.1200   49.8800   library setup time
+            49.8800   data required time
+-------------------------------------------------------------
+            49.8800   data required time
+            -6.4676   data arrival time
+-------------------------------------------------------------
+            43.4124   slack (MET)
+
+

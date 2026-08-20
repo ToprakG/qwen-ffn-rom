@@ -1,0 +1,23 @@
+{
+  "gate": "rtl_o == numpy gated_delta_step(x[:4]); rtl_y == numpy(W_int @ x)",
+  "status": "PASS",
+  "dut": "rtl/hybrid_layer_stub.v",
+  "name": "hybrid_layer_d4_ffn8",
+  "d": 4,
+  "n": 8,
+  "bits": 4,
+  "qk_w": 8,
+  "v_w": 8,
+  "o_w": 24,
+  "shift": 8,
+  "sequences": 5,
+  "tokens": 27,
+  "cycles_per_token": 71,
+  "cycles_min": 71,
+  "cycles_max": 71,
+  "schedule": "ffn_parallel_with_mixer_on_shared_x",
+  "qkv": "q=k=v=x[0:3]",
+  "weights": "artifacts/tile8_int4_xbar.npy",
+  "simulator": "Verilator + cocotb",
+  "note": "architecture cycles/token, not FFN per-PE"
+}

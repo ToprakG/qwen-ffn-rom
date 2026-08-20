@@ -1,0 +1,23 @@
+{
+  "schema": "qwen-ffn-rom.eval/v1",
+  "primary_metrics": [
+    "area_um2",
+    "tok_s_per_pe",
+    "nJ_per_token",
+    "cycles_per_token"
+  ],
+  "higher_is_better": [
+    "tok_s_per_pe"
+  ],
+  "rel_tol": {
+    "area_um2": 0.05,
+    "tok_s_per_pe": 0.1,
+    "nJ_per_token": 0.1,
+    "cycles_per_token": 0.02
+  },
+  "exit_codes": {
+    "0": "gates pass; no strict regression",
+    "1": "equiv fail or PnR DRC/LVS/setup vio",
+    "2": "--strict and a primary metric regressed"
+  }
+}

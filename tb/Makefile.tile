@@ -1,0 +1,18 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+
+PWD := $(shell pwd)
+ROOT := $(abspath $(PWD)/..)
+
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_tile_128x128.v
+TOPLEVEL := ffn_tile
+COCOTB_TEST_MODULES := test_ffn_tile
+
+ifeq ($(SIM),verilator)
+EXTRA_ARGS += --timescale 1ns/1ps -Wno-fatal -Wno-WIDTH -Wno-SELRANGE --output-split 20000
+# Flatten keeps the CSD function inlined; -O0 keeps the C++ compile tractable.
+export OPT_FAST = -O0
+export OPT_SLOW = -O0
+endif
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

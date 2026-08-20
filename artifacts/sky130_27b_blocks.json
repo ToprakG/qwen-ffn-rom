@@ -1,0 +1,388 @@
+{
+  "pdk": "sky130A",
+  "liberty": "sky130_fd_sc_hd tt 25C 1.80V",
+  "scale_7nm_f2": 0.0028994082840236688,
+  "scale_7nm_sram_cell": 0.014240506329113925,
+  "fmax_scale_sky130_to_7nm": 6.5,
+  "note": "Timing closure is one instance of each distinct 27B block, not the whole model in OpenLane. SRAM/ROM is a compiler macro; Fmax is the PE. Die area is ROM density \u00d7 27B \u00d7 bit-width, separately.",
+  "blocks": [
+    {
+      "id": "mixer",
+      "top": "gated_delta_d128_sta",
+      "note": "One D=128 fused mixer PE (130 clk = D+2). SRAM is a 1-cycle compiler-macro stub; OpenLane closes the combo 4-mul EX, not 128\u00d7128 bits.",
+      "yosys": {
+        "cell_count": 419721,
+        "area_um2": 3972222.175999,
+        "sequential_cells": 8192,
+        "rtl": [
+          "rtl/sta/delta_s_col_ram.v",
+          "rtl/add_tree_bal.v",
+          "rtl/gated_delta_fused.v",
+          "rtl/sta/gated_delta_d128_sta.v"
+        ],
+        "top": "gated_delta_d128_sta",
+        "liberty": "/Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+        "clock_ns": 50.0,
+        "abc": "strash_dc2_map",
+        "abc_delay_ps": 1526185.12,
+        "abc_delay_ns": 1526.18512,
+        "abc_fmax_mhz": 0.6552285085835459
+      },
+      "pred_pnr_fmax_mhz": 0.14993787381774504,
+      "pred_pnr_note": "ABC delay \u00d7 4.37 wire factor (calibrated on 8\u00d78 OpenLane/ABC). Not post-route.",
+      "area_7nm_f2_um2": 11517.093883074025,
+      "area_7nm_sram_um2": 56566.45503796045,
+      "sta": {
+        "corner": "sky130_fd_sc_hd ss 100C 1.60V",
+        "note": "RepairDesignPostGPL OOM in 8 GiB Docker VM; TritonRoute not run. Chip Fmax uses post-CTS placement-RC OpenSTA, not ABC &nf.",
+        "wns_ns": -209.83,
+        "period_ns": 100.0,
+        "path_ns": 309.83000000000004,
+        "fmax_mhz": 3.2275764128715743,
+        "startpoint": "u_pe/_1282721_",
+        "endpoint": "u_pe/_1283423_",
+        "log": "artifacts/eda/sta_mixer_d128_cts_ss.log",
+        "stage": "post_cts_placement_rc",
+        "cell_only_preroute": {
+          "wns_ns": -50.59,
+          "period_ns": 100.0,
+          "path_ns": 150.59,
+          "fmax_mhz": 6.6405471810877215,
+          "startpoint": "u_pe/_1282713_",
+          "endpoint": "u_pe/banks[0].u_s/_328_",
+          "log": "artifacts/eda/sta_mixer_d128_ss.log",
+          "stage": "synth_netlist_ideal_wire"
+        }
+      }
+    },
+    {
+      "id": "rsqrt",
+      "top": "rmsnorm_rsqrt_sta",
+      "note": "Newton rsqrt + RMSNorm handshake, H=128 slice (mixer width). Combo LUT+1 NR.",
+      "yosys": {
+        "cell_count": 136298,
+        "area_um2": 1398287.3184,
+        "sequential_cells": 3046,
+        "rtl": [
+          "rtl/add_tree_bal.v",
+          "rtl/rsqrt_lut.v",
+          "rtl/inv_rsqrt.v",
+          "rtl/rmsnorm.v",
+          "rtl/rmsnorm128.v",
+          "rtl/sta/rmsnorm_rsqrt_sta.v"
+        ],
+        "top": "rmsnorm_rsqrt_sta",
+        "liberty": "/Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+        "clock_ns": 50.0,
+        "abc": "strash_dc2_map",
+        "abc_delay_ps": 1034344.0,
+        "abc_delay_ns": 1034.344,
+        "abc_fmax_mhz": 0.9667963462832481
+      },
+      "pred_pnr_fmax_mhz": 0.2212348618497135,
+      "pred_pnr_note": "ABC delay \u00d7 4.37 wire factor (calibrated on 8\u00d78 OpenLane/ABC). Not post-route.",
+      "area_7nm_f2_um2": 4054.2058344142015,
+      "area_7nm_sram_um2": 19912.31940759494,
+      "openlane": {
+        "returncode": 1,
+        "tag": "rmsnorm_rsqrt_sta",
+        "stdout_tail": "[14:26:21] ERROR    No compatible container engine found.        __main__.py:341\n",
+        "stderr_tail": "permission denied while trying to connect to the Docker daemon socket at unix:///Users/toprakgundogdu/.docker/run/docker.sock: Get \"http://%2FUsers%2Ftoprakgundogdu%2F.docker%2Frun%2Fdocker.sock/v1.51/info\": dial unix /Users/toprakgundogdu/.docker/run/docker.sock: connect: operation not permitted\nFailed to get Docker info: Command '['docker', 'info', '--format', '{{json .}}']' returned non-zero exit status 1.\nFailed to get Nix info: [Errno 2] No such file or directory: 'nix'\n",
+        "error": "openlane failed before metrics"
+      }
+    },
+    {
+      "id": "ffn_tap",
+      "top": "ffn_tap_adder_sta",
+      "note": "One 8\u00d78 via-tap plus a 128-input farm adder-tree slice.",
+      "openlane": {
+        "instance_count": 74111,
+        "stdcell_count": 74111,
+        "area_um2": 334546,
+        "core_area_um2": 1821450,
+        "die_area_um2": 1868100,
+        "utilization": 0.18367,
+        "power_w": 2.4003570079803467,
+        "power_internal_w": 0.6502971053123474,
+        "power_switching_w": 1.7500594854354858,
+        "power_leakage_w": 4.911923383588146e-07,
+        "setup_ws_ns": 36.233211234702374,
+        "hold_ws_ns": 0.06260636630766124,
+        "setup_wns_ns": 0,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 72.63858093913166,
+        "clock_period_ns": 50.0,
+        "drc": null,
+        "route_drc": 0,
+        "lvs": null,
+        "flow_errors": 0,
+        "metrics_source": "50-openroad-stapostpnr/state_out.json",
+        "tag": "ffn_tap_adder_sta",
+        "run_dir": "/Users/toprakgundogdu/qwen-ffn-rom/openlane/runs/ffn_tap_adder_sta",
+        "ingested": true
+      }
+    },
+    {
+      "id": "silu",
+      "top": "silu_gate_sta",
+      "note": "SiLU LUT + SwiGLU gate in the tap handshake (0 extra token clocks).",
+      "openlane": {
+        "instance_count": 25828,
+        "stdcell_count": 25828,
+        "area_um2": 102859,
+        "core_area_um2": 636420,
+        "die_area_um2": 664278,
+        "utilization": 0.161621,
+        "power_w": 0.012712433934211731,
+        "power_internal_w": 0.00534133892506361,
+        "power_switching_w": 0.0073709310963749886,
+        "power_leakage_w": 1.634488029367276e-07,
+        "setup_ws_ns": 34.65946561189555,
+        "hold_ws_ns": 0.06939443660565288,
+        "setup_wns_ns": 0,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 65.18677737689715,
+        "clock_period_ns": 50.0,
+        "drc": null,
+        "route_drc": 0,
+        "lvs": null,
+        "flow_errors": 0,
+        "metrics_source": "50-openroad-stapostpnr/state_out.json",
+        "tag": "silu_gate_sta",
+        "run_dir": "/Users/toprakgundogdu/qwen-ffn-rom/openlane/runs/silu_gate_sta",
+        "ingested": true
+      }
+    },
+    {
+      "id": "sequencer",
+      "top": "layer_sequencer_sta",
+      "note": "Layer handshake FSM (rms \u2192 mixer|attn \u2192 rms \u2192 ffn). PE dones stubbed.",
+      "openlane": {
+        "instance_count": 142,
+        "stdcell_count": 142,
+        "area_um2": 943.405,
+        "core_area_um2": 3002.88,
+        "die_area_um2": 5138,
+        "utilization": 0.314167,
+        "power_w": 3.664892938104458e-05,
+        "power_internal_w": 2.9852246370865032e-05,
+        "power_switching_w": 6.7949886215501465e-06,
+        "power_leakage_w": 1.6954756487663758e-09,
+        "setup_ws_ns": 38.30425862690499,
+        "hold_ws_ns": 0.1118098978383846,
+        "setup_wns_ns": 0,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 85.50120664436109,
+        "clock_period_ns": 50.0,
+        "drc": null,
+        "route_drc": 0,
+        "lvs": null,
+        "flow_errors": 0,
+        "metrics_source": "50-openroad-stapostpnr/state_out.json",
+        "tag": "layer_sequencer_sta",
+        "run_dir": "/Users/toprakgundogdu/qwen-ffn-rom/openlane/runs/layer_sequencer_sta",
+        "ingested": true
+      }
+    }
+  ],
+  "chip": {
+    "clk_per_token_4k_farm_hidden": 6786,
+    "sky130_chip_fmax_mhz": 30.0,
+    "sky130_chip_fmax_block": "mixer_attn_rsqrt_family",
+    "sky130_fmax_source": "estimate_compiler_macro_20_40",
+    "sky130_tok_s_4k": 4420.866489832007,
+    "fmax_scale_sky130_to_7nm": 6.5,
+    "fmax_7nm_mhz_projected": 195.0,
+    "tok_s_7nm_4k_projected": 28735.632183908045,
+    "projection_note": "Headline Fmax is an estimate (20\u201340 MHz Sky130), not mixer STA. 7 nm = that estimate \u00d7 6.5 FO4. Not 7 nm STA, not (7/130)\u00b2.",
+    "block_fmax_mhz": {
+      "ffn_tap": {
+        "mhz": 72.63858093913166,
+        "source": "openlane_postroute_ws"
+      },
+      "silu": {
+        "mhz": 65.18677737689715,
+        "source": "openlane_postroute_ws"
+      },
+      "sequencer": {
+        "mhz": 85.50120664436109,
+        "source": "openlane_postroute_ws"
+      }
+    },
+    "measured_closed_min_mhz": 65.18677737689715,
+    "measured_closed_block": "silu",
+    "measured_closed_source": "openlane_postroute_ws",
+    "do_not_use_mixer_sta_mhz": 3.2275764128715743,
+    "estimate": {
+      "kind": "estimate",
+      "not_99_percent": true,
+      "uncertainty": "about 2\u00d7",
+      "sky130_mhz_lo": 20.0,
+      "sky130_mhz_nom": 30.0,
+      "sky130_mhz_hi": 40.0,
+      "tok_s_4k_lo": 2947.2443265546713,
+      "tok_s_4k_nom": 4420.866489832007,
+      "tok_s_4k_hi": 5894.4886531093425,
+      "fmax_7nm_mhz_lo": 130.0,
+      "fmax_7nm_mhz_nom": 195.0,
+      "fmax_7nm_mhz_hi": 260.0,
+      "tok_s_7nm_4k_lo": 19157.088122605364,
+      "tok_s_7nm_4k_nom": 28735.632183908045,
+      "tok_s_7nm_4k_hi": 38314.17624521073,
+      "blocks": {
+        "mixer": {
+          "mhz_lo": 20.0,
+          "mhz_hi": 40.0,
+          "mhz_nom": 30.0
+        },
+        "attn": {
+          "mhz_lo": 20.0,
+          "mhz_hi": 40.0,
+          "mhz_nom": 30.0
+        },
+        "rsqrt": {
+          "mhz_lo": 20.0,
+          "mhz_hi": 40.0,
+          "mhz_nom": 30.0
+        }
+      },
+      "anchors_mhz": {
+        "gated_delta_d4_postroute": 41.28,
+        "qwen_layer_h16_postroute": 34.81,
+        "ffn_rom_tap_8x8_postroute": 75.56,
+        "ffn_tap_adder_postroute": 72.64,
+        "silu_postroute": 65.19,
+        "sequencer_postroute": 85.5
+      },
+      "note": "Estimate, not post-route. D=128 mixer STA (3.23 MHz) is a fanout-1922 flop-RAM artifact; do not use. Band is D=4 mixer 41 MHz and H=16 layer 35 MHz, with a 128-tree EX a bit slower. Attn sweep / rsqrt unrouted, same family. \u00b12\u00d7. 7 nm is \u00d76.5 FO4, labeled projected."
+    }
+  },
+  "die_area_rom": {
+    "params": 27000000000.0,
+    "model": "Qwen3.8-27B",
+    "no_pnr": true,
+    "note": "Die is ROM-compiler density \u00d7 27B \u00d7 bit-width. OpenLane never places the model; it closes one instance of each distinct block.",
+    "by_node": {
+      "sky130": {
+        "4bit": {
+          "rom_cell_um2": 0.30419999999999997,
+          "bitwidth": 4,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "mm2": 52989.67741935483,
+          "formula": "params \u00d7 bitwidth \u00d7 rom_cell / array_efficiency"
+        },
+        "8bit": {
+          "rom_cell_um2": 0.30419999999999997,
+          "bitwidth": 8,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "mm2": 105979.35483870967,
+          "formula": "params \u00d7 bitwidth \u00d7 rom_cell / array_efficiency"
+        }
+      },
+      "n28": {
+        "4bit": {
+          "rom_cell_um2": 0.015875,
+          "bitwidth": 4,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "mm2": 2765.322580645161,
+          "formula": "params \u00d7 bitwidth \u00d7 rom_cell / array_efficiency"
+        },
+        "8bit": {
+          "rom_cell_um2": 0.015875,
+          "bitwidth": 8,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "mm2": 5530.645161290322,
+          "formula": "params \u00d7 bitwidth \u00d7 rom_cell / array_efficiency"
+        }
+      },
+      "n7": {
+        "4bit": {
+          "rom_cell_um2": 0.00675,
+          "bitwidth": 4,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "mm2": 1175.8064516129032,
+          "formula": "params \u00d7 bitwidth \u00d7 rom_cell / array_efficiency"
+        },
+        "8bit": {
+          "rom_cell_um2": 0.00675,
+          "bitwidth": 8,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "mm2": 2351.6129032258063,
+          "formula": "params \u00d7 bitwidth \u00d7 rom_cell / array_efficiency"
+        },
+        "cap_note": "rom_cell_um2() floors FinFET via-ROM at SRAM/4, so 7 nm 4-bit is 1176 mm\u00b2. compiler_18f2 is the uncapped 18 F\u00b2 answer (~154 mm\u00b2)."
+      }
+    },
+    "compiler_18f2": {
+      "sky130": {
+        "4bit": {
+          "rom_cell_um2": 0.30419999999999997,
+          "bitwidth": 4,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "f2": 18,
+          "mm2": 52989.67741935483,
+          "formula": "params \u00d7 bitwidth \u00d7 18 F\u00b2 / array_efficiency"
+        },
+        "8bit": {
+          "rom_cell_um2": 0.30419999999999997,
+          "bitwidth": 8,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "f2": 18,
+          "mm2": 105979.35483870967,
+          "formula": "params \u00d7 bitwidth \u00d7 18 F\u00b2 / array_efficiency"
+        }
+      },
+      "n28": {
+        "4bit": {
+          "rom_cell_um2": 0.014112,
+          "bitwidth": 4,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "f2": 18,
+          "mm2": 2458.21935483871,
+          "formula": "params \u00d7 bitwidth \u00d7 18 F\u00b2 / array_efficiency"
+        },
+        "8bit": {
+          "rom_cell_um2": 0.014112,
+          "bitwidth": 8,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "f2": 18,
+          "mm2": 4916.43870967742,
+          "formula": "params \u00d7 bitwidth \u00d7 18 F\u00b2 / array_efficiency"
+        }
+      },
+      "n7": {
+        "4bit": {
+          "rom_cell_um2": 0.000882,
+          "bitwidth": 4,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "f2": 18,
+          "mm2": 153.63870967741937,
+          "formula": "params \u00d7 bitwidth \u00d7 18 F\u00b2 / array_efficiency"
+        },
+        "8bit": {
+          "rom_cell_um2": 0.000882,
+          "bitwidth": 8,
+          "params": 27000000000.0,
+          "array_efficiency": 0.62,
+          "f2": 18,
+          "mm2": 307.27741935483874,
+          "formula": "params \u00d7 bitwidth \u00d7 18 F\u00b2 / array_efficiency"
+        }
+      }
+    }
+  }
+}

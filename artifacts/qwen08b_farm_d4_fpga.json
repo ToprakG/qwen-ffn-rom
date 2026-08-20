@@ -1,0 +1,37 @@
+{
+  "platform": "fpga_xc7",
+  "dut": "qwen08b_farm_d4",
+  "d": 4,
+  "mac": 4,
+  "n_layers": 24,
+  "note": "BRAM S, one DSP48 per lane (25\u00d718 muxed 16\u00d78 / 8\u00d725), overlapped BRAM rows (~4D+9 cyc/layer, not 12D). 0.8B walks 24 layers in time on one farm. Fmax is assumed 200 MHz until Vivado. Headline is model tok/s.",
+  "yosys_xilinx": {
+    "lut": 773,
+    "ff": 802,
+    "dsp": 4,
+    "ramb18": 4,
+    "ramb36": 0,
+    "bram18_equiv": 4,
+    "cell_count": 2704,
+    "carry4": 108,
+    "rtl": [
+      "rtl/delta_s_col_ram.v",
+      "rtl/gated_delta_bram.v",
+      "rtl/qwen08b_delta_farm.v",
+      "rtl/qwen08b_farm_d4.v"
+    ],
+    "top": "qwen08b_farm_d4",
+    "family": "xc7",
+    "tool": "yosys synth_xilinx"
+  },
+  "equiv_status": "PASS",
+  "cycles_per_layer": 30,
+  "cycles_per_token": 720,
+  "cycles_per_model_token_08b": 720,
+  "cycles_per_model_token_27b": 1920,
+  "fmax_mhz": 200.0,
+  "fmax_source": "assumed_200mhz_xc7",
+  "model_tok_s_08b": 277777.77777777775,
+  "model_tok_s_27b": 104166.66666666667,
+  "layer_tok_s": 6666666.666666667
+}

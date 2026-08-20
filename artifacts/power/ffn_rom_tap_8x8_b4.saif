@@ -1,0 +1,8 @@
+(SAIFILE
+(SAIFVERSION "2.0")
+(DIRECTION "backward")
+(DESIGN "ffn_rom_tap_reg")
+(DURATION 570000)
+(TIMESCALE 1 ps)
+(COMMENT "activity=0.126942 clocks=57 toggles=45223")
+)

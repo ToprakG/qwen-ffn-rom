@@ -1,0 +1,14 @@
+{
+  "gate": "decoder_layer == rms1 \u2192 gated_delta_step \u2192 residual \u2192 rms2 \u2192 W@h2 \u2192 residual",
+  "status": "PASS",
+  "dut": "rtl/decoder_layer.v",
+  "hidden": 8,
+  "mixer_d": 4,
+  "ffn": "8x8 ffn_rom_tap",
+  "tokens": 12,
+  "cycles_per_layer": 45,
+  "cycles_min": 45,
+  "cycles_max": 45,
+  "simulator": "Verilator + cocotb",
+  "note": "Toy width. Proves the layer flow, not 0.8B/27B dims."
+}

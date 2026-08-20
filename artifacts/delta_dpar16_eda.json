@@ -1,0 +1,26 @@
+{
+  "pdk": "sky130A",
+  "liberty": "sky130_fd_sc_hd tt 25C 1.80V",
+  "clock_ns": 50.0,
+  "scale_7nm_f2": 0.0028994082840236688,
+  "scale_7nm_sram_cell": 0.014240506329113925,
+  "dut": "gated_delta_d16_par",
+  "d": 16,
+  "mac": 16,
+  "note": "Integer Gated DeltaNet PE, D=16, 16 MAC(s) + D\u00d7D state. D-wide inner product; cycles ~O(D). Do not unroll D\u00d7D. 7nm F\u00b2=(7/130)^2.",
+  "yosys": {
+    "cell_count": 80865,
+    "area_um2": 658243.808,
+    "sequential_cells": 9728,
+    "rtl": [
+      "rtl/gated_delta_dpar.v",
+      "rtl/gated_delta_d16_par.v"
+    ],
+    "top": "gated_delta_d16_par",
+    "liberty": "/Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+    "clock_ns": 50.0
+  },
+  "area_7nm_f2_um2": 1908.517549822485,
+  "area_7nm_sram_um2": 9373.72511392405,
+  "pnr_skipped": "80865 Yosys cells (~3.7x 1-MAC D=16). Skip OpenLane until a smaller datapath or an overnight run. make pnr-delta-dpar to force."
+}

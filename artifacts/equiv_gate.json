@@ -1,0 +1,26 @@
+{
+  "gate": "rtl_y == numpy(W_int @ x_int)",
+  "status": "PASS",
+  "dut": "rtl/ffn_tile_128x128.v",
+  "weights": "artifacts/tile128_int4.npy",
+  "n": 128,
+  "bits": 4,
+  "vectors": 270,
+  "vector_families": [
+    "zeros",
+    "ones",
+    "all +127",
+    "all -128",
+    "alternating",
+    "saved ref_x",
+    "walking +1 (128)",
+    "walking -1 (128)",
+    "8 random int8"
+  ],
+  "also_passed": [
+    "8x8 2-bit",
+    "8x8 3-bit",
+    "8x8 4-bit"
+  ],
+  "simulator": "Verilator 5.050 + cocotb 2.0.1"
+}

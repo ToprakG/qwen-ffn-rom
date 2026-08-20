@@ -1,0 +1,32 @@
+{
+  "DESIGN_NAME": "attn_sweep_sta",
+  "VERILOG_FILES": [
+    "dir::../rtl/sta/kv_seq_ram.v",
+    "dir::../rtl/add_tree_bal.v",
+    "dir::../rtl/attn_exp_lut.v",
+    "dir::../rtl/attn_sweep_pe.v",
+    "dir::../rtl/sta/attn_sweep_sta.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 100.0,
+  "FP_SIZING": "relative",
+  "FP_CORE_UTIL": 12,
+  "PL_TARGET_DENSITY_PCT": 22,
+  "MAX_FANOUT_CONSTRAINT": 16,
+  "SYNTH_STRATEGY": "AREA 3",
+  "SYNTH_HIERARCHY_MODE": "keep",
+  "PL_TIME_DRIVEN": false,
+  "PNR_SDC_FILE": "dir::block_sta.sdc",
+  "SIGNOFF_SDC_FILE": "dir::block_sta.sdc",
+  "RUN_LINTER": false,
+  "QUIT_ON_SYNTH_CHECKS": false,
+  "RUN_MAGIC_STREAMOUT": false,
+  "RUN_KLAYOUT_STREAMOUT": false,
+  "RUN_MAGIC_DRC": false,
+  "RUN_KLAYOUT_DRC": false,
+  "RUN_KLAYOUT_XOR": false,
+  "RUN_MAGIC_WRITE_LEF": false,
+  "RUN_LVS": false,
+  "RUN_IRDROP_REPORT": false,
+  "RUN_EQY": false
+}

@@ -1,0 +1,22 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+
+PWD := $(shell pwd)
+ROOT := $(abspath $(PWD)/..)
+
+export DELTA_D := 16
+export DELTA_MAC := 16
+export DELTA_EQUIV := delta_dpar16_equiv.json
+export DELTA_DUT := rtl/gated_delta_d16_par.v
+
+VERILOG_SOURCES += $(ROOT)/rtl/gated_delta_dpar.v
+VERILOG_SOURCES += $(ROOT)/rtl/gated_delta_d16_par.v
+TOPLEVEL := gated_delta_d16_par
+COCOTB_TEST_MODULES := test_gated_delta
+SIM_BUILD := sim_build_delta_dpar16
+
+ifeq ($(SIM),verilator)
+EXTRA_ARGS += --timescale 1ns/1ps -Wno-fatal -Wno-WIDTH -Wno-SELRANGE
+endif
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

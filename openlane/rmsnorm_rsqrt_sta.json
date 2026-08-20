@@ -1,0 +1,32 @@
+{
+  "DESIGN_NAME": "rmsnorm_rsqrt_sta",
+  "VERILOG_FILES": [
+    "dir::../rtl/add_tree_bal.v",
+    "dir::../rtl/rsqrt_lut.v",
+    "dir::../rtl/inv_rsqrt.v",
+    "dir::../rtl/rmsnorm.v",
+    "dir::../rtl/rmsnorm128.v",
+    "dir::../rtl/sta/rmsnorm_rsqrt_sta.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 50.0,
+  "FP_SIZING": "relative",
+  "FP_CORE_UTIL": 18,
+  "PL_TARGET_DENSITY_PCT": 28,
+  "MAX_FANOUT_CONSTRAINT": 16,
+  "RUN_LINTER": false,
+  "SYNTH_STRATEGY": "AREA 3",
+  "SYNTH_HIERARCHY_MODE": "keep",
+  "PNR_SDC_FILE": "dir::block_sta.sdc",
+  "SIGNOFF_SDC_FILE": "dir::block_sta.sdc",
+  "QUIT_ON_SYNTH_CHECKS": false,
+  "RUN_MAGIC_STREAMOUT": false,
+  "RUN_KLAYOUT_STREAMOUT": false,
+  "RUN_MAGIC_DRC": false,
+  "RUN_KLAYOUT_DRC": false,
+  "RUN_KLAYOUT_XOR": false,
+  "RUN_MAGIC_WRITE_LEF": false,
+  "RUN_LVS": false,
+  "RUN_IRDROP_REPORT": false,
+  "RUN_EQY": false
+}

@@ -1,0 +1,14 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+PWD := $(shell pwd)
+ROOT := $(abspath $(PWD)/..)
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_rom_tap.v
+VERILOG_SOURCES += $(ROOT)/rtl/silu_lut.v
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_tap_swiglu.v
+TOPLEVEL := ffn_tap_swiglu
+COCOTB_TEST_MODULES := test_ffn_swiglu
+SIM_BUILD := sim_build_ffn_swiglu
+ifeq ($(SIM),verilator)
+EXTRA_ARGS += --timescale 1ns/1ps -Wno-fatal -Wno-WIDTH -Wno-SELRANGE
+endif
+include $(shell cocotb-config --makefiles)/Makefile.sim

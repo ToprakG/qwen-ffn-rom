@@ -1,0 +1,159 @@
+{
+  "schema": "qwen-ffn-rom.eval/v1",
+  "utc": "2026-08-18T13:31:04Z",
+  "git": {
+    "commit": null,
+    "dirty": false
+  },
+  "gates": {
+    "equiv_ok": true,
+    "signoff_ok": true,
+    "all_pass": true,
+    "notes": [
+      "gated_delta_d4: nJ/token is vectorless, not activity-annotated",
+      "ffn_tile_8x8_b4: nJ/token is vectorless, not activity-annotated"
+    ]
+  },
+  "duts": [
+    {
+      "name": "gated_delta_d4",
+      "kind": "deltanet",
+      "equiv_status": "PASS",
+      "d": 4,
+      "mac": 1,
+      "tokens_tested": 31,
+      "cycles_per_token": 69,
+      "fmax_mhz": 41.27987668758302,
+      "area_um2": 87465.1,
+      "area_source": "openlane",
+      "yosys_cell_count": 6760,
+      "openlane_instances": 14259,
+      "power_w": 0.0024119827430695295,
+      "power_model": "opensta_vectorless",
+      "drc": 0,
+      "lvs": 0,
+      "setup_vio": 0,
+      "hold_vio": 0,
+      "state_bytes": 32,
+      "clock_period_ns": 50.0,
+      "tok_s_per_pe": 598259.0824287394,
+      "nJ_per_token": 4.0316692448322815,
+      "tok_s_per_mm2": 6839974.829146018
+    },
+    {
+      "name": "ffn_tile_8x8_b4",
+      "kind": "ffn",
+      "equiv_status": "PASS",
+      "n": 8,
+      "bits": 4,
+      "vectors_tested": 270,
+      "cycles_per_token": 1.0,
+      "fmax_mhz": 75.08747493395039,
+      "area_um2": 32600,
+      "area_source": "openlane",
+      "yosys_cell_count": 2764,
+      "openlane_instances": 6275,
+      "power_w": 0.0031557627953588963,
+      "power_model": "opensta_vectorless",
+      "drc": 0,
+      "lvs": 0,
+      "setup_vio": 0,
+      "hold_vio": 0,
+      "clock_period_ns": 50.0,
+      "tok_s_per_pe": 75087474.9339504,
+      "nJ_per_token": 0.04202781886239772,
+      "tok_s_per_mm2": 2303296777.115043
+    }
+  ],
+  "complexity": {
+    "note": "Decode MACs for one new token. Softmax grows with seq; DeltaNet does not. d=4 is the signed-off PE; d=128 is a typical head size for scaling talk.",
+    "pe": {
+      "d": 4,
+      "delta_macs_per_token": 68,
+      "crossover_seq": 8.5,
+      "table": [
+        {
+          "seq": 64,
+          "d": 4,
+          "delta_macs": 68,
+          "attn_decode_macs": 512,
+          "ratio_attn_over_delta": 7.529
+        },
+        {
+          "seq": 256,
+          "d": 4,
+          "delta_macs": 68,
+          "attn_decode_macs": 2048,
+          "ratio_attn_over_delta": 30.118
+        },
+        {
+          "seq": 1024,
+          "d": 4,
+          "delta_macs": 68,
+          "attn_decode_macs": 8192,
+          "ratio_attn_over_delta": 120.471
+        },
+        {
+          "seq": 4096,
+          "d": 4,
+          "delta_macs": 68,
+          "attn_decode_macs": 32768,
+          "ratio_attn_over_delta": 481.882
+        },
+        {
+          "seq": 32768,
+          "d": 4,
+          "delta_macs": 68,
+          "attn_decode_macs": 262144,
+          "ratio_attn_over_delta": 3855.059
+        }
+      ]
+    },
+    "head_assumed": {
+      "d": 128,
+      "delta_macs_per_token": 65664,
+      "crossover_seq": 256.5,
+      "table": [
+        {
+          "seq": 256,
+          "d": 128,
+          "delta_macs": 65664,
+          "attn_decode_macs": 65536,
+          "ratio_attn_over_delta": 0.998
+        },
+        {
+          "seq": 1024,
+          "d": 128,
+          "delta_macs": 65664,
+          "attn_decode_macs": 262144,
+          "ratio_attn_over_delta": 3.992
+        },
+        {
+          "seq": 4096,
+          "d": 128,
+          "delta_macs": 65664,
+          "attn_decode_macs": 1048576,
+          "ratio_attn_over_delta": 15.969
+        },
+        {
+          "seq": 32768,
+          "d": 128,
+          "delta_macs": 65664,
+          "attn_decode_macs": 8388608,
+          "ratio_attn_over_delta": 127.75
+        }
+      ]
+    }
+  },
+  "caveats": [
+    "nJ_per_token uses OpenSTA vectorless power unless power_model changes.",
+    "tok_s_per_pe is one PE at Fmax, not a full decode loop or multi-head chip.",
+    "Do not mix these stdcell areas with via-ROM reticle estimates.",
+    "FFN 8x8 vs DeltaNet D=4 are different jobs; compare same dut.name across runs."
+  ],
+  "verdict": {
+    "direction": "no_baseline",
+    "improvements": [],
+    "regressions": []
+  }
+}

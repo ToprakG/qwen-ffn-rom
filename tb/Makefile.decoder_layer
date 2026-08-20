@@ -1,0 +1,22 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+PWD := $(shell pwd)
+ROOT := $(abspath $(PWD)/..)
+VERILOG_SOURCES += $(ROOT)/rtl/delta_s_col_ram.v
+VERILOG_SOURCES += $(ROOT)/rtl/gated_delta_bram.v
+VERILOG_SOURCES += $(ROOT)/rtl/gated_delta_d4_bram.v
+VERILOG_SOURCES += $(ROOT)/rtl/add_tree_bal.v
+VERILOG_SOURCES += $(ROOT)/rtl/rsqrt_lut.v
+VERILOG_SOURCES += $(ROOT)/rtl/inv_rsqrt.v
+VERILOG_SOURCES += $(ROOT)/rtl/rmsnorm.v
+VERILOG_SOURCES += $(ROOT)/rtl/rmsnorm8.v
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_rom_tap.v
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_tap_unit.v
+VERILOG_SOURCES += $(ROOT)/rtl/decoder_layer.v
+TOPLEVEL := decoder_layer
+COCOTB_TEST_MODULES := test_decoder_layer
+SIM_BUILD := sim_build_decoder_layer
+ifeq ($(SIM),verilator)
+EXTRA_ARGS += --timescale 1ns/1ps -Wno-fatal -Wno-WIDTH -Wno-SELRANGE
+endif
+include $(shell cocotb-config --makefiles)/Makefile.sim

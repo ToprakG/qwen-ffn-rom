@@ -1,0 +1,14 @@
+{
+  "gate": "rtl_y == numpy(W_int @ x_int)",
+  "status": "PASS",
+  "dut": "rtl/ffn_rom_fetch.v",
+  "name": "ffn_rom_fetch_8x8_b4",
+  "n": 8,
+  "bits": 4,
+  "vectors": 29,
+  "cycles_per_token": 66,
+  "cycles_min": 66,
+  "cycles_max": 66,
+  "weights": "artifacts/tile8_int4_xbar.npy",
+  "simulator": "Verilator + cocotb"
+}

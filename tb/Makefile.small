@@ -1,0 +1,21 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+
+PWD := $(shell pwd)
+ROOT := $(abspath $(PWD)/..)
+
+FFN_TILE_N ?= 8
+FFN_TILE_BITS ?= 4
+export FFN_TILE_N
+export FFN_TILE_BITS
+
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_tile_$(FFN_TILE_N)x$(FFN_TILE_N)_b$(FFN_TILE_BITS).v
+TOPLEVEL := ffn_tile
+COCOTB_TEST_MODULES := test_ffn_tile_small
+SIM_BUILD := sim_build_$(FFN_TILE_N)x$(FFN_TILE_N)_b$(FFN_TILE_BITS)
+
+ifeq ($(SIM),verilator)
+EXTRA_ARGS += --timescale 1ns/1ps -Wno-fatal -Wno-WIDTH -Wno-SELRANGE
+endif
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

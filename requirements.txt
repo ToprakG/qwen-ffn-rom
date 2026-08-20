@@ -1,0 +1,8 @@
+openlane==2.3.10
+cocotb>=1.9,<3
+click>=8.1.0,<8.2
+numpy>=1.24
+pyserial>=3.5
+safetensors
+huggingface_hub
+httpx

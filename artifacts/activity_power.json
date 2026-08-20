@@ -1,0 +1,106 @@
+{
+  "clock_ns": 50.0,
+  "note": "Switching activity is mean bit-toggles per clock from RTL VCD. OpenSTA uses that as a global activity on the post-route netlist+nom SPEF. nJ/token = P(50 ns) * cycles * 50 ns. Not vectorless.",
+  "duts": [
+    {
+      "name": "ffn_col_serial_8x8_b4",
+      "top": "ffn_col_serial",
+      "cycles_per_token": 9,
+      "activity": {
+        "vcd": "/Users/toprakgundogdu/qwen-ffn-rom/artifacts/power/ffn_col_serial.vcd",
+        "clocks": 265,
+        "bits": 7030,
+        "toggles": 131585,
+        "activity": 0.07063259883518076
+      },
+      "saif": "artifacts/power/ffn_col_serial_8x8_b4.saif",
+      "sta_returncode": 0,
+      "sta_stderr_tail": "",
+      "opensta": {
+        "power_w": 0.0007118441,
+        "power_internal_w": 0.0005083773,
+        "power_switching_w": 0.0002034462,
+        "power_leakage_w": 2.066055e-08,
+        "report_tail": "Group                    Internal    Switching      Leakage        Total\n                            Power        Power        Power        Power (Watts)\n------------------------------------------------------------------------\nSequential           2.611889e-04 5.379552e-06 2.608235e-09 2.665711e-04  37.4%\nCombinational        4.508082e-05 4.979311e-05 8.651633e-09 9.488258e-05  13.3%\nClock                2.021089e-04 1.482735e-04 9.400329e-09 3.503919e-04  49.2%\nMacro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%\nPad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%\n------------------------------------------------------------------------\nTotal                5.083773e-04 2.034462e-04 2.066055e-08 7.118441e-04 100.0%\n                            71.4%        28.6%         0.0%"
+      },
+      "nJ_per_token": 0.320329845,
+      "power_model": "opensta_vcd_activity_spef",
+      "clock_period_ns": 50.0
+    },
+    {
+      "name": "ffn_rom_fetch_8x8_b4",
+      "top": "ffn_rom_fetch",
+      "cycles_per_token": 66,
+      "activity": {
+        "vcd": "/Users/toprakgundogdu/qwen-ffn-rom/artifacts/power/ffn_rom_fetch.vcd",
+        "clocks": 1918,
+        "bits": 1488,
+        "toggles": 52416,
+        "activity": 0.018365905344949376
+      },
+      "saif": "artifacts/power/ffn_rom_fetch_8x8_b4.saif",
+      "sta_returncode": 0,
+      "sta_stderr_tail": "",
+      "opensta": {
+        "power_w": 0.0005593498,
+        "power_internal_w": 0.0004288818,
+        "power_switching_w": 0.0001304531,
+        "power_leakage_w": 1.489027e-08,
+        "report_tail": "Group                    Internal    Switching      Leakage        Total\n                            Power        Power        Power        Power (Watts)\n------------------------------------------------------------------------\nSequential           2.606152e-04 1.879354e-06 2.675750e-09 2.624973e-04  46.9%\nCombinational        9.489048e-06 7.964617e-06 5.755926e-09 1.745942e-05   3.1%\nClock                1.587779e-04 1.206092e-04 6.458797e-09 2.793935e-04  49.9%\nMacro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%\nPad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%\n------------------------------------------------------------------------\nTotal                4.288818e-04 1.304531e-04 1.489027e-08 5.593498e-04 100.0%\n                            76.7%        23.3%         0.0%"
+      },
+      "nJ_per_token": 1.8458543399999998,
+      "power_model": "opensta_vcd_activity_spef",
+      "clock_period_ns": 50.0
+    },
+    {
+      "name": "ffn_rom_tap_8x8_b4",
+      "top": "ffn_rom_tap_reg",
+      "cycles_per_token": 1,
+      "activity": {
+        "vcd": "/Users/toprakgundogdu/qwen-ffn-rom/artifacts/power/ffn_rom_tap_reg.vcd",
+        "clocks": 57,
+        "bits": 6250,
+        "toggles": 45223,
+        "activity": 0.12694175438596492
+      },
+      "saif": "artifacts/power/ffn_rom_tap_8x8_b4.saif",
+      "sta_returncode": 0,
+      "sta_stderr_tail": "",
+      "opensta": {
+        "power_w": 0.0005725934,
+        "power_internal_w": 0.000310949,
+        "power_switching_w": 0.0002616148,
+        "power_leakage_w": 2.965462e-08,
+        "report_tail": "Group                    Internal    Switching      Leakage        Total\n                            Power        Power        Power        Power (Watts)\n------------------------------------------------------------------------\nSequential           1.598978e-04 1.911708e-05 1.564532e-09 1.790165e-04  31.3%\nCombinational        1.098914e-04 1.702873e-04 1.250313e-08 2.801912e-04  48.9%\nClock                4.115937e-05 7.221061e-05 1.558699e-08 1.133856e-04  19.8%\nMacro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%\nPad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%\n------------------------------------------------------------------------\nTotal                3.109490e-04 2.616148e-04 2.965462e-08 5.725934e-04 100.0%\n                            54.3%        45.7%         0.0%"
+      },
+      "nJ_per_token": 0.028629670000000003,
+      "power_model": "opensta_vcd_activity_spef",
+      "clock_period_ns": 50.0
+    },
+    {
+      "name": "ffn_tile_8x8_b4",
+      "top": "ffn_tile_reg",
+      "cycles_per_token": 1,
+      "activity": {
+        "vcd": "/Users/toprakgundogdu/qwen-ffn-rom/artifacts/power/ffn_tile_reg.vcd",
+        "clocks": 57,
+        "bits": 6250,
+        "toggles": 45223,
+        "activity": 0.12694175438596492
+      },
+      "saif": "artifacts/power/ffn_tile_8x8_b4.saif",
+      "sta_returncode": 0,
+      "sta_stderr_tail": "",
+      "opensta": {
+        "power_w": 0.0005405148,
+        "power_internal_w": 0.0003036302,
+        "power_switching_w": 0.0002368586,
+        "power_leakage_w": 2.595556e-08,
+        "report_tail": "Group                    Internal    Switching      Leakage        Total\n                            Power        Power        Power        Power (Watts)\n------------------------------------------------------------------------\nSequential           1.598117e-04 2.078723e-05 1.565892e-09 1.806005e-04  33.4%\nCombinational        9.602993e-05 1.468484e-04 1.081049e-08 2.428891e-04  44.9%\nClock                4.778848e-05 6.922302e-05 1.357901e-08 1.170251e-04  21.7%\nMacro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%\nPad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%\n------------------------------------------------------------------------\nTotal                3.036302e-04 2.368586e-04 2.595556e-08 5.405148e-04 100.0%\n                            56.2%        43.8%         0.0%"
+      },
+      "nJ_per_token": 0.027025740000000003,
+      "power_model": "opensta_vcd_activity_spef",
+      "clock_period_ns": 50.0
+    }
+  ]
+}

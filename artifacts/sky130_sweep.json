@@ -1,0 +1,288 @@
+{
+  "pdk": "sky130A",
+  "liberty": "sky130_fd_sc_hd tt 25C 1.80V",
+  "clock_ns": 50.0,
+  "scale_7nm_f2": 0.0028994082840236688,
+  "scale_7nm_sram_cell": 0.014240506329113925,
+  "note": "Yosys+abc mapped stdcell area (pre-PnR). OpenLane is post-route Sky130A hd, 50 ns clock, vectorless power. 7nm F2=(7/130)^2; SRAM-cell scale=0.027/1.896.",
+  "equiv_gate": {
+    "gate": "rtl_y == numpy(W_int @ x_int)",
+    "status": "PASS",
+    "dut": "rtl/ffn_tile_128x128.v",
+    "weights": "artifacts/tile128_int4.npy",
+    "n": 128,
+    "bits": 4,
+    "vectors": 270,
+    "vector_families": [
+      "zeros",
+      "ones",
+      "all +127",
+      "all -128",
+      "alternating",
+      "saved ref_x",
+      "walking +1 (128)",
+      "walking -1 (128)",
+      "8 random int8"
+    ],
+    "also_passed": [
+      "8x8 2-bit",
+      "8x8 3-bit",
+      "8x8 4-bit"
+    ],
+    "simulator": "Verilator 5.050 + cocotb 2.0.1"
+  },
+  "points": [
+    {
+      "n": 4,
+      "bits": 2,
+      "weights": 16,
+      "nonzero": 6,
+      "yosys": {
+        "cell_count": 98,
+        "sequential_cells": 42,
+        "area_um2": 1192.3936
+      },
+      "area_um2_per_weight": 74.5246,
+      "area_7nm_f2_um2": 3.457235881656805,
+      "area_7nm_sram_um2": 16.98028860759494,
+      "openlane": {
+        "instance_count": 313,
+        "area_um2": 2087,
+        "core_area_um2": 8092.76,
+        "die_area_um2": 11338,
+        "utilization": 0.257885,
+        "power_w": 0.0001086487973225303,
+        "power_internal_w": 7.553402974735945e-05,
+        "power_switching_w": 3.3111689845100045e-05,
+        "power_leakage_w": 3.0796716288250536e-09,
+        "setup_ws_ns": 37.84523734848092,
+        "hold_ws_ns": 0.1095036592396815,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 82.27227702179951,
+        "clock_period_ns": 50.0,
+        "drc": 0,
+        "lvs": 0,
+        "flow_errors": 0,
+        "run_dir": "openlane/runs/tile_4x4_b2"
+      }
+    },
+    {
+      "n": 4,
+      "bits": 3,
+      "weights": 16,
+      "nonzero": 14,
+      "yosys": {
+        "cell_count": 494,
+        "sequential_cells": 76,
+        "area_um2": 4749.5552
+      },
+      "area_um2_per_weight": 296.8472,
+      "area_7nm_f2_um2": 13.770899692307692,
+      "area_7nm_sram_um2": 67.63607088607596,
+      "openlane": {
+        "instance_count": 1188,
+        "area_um2": 6472.46,
+        "core_area_um2": 34373,
+        "die_area_um2": 40902.6,
+        "utilization": 0.188301,
+        "power_w": 0.00038999991375021636,
+        "power_internal_w": 0.00021228089462965727,
+        "power_switching_w": 0.0001777105062501505,
+        "power_leakage_w": 8.521253924698158e-09,
+        "setup_ws_ns": 37.69238894355504,
+        "hold_ws_ns": 0.12794587973464336,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 81.25053638872862,
+        "clock_period_ns": 50.0,
+        "drc": 0,
+        "lvs": 0,
+        "flow_errors": 0,
+        "run_dir": "openlane/runs/tile_4x4_b3"
+      }
+    },
+    {
+      "n": 4,
+      "bits": 4,
+      "weights": 16,
+      "nonzero": 15,
+      "yosys": {
+        "cell_count": 657,
+        "sequential_cells": 78,
+        "area_um2": 5866.8768
+      },
+      "area_um2_per_weight": 366.6798,
+      "area_7nm_f2_um2": 17.010471195266273,
+      "area_7nm_sram_um2": 83.54729620253165,
+      "openlane": {
+        "instance_count": 1407,
+        "area_um2": 7743.68,
+        "core_area_um2": 41665,
+        "die_area_um2": 48682,
+        "utilization": 0.185856,
+        "power_w": 0.0004776543064508587,
+        "power_internal_w": 0.00025388647918589413,
+        "power_switching_w": 0.00022375781554728746,
+        "power_leakage_w": 1.0004666428642395e-08,
+        "setup_ws_ns": 37.70023333557968,
+        "hold_ws_ns": 0.11104129041669891,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 81.30235534408241,
+        "clock_period_ns": 50.0,
+        "drc": 0,
+        "lvs": 0,
+        "flow_errors": 0,
+        "run_dir": "openlane/runs/tile_4x4_b4"
+      }
+    },
+    {
+      "n": 8,
+      "bits": 2,
+      "weights": 64,
+      "nonzero": 24,
+      "yosys": {
+        "cell_count": 678,
+        "sequential_cells": 142,
+        "area_um2": 6910.3776
+      },
+      "area_um2_per_weight": 107.97465,
+      "area_7nm_f2_um2": 20.036006059171598,
+      "area_7nm_sram_um2": 98.40727594936709,
+      "openlane": {
+        "instance_count": 1796,
+        "area_um2": 10055.9,
+        "core_area_um2": 49052,
+        "die_area_um2": 57142.5,
+        "utilization": 0.205005,
+        "power_w": 0.0005557898548431695,
+        "power_internal_w": 0.00031774130184203386,
+        "power_switching_w": 0.00023803577641956508,
+        "power_leakage_w": 1.2755191569624458e-08,
+        "setup_ws_ns": 37.22464575280284,
+        "hold_ws_ns": 0.11331796932653536,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 78.27571593323094,
+        "clock_period_ns": 50.0,
+        "drc": 0,
+        "lvs": 0,
+        "flow_errors": 0,
+        "run_dir": "openlane/runs/tile_8x8_b2"
+      }
+    },
+    {
+      "n": 8,
+      "bits": 3,
+      "weights": 64,
+      "nonzero": 51,
+      "yosys": {
+        "cell_count": 1921,
+        "sequential_cells": 158,
+        "area_um2": 16771.0848
+      },
+      "area_um2_per_weight": 262.0482,
+      "area_7nm_f2_um2": 48.62622220118344,
+      "area_7nm_sram_um2": 238.82873924050637,
+      "openlane": {
+        "instance_count": 4335,
+        "area_um2": 23024.6,
+        "core_area_um2": 125408,
+        "die_area_um2": 137716,
+        "utilization": 0.183598,
+        "power_w": 0.0017035396303981543,
+        "power_internal_w": 0.0007951307343319058,
+        "power_switching_w": 0.0009083799086511135,
+        "power_leakage_w": 2.9032603876544272e-08,
+        "setup_ws_ns": 37.45492200183431,
+        "hold_ws_ns": 0.2310555145944927,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 79.71253747056954,
+        "clock_period_ns": 50.0,
+        "drc": 0,
+        "lvs": 0,
+        "flow_errors": 0,
+        "run_dir": "openlane/runs/tile_8x8_b3"
+      }
+    },
+    {
+      "n": 8,
+      "bits": 4,
+      "weights": 64,
+      "nonzero": 59,
+      "yosys": {
+        "cell_count": 2764,
+        "sequential_cells": 167,
+        "area_um2": 24297.0528
+      },
+      "area_um2_per_weight": 379.64145,
+      "area_7nm_f2_um2": 70.44707616568049,
+      "area_7nm_sram_um2": 346.00233417721523,
+      "openlane": {
+        "instance_count": 6275,
+        "area_um2": 32600,
+        "core_area_um2": 180939,
+        "die_area_um2": 196389,
+        "utilization": 0.180172,
+        "power_w": 0.0031557627953588963,
+        "power_internal_w": 0.0013894106959924102,
+        "power_switching_w": 0.0017663107719272375,
+        "power_leakage_w": 4.1463753319703756e-08,
+        "setup_ws_ns": 36.68219964941376,
+        "hold_ws_ns": 0.14339574378227904,
+        "setup_vio": 0,
+        "hold_vio": 0,
+        "fmax_mhz_from_ws": 75.08747493395039,
+        "clock_period_ns": 50.0,
+        "drc": 0,
+        "lvs": 0,
+        "flow_errors": 0,
+        "run_dir": "openlane/runs/tile_8x8_b4"
+      }
+    },
+    {
+      "n": 16,
+      "bits": 2,
+      "weights": 256,
+      "nonzero": 68,
+      "yosys": {
+        "cell_count": 2138,
+        "sequential_cells": 293,
+        "area_um2": 20017.9488
+      },
+      "area_um2_per_weight": 78.1951125,
+      "area_7nm_f2_um2": 58.040206579881655,
+      "area_7nm_sram_um2": 285.0657265822785
+    },
+    {
+      "n": 16,
+      "bits": 3,
+      "weights": 256,
+      "nonzero": 163,
+      "yosys": {
+        "cell_count": 6329,
+        "sequential_cells": 325,
+        "area_um2": 54644.9088
+      },
+      "area_um2_per_weight": 213.456675,
+      "area_7nm_f2_um2": 158.43790125443786,
+      "area_7nm_sram_um2": 778.1711696202532
+    },
+    {
+      "n": 16,
+      "bits": 4,
+      "weights": 256,
+      "nonzero": 210,
+      "yosys": {
+        "cell_count": 9585,
+        "sequential_cells": 345,
+        "area_um2": 81874.7744
+      },
+      "area_um2_per_weight": 319.8233375,
+      "area_7nm_f2_um2": 237.388399147929,
+      "area_7nm_sram_um2": 1165.9382430379746
+    }
+  ]
+}

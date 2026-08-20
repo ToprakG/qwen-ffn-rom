@@ -1,0 +1,31 @@
+{
+  "DESIGN_NAME": "gated_delta_d128_sta",
+  "VERILOG_FILES": [
+    "dir::../rtl/sta/delta_s_col_ram.v",
+    "dir::../rtl/add_tree_bal.v",
+    "dir::../rtl/gated_delta_fused.v",
+    "dir::../rtl/sta/gated_delta_d128_sta.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 100.0,
+  "FP_SIZING": "relative",
+  "PL_TIME_DRIVEN": false,
+  "FP_CORE_UTIL": 20,
+  "PL_TARGET_DENSITY_PCT": 22,
+  "MAX_FANOUT_CONSTRAINT": 16,
+  "SYNTH_STRATEGY": "AREA 3",
+  "SYNTH_HIERARCHY_MODE": "keep",
+  "PNR_SDC_FILE": "dir::block_sta.sdc",
+  "SIGNOFF_SDC_FILE": "dir::block_sta.sdc",
+  "RUN_LINTER": false,
+  "QUIT_ON_SYNTH_CHECKS": false,
+  "RUN_MAGIC_STREAMOUT": false,
+  "RUN_KLAYOUT_STREAMOUT": false,
+  "RUN_MAGIC_DRC": false,
+  "RUN_KLAYOUT_DRC": false,
+  "RUN_KLAYOUT_XOR": false,
+  "RUN_MAGIC_WRITE_LEF": false,
+  "RUN_LVS": false,
+  "RUN_IRDROP_REPORT": false,
+  "RUN_EQY": false
+}

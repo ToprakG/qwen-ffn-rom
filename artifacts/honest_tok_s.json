@@ -1,0 +1,258 @@
+{
+  "measured": {
+    "ffn_cycles_per_8x8_tile": 2,
+    "mixer_cycles_per_layer_d128": 524,
+    "attn_fit": {
+      "intercept": 1.9999999999999805,
+      "slope_per_S": 2.0,
+      "formula": "cycles = intercept + slope * S"
+    },
+    "attn_measured_small_S": [
+      {
+        "S": 8,
+        "cycles": 18,
+        "two_S": 16,
+        "overhead": 2
+      },
+      {
+        "S": 16,
+        "cycles": 34,
+        "two_S": 32,
+        "overhead": 2
+      },
+      {
+        "S": 32,
+        "cycles": 66,
+        "two_S": 64,
+        "overhead": 2
+      }
+    ],
+    "decoder_layer_toy_cycles": 151
+  },
+  "assumptions": [
+    "Mixer: measured D=128 BRAM PE, 16/48 heads in parallel (does not cut cycles).",
+    "FFN: measured 8x8 via-tap handshake, scaled by tile count of SwiGLU (gate+up+down).",
+    "Attn: measured slope vs S on D=4; slope is 2 if one cache row/cycle (D-parallel). Same slope at D=256 if 256 MACs/head and heads in parallel.",
+    "Softmax is not in RTL. Rows with softmax_in_attn=true add S cycles per attn layer.",
+    "ffn_hidden needs thousands of 8x8 taps on the die (via-ROM story). serial is one reused tap.",
+    "Gen-1 10k at 28 nm is only possible in the ffn_hidden column, at ~330 MHz, and still depends on attn at that seq."
+  ],
+  "rows": [
+    {
+      "model": "qwen08b",
+      "seq": 4096,
+      "softmax_in_attn": false,
+      "tiles_per_ffn_layer": 172032,
+      "cycles_ffn_layer_serial": 344064,
+      "taps_to_hide_under_delta_layer": 657,
+      "taps_to_hide_under_attn_layer": 42,
+      "cycles_delta_all": 9432,
+      "cycles_attn_all": 49164,
+      "cycles_token_ffn_serial": 8316132,
+      "cycles_token_ffn_hidden": 58596,
+      "tok_s_serial": {
+        "100MHz": 12.024821154834964,
+        "200MHz": 24.049642309669927,
+        "330MHz": 39.68190981095538,
+        "1000MHz": 120.24821154834964,
+        "1650MHz": 198.4095490547769
+      },
+      "tok_s_ffn_hidden": {
+        "100MHz": 1706.6011331831523,
+        "200MHz": 3413.2022663663047,
+        "330MHz": 5631.7837395044035,
+        "1000MHz": 17066.011331831523,
+        "1650MHz": 28158.918697522015
+      }
+    },
+    {
+      "model": "qwen08b",
+      "seq": 4096,
+      "softmax_in_attn": true,
+      "tiles_per_ffn_layer": 172032,
+      "cycles_ffn_layer_serial": 344064,
+      "taps_to_hide_under_delta_layer": 657,
+      "taps_to_hide_under_attn_layer": 28,
+      "cycles_delta_all": 9432,
+      "cycles_attn_all": 73740,
+      "cycles_token_ffn_serial": 8340708,
+      "cycles_token_ffn_hidden": 83172,
+      "tok_s_serial": {
+        "100MHz": 11.989389869541052,
+        "200MHz": 23.978779739082103,
+        "330MHz": 39.56498656948547,
+        "1000MHz": 119.89389869541051,
+        "1650MHz": 197.82493284742733
+      },
+      "tok_s_ffn_hidden": {
+        "100MHz": 1202.3277064396673,
+        "200MHz": 2404.6554128793346,
+        "330MHz": 3967.681431250902,
+        "1000MHz": 12023.277064396672,
+        "1650MHz": 19838.40715625451
+      }
+    },
+    {
+      "model": "qwen08b",
+      "seq": 32768,
+      "softmax_in_attn": false,
+      "tiles_per_ffn_layer": 172032,
+      "cycles_ffn_layer_serial": 344064,
+      "taps_to_hide_under_delta_layer": 657,
+      "taps_to_hide_under_attn_layer": 6,
+      "cycles_delta_all": 9432,
+      "cycles_attn_all": 393228,
+      "cycles_token_ffn_serial": 8660196,
+      "cycles_token_ffn_hidden": 402660,
+      "tok_s_serial": {
+        "100MHz": 11.547082768103632,
+        "200MHz": 23.094165536207264,
+        "330MHz": 38.10537313474199,
+        "1000MHz": 115.47082768103631,
+        "1650MHz": 190.52686567370992
+      },
+      "tok_s_ffn_hidden": {
+        "100MHz": 248.34848259077137,
+        "200MHz": 496.69696518154274,
+        "330MHz": 819.5499925495455,
+        "1000MHz": 2483.484825907714,
+        "1650MHz": 4097.749962747727
+      }
+    },
+    {
+      "model": "qwen08b",
+      "seq": 32768,
+      "softmax_in_attn": true,
+      "tiles_per_ffn_layer": 172032,
+      "cycles_ffn_layer_serial": 344064,
+      "taps_to_hide_under_delta_layer": 657,
+      "taps_to_hide_under_attn_layer": 4,
+      "cycles_delta_all": 9432,
+      "cycles_attn_all": 589836,
+      "cycles_token_ffn_serial": 8856804,
+      "cycles_token_ffn_hidden": 599268,
+      "tok_s_serial": {
+        "100MHz": 11.290754543060906,
+        "200MHz": 22.581509086121812,
+        "330MHz": 37.25948999210099,
+        "1000MHz": 112.90754543060906,
+        "1650MHz": 186.29744996050493
+      },
+      "tok_s_ffn_hidden": {
+        "100MHz": 166.87024836967768,
+        "200MHz": 333.74049673935536,
+        "330MHz": 550.6718196199363,
+        "1000MHz": 1668.7024836967767,
+        "1650MHz": 2753.3590980996814
+      }
+    },
+    {
+      "model": "qwen27b",
+      "seq": 4096,
+      "softmax_in_attn": false,
+      "tiles_per_ffn_layer": 4177920,
+      "cycles_ffn_layer_serial": 8355840,
+      "taps_to_hide_under_delta_layer": 15947,
+      "taps_to_hide_under_attn_layer": 1020,
+      "cycles_delta_all": 25152,
+      "cycles_attn_all": 131104,
+      "cycles_token_ffn_serial": 534930016,
+      "cycles_token_ffn_hidden": 156256,
+      "tok_s_serial": {
+        "100MHz": 0.18694034174369456,
+        "200MHz": 0.3738806834873891,
+        "330MHz": 0.6169031277541921,
+        "1000MHz": 1.8694034174369456,
+        "1650MHz": 3.0845156387709602
+      },
+      "tok_s_ffn_hidden": {
+        "100MHz": 639.9754249436821,
+        "200MHz": 1279.9508498873643,
+        "330MHz": 2111.918902314151,
+        "1000MHz": 6399.754249436822,
+        "1650MHz": 10559.594511570756
+      }
+    },
+    {
+      "model": "qwen27b",
+      "seq": 4096,
+      "softmax_in_attn": true,
+      "tiles_per_ffn_layer": 4177920,
+      "cycles_ffn_layer_serial": 8355840,
+      "taps_to_hide_under_delta_layer": 15947,
+      "taps_to_hide_under_attn_layer": 680,
+      "cycles_delta_all": 25152,
+      "cycles_attn_all": 196640,
+      "cycles_token_ffn_serial": 534995552,
+      "cycles_token_ffn_hidden": 221792,
+      "tok_s_serial": {
+        "100MHz": 0.1869174418855729,
+        "200MHz": 0.3738348837711458,
+        "330MHz": 0.6168275582223907,
+        "1000MHz": 1.869174418855729,
+        "1650MHz": 3.084137791111953
+      },
+      "tok_s_ffn_hidden": {
+        "100MHz": 450.8728899148752,
+        "200MHz": 901.7457798297504,
+        "330MHz": 1487.8805367190882,
+        "1000MHz": 4508.728899148752,
+        "1650MHz": 7439.402683595441
+      }
+    },
+    {
+      "model": "qwen27b",
+      "seq": 32768,
+      "softmax_in_attn": false,
+      "tiles_per_ffn_layer": 4177920,
+      "cycles_ffn_layer_serial": 8355840,
+      "taps_to_hide_under_delta_layer": 15947,
+      "taps_to_hide_under_attn_layer": 128,
+      "cycles_delta_all": 25152,
+      "cycles_attn_all": 1048608,
+      "cycles_token_ffn_serial": 535847520,
+      "cycles_token_ffn_hidden": 1073760,
+      "tok_s_serial": {
+        "100MHz": 0.18662025346314937,
+        "200MHz": 0.37324050692629873,
+        "330MHz": 0.6158468364283929,
+        "1000MHz": 1.8662025346314937,
+        "1650MHz": 3.0792341821419646
+      },
+      "tok_s_ffn_hidden": {
+        "100MHz": 93.13068097153926,
+        "200MHz": 186.26136194307853,
+        "330MHz": 307.3312472060796,
+        "1000MHz": 931.3068097153927,
+        "1650MHz": 1536.6562360303978
+      }
+    },
+    {
+      "model": "qwen27b",
+      "seq": 32768,
+      "softmax_in_attn": true,
+      "tiles_per_ffn_layer": 4177920,
+      "cycles_ffn_layer_serial": 8355840,
+      "taps_to_hide_under_delta_layer": 15947,
+      "taps_to_hide_under_attn_layer": 85,
+      "cycles_delta_all": 25152,
+      "cycles_attn_all": 1572896,
+      "cycles_token_ffn_serial": 536371808,
+      "cycles_token_ffn_hidden": 1598048,
+      "tok_s_serial": {
+        "100MHz": 0.18643783753824736,
+        "200MHz": 0.3728756750764947,
+        "330MHz": 0.6152448638762162,
+        "1000MHz": 1.8643783753824734,
+        "1650MHz": 3.0762243193810814
+      },
+      "tok_s_ffn_hidden": {
+        "100MHz": 62.57634313862913,
+        "200MHz": 125.15268627725825,
+        "330MHz": 206.5019323574761,
+        "1000MHz": 625.7634313862912,
+        "1650MHz": 1032.5096617873805
+      }
+    }
+  ]
+}

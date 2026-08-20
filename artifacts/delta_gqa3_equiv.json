@@ -1,0 +1,13 @@
+{
+  "gate": "gqa3 == 3x gated_delta_step, shared q/k/g/beta",
+  "status": "PASS",
+  "dut": "rtl/gated_delta_gqa3.v",
+  "d": 16,
+  "n_v": 3,
+  "tokens": 8,
+  "cycles_per_token": 18,
+  "cycles_min": 18,
+  "cycles_max": 18,
+  "note": "3 V-heads overlap; layer cycles equal one fused PE, not 3x.",
+  "simulator": "Verilator + cocotb"
+}

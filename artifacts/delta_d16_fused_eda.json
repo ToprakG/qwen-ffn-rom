@@ -1,0 +1,28 @@
+{
+  "pdk": "sky130A",
+  "liberty": "sky130_fd_sc_hd tt 25C 1.80V",
+  "clock_ns": 50.0,
+  "scale_7nm_f2": 0.0028994082840236688,
+  "scale_7nm_sram_cell": 0.014240506329113925,
+  "dut": "gated_delta_d16_fused",
+  "d": 16,
+  "mac": 16,
+  "note": "Integer Gated DeltaNet PE, D=16, 16 MAC-lane(s) + D\u00d7D state. Column-stream fused update+readout; cycles D+2. 1-issue/cycle. Yosys synth-internal ABC (fraig) did not finish on the combo 4-mul EX; mapped with synth -noabc + abc strash;&nf. Area is liberty-mapped, not post-route. 7nm F\u00b2=(7/130)^2.",
+  "yosys": {
+    "cell_count": 56642,
+    "area_um2": 618624.56,
+    "sequential_cells": 8192,
+    "rtl": [
+      "rtl/delta_s_col_ram.v",
+      "rtl/gated_delta_fused.v",
+      "rtl/gated_delta_d16_fused.v"
+    ],
+    "top": "gated_delta_d16_fused",
+    "liberty": "/Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+    "clock_ns": 50.0,
+    "abc": "strash_nf"
+  },
+  "area_7nm_f2_um2": 1793.6451739644972,
+  "area_7nm_sram_um2": 8809.526962025318,
+  "pnr_skipped": "56642 Yosys cells. Skip OpenLane by default (1-MAC D=16 was 21k). make pnr-delta-fused / pnr-delta-dpar / --pnr to force."
+}

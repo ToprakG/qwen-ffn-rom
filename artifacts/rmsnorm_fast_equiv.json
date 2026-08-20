@@ -1,0 +1,13 @@
+{
+  "gate": "fused Newton rsqrt RMSNorm == rmsnorm_nr, 2 clk",
+  "status": "PASS",
+  "dut": "rtl/rmsnorm8.v",
+  "h": 8,
+  "n": 52,
+  "cycles": 2,
+  "cycles_min": 2,
+  "cycles_max": 2,
+  "formula": "cycles = 2 (capture + mul/done); inv is combo NR",
+  "note": "Replaces 16+32 restoring isqrt/div. Width-independent ssq+NR.",
+  "simulator": "Verilator + cocotb"
+}

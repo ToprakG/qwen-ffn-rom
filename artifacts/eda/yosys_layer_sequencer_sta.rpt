@@ -1,0 +1,936 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 16.0.0.16000026)
+
+-- Running command `
+read_verilog -sv /Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v
+read_verilog -sv /Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v
+hierarchy -check -top layer_sequencer_sta
+proc; flatten
+opt_expr; opt_clean
+synth -top layer_sequencer_sta -noabc
+dfflibmap -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script /Users/toprakgundogdu/qwen-ffn-rom/artifacts/eda/abc_strash_nf.script
+opt_clean
+stat -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+' --
+
+1. Executing Verilog-2005 frontend: /Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v
+Parsing SystemVerilog input from `/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v' to AST representation.
+Generating RTLIL representation for module `\layer_sequencer'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v
+Parsing SystemVerilog input from `/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v' to AST representation.
+Generating RTLIL representation for module `\layer_sequencer_sta'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \layer_sequencer_sta
+Used module:     \layer_sequencer
+
+3.2. Analyzing design hierarchy..
+Top module:  \layer_sequencer_sta
+Used module:     \layer_sequencer
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6 in module layer_sequencer_sta.
+Marked 2 switch rules as full_case in process $proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2 in module layer_sequencer.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 5 redundant assignments.
+Promoted 0 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~9 debug messages>
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+     1/6: $0\alive[0:0]
+     2/6: $0\mix_sel[0:0]
+     3/6: $0\ffn_done[0:0]
+     4/6: $0\body_done[0:0]
+     5/6: $0\rms_done[0:0]
+     6/6: $0\body_ready[0:0]
+Creating decoders for process `\layer_sequencer.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2'.
+     1/5: $0\done[0:0]
+     2/5: $0\ffn_en[0:0]
+     3/5: $0\body_en[0:0]
+     4/5: $0\rms_en[0:0]
+     5/5: $0\st[3:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\layer_sequencer_sta.\mix_sel' using process `\layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+  created $dff cell `$procdff$95' with positive edge clock.
+Creating register for signal `\layer_sequencer_sta.\rms_done' using process `\layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+  created $dff cell `$procdff$96' with positive edge clock.
+Creating register for signal `\layer_sequencer_sta.\body_done' using process `\layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+  created $dff cell `$procdff$97' with positive edge clock.
+Creating register for signal `\layer_sequencer_sta.\body_ready' using process `\layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+  created $dff cell `$procdff$98' with positive edge clock.
+Creating register for signal `\layer_sequencer_sta.\ffn_done' using process `\layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+  created $dff cell `$procdff$99' with positive edge clock.
+Creating register for signal `\layer_sequencer_sta.\alive' using process `\layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+  created $dff cell `$procdff$100' with positive edge clock.
+Creating register for signal `\layer_sequencer.\rms_en' using process `\layer_sequencer.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2'.
+  created $dff cell `$procdff$101' with positive edge clock.
+Creating register for signal `\layer_sequencer.\body_en' using process `\layer_sequencer.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2'.
+  created $dff cell `$procdff$102' with positive edge clock.
+Creating register for signal `\layer_sequencer.\ffn_en' using process `\layer_sequencer.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2'.
+  created $dff cell `$procdff$103' with positive edge clock.
+Creating register for signal `\layer_sequencer.\done' using process `\layer_sequencer.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2'.
+  created $dff cell `$procdff$104' with positive edge clock.
+Creating register for signal `\layer_sequencer.\st' using process `\layer_sequencer.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2'.
+  created $dff cell `$procdff$105' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+Removing empty process `layer_sequencer_sta.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:25$6'.
+Found and cleaned up 8 empty switches in `\layer_sequencer.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2'.
+Removing empty process `layer_sequencer.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:34$2'.
+Cleaned up 9 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+<suppressed ~6 debug messages>
+Optimizing module layer_sequencer.
+<suppressed ~7 debug messages>
+
+5. Executing FLATTEN pass (flatten design).
+Deleting now unused module layer_sequencer.
+<suppressed ~1 debug messages>
+
+6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 2 unused cells and 33 unused wires.
+<suppressed ~3 debug messages>
+
+8. Executing SYNTH pass.
+
+8.1. Executing HIERARCHY pass (managing design hierarchy).
+
+8.1.1. Analyzing design hierarchy..
+Top module:  \layer_sequencer_sta
+
+8.1.2. Analyzing design hierarchy..
+Top module:  \layer_sequencer_sta
+Removed 0 unused modules.
+
+8.2. Executing PROC pass (convert processes to netlists).
+
+8.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+8.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+8.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+8.2.4. Executing PROC_INIT pass (extract init attributes).
+
+8.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+8.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+8.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+8.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+8.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+8.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+8.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+8.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.5. Executing CHECK pass (checking for obvious problems).
+Checking module layer_sequencer_sta...
+Found and reported 0 problems.
+
+8.6. Executing OPT pass (performing simple optimizations).
+
+8.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 58 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Computing hashes of 52 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+8.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \layer_sequencer_sta..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~35 debug messages>
+
+8.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \layer_sequencer_sta.
+    New ctrl vector for $pmux cell $flatten\u_seq.$procmux$63: $auto$opt_reduce.cc:137:opt_pmux$108
+  Optimizing cells in module \layer_sequencer_sta.
+Performed a total of 1 changes.
+
+8.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 53 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+8.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \layer_sequencer_sta..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~35 debug messages>
+
+8.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \layer_sequencer_sta.
+Performed a total of 0 changes.
+
+8.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 53 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+8.7. Executing FSM pass (extract and optimize FSM).
+
+8.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register layer_sequencer_sta.u_seq.st.
+
+8.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\u_seq.st' from module `\layer_sequencer_sta'.
+  found $dff cell for state register: $flatten\u_seq.$procdff$105
+  root of input selection tree: $flatten\u_seq.$0\st[3:0]
+  found reset state: 4'0000 (guessed from mux tree)
+  found ctrl input: \rst_n
+  found state code: 4'0000
+  found ctrl input: $flatten\u_seq.$procmux$35_CMP
+  found ctrl input: $flatten\u_seq.$procmux$42_CMP
+  found ctrl input: $flatten\u_seq.$procmux$77_CMP
+  found ctrl input: $flatten\u_seq.$procmux$64_CMP
+  found ctrl input: $flatten\u_seq.$procmux$81_CMP
+  found ctrl input: $flatten\u_seq.$procmux$55_CMP
+  found ctrl input: $flatten\u_seq.$procmux$87_CMP
+  found ctrl input: $flatten\u_seq.$procmux$65_CMP
+  found ctrl input: \ready
+  found ctrl input: \ffn_done
+  found state code: 4'1000
+  found ctrl input: \rms_done
+  found state code: 4'0111
+  found state code: 4'0110
+  found ctrl input: \body_done
+  found state code: 4'0101
+  found ctrl input: $flatten\u_seq.$logic_or$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:54$5_Y
+  found state code: 4'0100
+  found state code: 4'0011
+  found state code: 4'0010
+  found ctrl input: \en
+  found state code: 4'0001
+  found ctrl output: \ready
+  found ctrl output: $flatten\u_seq.$procmux$87_CMP
+  found ctrl output: $flatten\u_seq.$procmux$81_CMP
+  found ctrl output: $flatten\u_seq.$procmux$77_CMP
+  found ctrl output: $flatten\u_seq.$procmux$65_CMP
+  found ctrl output: $flatten\u_seq.$procmux$64_CMP
+  found ctrl output: $flatten\u_seq.$procmux$55_CMP
+  found ctrl output: $flatten\u_seq.$procmux$42_CMP
+  found ctrl output: $flatten\u_seq.$procmux$35_CMP
+  ctrl inputs: { $flatten\u_seq.$logic_or$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:54$5_Y \ffn_done \body_done \rms_done \en \rst_n }
+  ctrl outputs: { $flatten\u_seq.$0\st[3:0] $flatten\u_seq.$procmux$35_CMP $flatten\u_seq.$procmux$42_CMP $flatten\u_seq.$procmux$55_CMP $flatten\u_seq.$procmux$64_CMP $flatten\u_seq.$procmux$65_CMP $flatten\u_seq.$procmux$77_CMP $flatten\u_seq.$procmux$81_CMP $flatten\u_seq.$procmux$87_CMP \ready }
+  transition:     4'0000 6'-----0 ->     4'0000 13'0000000000001
+  transition:     4'0000 6'----01 ->     4'0000 13'0000000000001
+  transition:     4'0000 6'----11 ->     4'0001 13'0001000000001
+  transition:     4'1000 6'-----0 ->     4'0000 13'0000100000000
+  transition:     4'1000 6'-0---1 ->     4'1000 13'1000100000000
+  transition:     4'1000 6'-1---1 ->     4'0000 13'0000100000000
+  transition:     4'0100 6'-----0 ->     4'0000 13'0000000000100
+  transition:     4'0100 6'--0--1 ->     4'0100 13'0100000000100
+  transition:     4'0100 6'--1--1 ->     4'0101 13'0101000000100
+  transition:     4'0010 6'-----0 ->     4'0000 13'0000000000010
+  transition:     4'0010 6'---0-1 ->     4'0010 13'0010000000010
+  transition:     4'0010 6'---1-1 ->     4'0011 13'0011000000010
+  transition:     4'0110 6'-----0 ->     4'0000 13'0000000001000
+  transition:     4'0110 6'---0-1 ->     4'0110 13'0110000001000
+  transition:     4'0110 6'---1-1 ->     4'0111 13'0111000001000
+  transition:     4'0001 6'-----0 ->     4'0000 13'0000000010000
+  transition:     4'0001 6'-----1 ->     4'0010 13'0010000010000
+  transition:     4'0101 6'-----0 ->     4'0000 13'0000000100000
+  transition:     4'0101 6'-----1 ->     4'0110 13'0110000100000
+  transition:     4'0011 6'-----0 ->     4'0000 13'0000001000000
+  transition:     4'0011 6'0----1 ->     4'0011 13'0011001000000
+  transition:     4'0011 6'1----1 ->     4'0100 13'0100001000000
+  transition:     4'0111 6'-----0 ->     4'0000 13'0000010000000
+  transition:     4'0111 6'-----1 ->     4'1000 13'1000010000000
+
+8.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\u_seq.st$109' from module `\layer_sequencer_sta'.
+
+8.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 18 unused cells and 18 unused wires.
+<suppressed ~19 debug messages>
+
+8.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\u_seq.st$109' from module `\layer_sequencer_sta'.
+  Removing unused output signal $flatten\u_seq.$procmux$87_CMP.
+  Removing unused output signal $flatten\u_seq.$procmux$81_CMP.
+  Removing unused output signal $flatten\u_seq.$procmux$77_CMP.
+  Removing unused output signal $flatten\u_seq.$0\st[3:0] [0].
+  Removing unused output signal $flatten\u_seq.$0\st[3:0] [1].
+  Removing unused output signal $flatten\u_seq.$0\st[3:0] [2].
+  Removing unused output signal $flatten\u_seq.$0\st[3:0] [3].
+
+8.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\u_seq.st$109' from module `\layer_sequencer_sta' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  0000 -> --------1
+  1000 -> -------1-
+  0100 -> ------1--
+  0010 -> -----1---
+  0110 -> ----1----
+  0001 -> ---1-----
+  0101 -> --1------
+  0011 -> -1-------
+  0111 -> 1--------
+
+8.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\u_seq.st$109' from module `layer_sequencer_sta':
+-------------------------------------
+
+  Information on FSM $fsm$\u_seq.st$109 (\u_seq.st):
+
+  Number of input signals:    6
+  Number of output signals:   6
+  Number of state bits:       9
+
+  Input signals:
+    0: \rst_n
+    1: \en
+    2: \rms_done
+    3: \body_done
+    4: \ffn_done
+    5: $flatten\u_seq.$logic_or$/Users/toprakgundogdu/qwen-ffn-rom/rtl/layer_sequencer.v:54$5_Y
+
+  Output signals:
+    0: \ready
+    1: $flatten\u_seq.$procmux$65_CMP
+    2: $flatten\u_seq.$procmux$64_CMP
+    3: $flatten\u_seq.$procmux$55_CMP
+    4: $flatten\u_seq.$procmux$42_CMP
+    5: $flatten\u_seq.$procmux$35_CMP
+
+  State encoding:
+    0: 9'--------1  <RESET STATE>
+    1: 9'-------1-
+    2: 9'------1--
+    3: 9'-----1---
+    4: 9'----1----
+    5: 9'---1-----
+    6: 9'--1------
+    7: 9'-1-------
+    8: 9'1--------
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 6'-----0   ->     0 6'000001
+      1:     0 6'----01   ->     0 6'000001
+      2:     0 6'----11   ->     5 6'000001
+      3:     1 6'-----0   ->     0 6'100000
+      4:     1 6'-1---1   ->     0 6'100000
+      5:     1 6'-0---1   ->     1 6'100000
+      6:     2 6'-----0   ->     0 6'000000
+      7:     2 6'--0--1   ->     2 6'000000
+      8:     2 6'--1--1   ->     6 6'000000
+      9:     3 6'-----0   ->     0 6'000000
+     10:     3 6'---0-1   ->     3 6'000000
+     11:     3 6'---1-1   ->     7 6'000000
+     12:     4 6'-----0   ->     0 6'000000
+     13:     4 6'---0-1   ->     4 6'000000
+     14:     4 6'---1-1   ->     8 6'000000
+     15:     5 6'-----0   ->     0 6'000010
+     16:     5 6'-----1   ->     3 6'000010
+     17:     6 6'-----0   ->     0 6'000100
+     18:     6 6'-----1   ->     4 6'000100
+     19:     7 6'-----0   ->     0 6'001000
+     20:     7 6'1----1   ->     2 6'001000
+     21:     7 6'0----1   ->     7 6'001000
+     22:     8 6'-----0   ->     0 6'010000
+     23:     8 6'-----1   ->     1 6'010000
+
+-------------------------------------
+
+8.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\u_seq.st$109' from module `\layer_sequencer_sta'.
+
+8.8. Executing OPT pass (performing simple optimizations).
+
+8.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+<suppressed ~4 debug messages>
+
+8.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 70 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Computing hashes of 68 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+8.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \layer_sequencer_sta..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+8.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \layer_sequencer_sta.
+Performed a total of 0 changes.
+
+8.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 68 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$95 ($dff) from module layer_sequencer_sta (D = $xor$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:37$8_Y, Q = \mix_sel, rval = 1'1).
+Adding SRST signal on $procdff$96 ($dff) from module layer_sequencer_sta (D = \u_seq.rms_en, Q = \rms_done, rval = 1'0).
+Adding SRST signal on $procdff$97 ($dff) from module layer_sequencer_sta (D = \u_seq.body_en, Q = \body_done, rval = 1'0).
+Adding EN signal on $procdff$98 ($dff) from module layer_sequencer_sta (D = 1'1, Q = \body_ready).
+Adding SRST signal on $procdff$99 ($dff) from module layer_sequencer_sta (D = \u_seq.ffn_en, Q = \ffn_done, rval = 1'0).
+Adding SRST signal on $procdff$100 ($dff) from module layer_sequencer_sta (D = $xor$/Users/toprakgundogdu/qwen-ffn-rom/rtl/sta/layer_sequencer_sta.v:38$12_Y, Q = \alive, rval = 1'0).
+Adding SRST signal on $flatten\u_seq.$procdff$104 ($dff) from module layer_sequencer_sta (D = $flatten\u_seq.$procmux$32_Y, Q = \u_seq.done, rval = 1'0).
+Adding SRST signal on $flatten\u_seq.$procdff$103 ($dff) from module layer_sequencer_sta (D = $flatten\u_seq.$procmux$41_Y, Q = \u_seq.ffn_en, rval = 1'0).
+Adding SRST signal on $flatten\u_seq.$procdff$102 ($dff) from module layer_sequencer_sta (D = $flatten\u_seq.$procmux$52_Y, Q = \u_seq.body_en, rval = 1'0).
+Adding SRST signal on $flatten\u_seq.$procdff$101 ($dff) from module layer_sequencer_sta (D = $flatten\u_seq.$procmux$63_Y, Q = \u_seq.rms_en, rval = 1'0).
+Setting constant 1-bit at position 0 on $auto$ff.cc:337:slice$195 ($dffe) from module layer_sequencer_sta.
+
+8.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 12 unused cells and 28 unused wires.
+<suppressed ~13 debug messages>
+
+8.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+<suppressed ~2 debug messages>
+
+8.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \layer_sequencer_sta..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+8.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \layer_sequencer_sta.
+Performed a total of 0 changes.
+
+8.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 55 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 3 unused cells and 6 unused wires.
+<suppressed ~6 debug messages>
+
+8.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+<suppressed ~4 debug messages>
+
+8.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \layer_sequencer_sta..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+8.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \layer_sequencer_sta.
+Performed a total of 0 changes.
+
+8.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 48 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+8.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.8.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.8.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \layer_sequencer_sta..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+8.8.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \layer_sequencer_sta.
+Performed a total of 0 changes.
+
+8.8.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 48 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.8.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.8.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.8.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.8.30. Finished fast OPT passes. (There is nothing left to do.)
+
+8.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell layer_sequencer_sta.$auto$fsm_map.cc:77:implement_pattern_cache$163 ($eq).
+Removed top 1 bits (of 2) from port B of cell layer_sequencer_sta.$auto$fsm_map.cc:77:implement_pattern_cache$145 ($eq).
+Removed top 1 bits (of 2) from port B of cell layer_sequencer_sta.$auto$fsm_map.cc:77:implement_pattern_cache$136 ($eq).
+Removed top 1 bits (of 2) from port B of cell layer_sequencer_sta.$auto$fsm_map.cc:77:implement_pattern_cache$127 ($eq).
+
+8.10. Executing PEEPOPT pass (run peephole optimizers).
+
+8.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module layer_sequencer_sta:
+  created 0 $alu and 0 $macc cells.
+
+8.13. Executing SHARE pass (SAT-based resource sharing).
+
+8.14. Executing OPT pass (performing simple optimizations).
+
+8.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 48 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \layer_sequencer_sta..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+8.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \layer_sequencer_sta.
+Performed a total of 0 changes.
+
+8.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 48 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+8.15. Executing MEMORY pass.
+
+8.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+8.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+8.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+8.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+8.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+8.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+8.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+8.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.17. Executing OPT pass (performing simple optimizations).
+
+8.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+<suppressed ~3 debug messages>
+
+8.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 45 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+8.17.5. Finished fast OPT passes.
+
+8.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+8.19. Executing OPT pass (performing simple optimizations).
+
+8.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 45 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \layer_sequencer_sta..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+8.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \layer_sequencer_sta.
+Performed a total of 0 changes.
+
+8.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 45 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Removed a total of 0 cells.
+
+8.19.6. Executing OPT_SHARE pass.
+
+8.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+
+8.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+
+8.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+8.20. Executing TECHMAP pass (map to technology primitives).
+
+8.20.1. Executing Verilog-2005 frontend: /opt/homebrew/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+8.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $xor.
+No more expansions possible.
+<suppressed ~121 debug messages>
+
+8.21. Executing OPT pass (performing simple optimizations).
+
+8.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module layer_sequencer_sta.
+<suppressed ~16 debug messages>
+
+8.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\layer_sequencer_sta'.
+Computing hashes of 74 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+Computing hashes of 65 cells of `\layer_sequencer_sta'.
+Finding duplicate cells in `\layer_sequencer_sta'.
+<suppressed ~27 debug messages>
+Removed a total of 9 cells.
+
+8.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 0 unused cells and 33 unused wires.
+<suppressed ~1 debug messages>
+
+8.21.5. Finished fast OPT passes.
+
+8.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `layer_sequencer_sta'. Setting top module to layer_sequencer_sta.
+
+8.22.1. Analyzing design hierarchy..
+Top module:  \layer_sequencer_sta
+
+8.22.2. Analyzing design hierarchy..
+Top module:  \layer_sequencer_sta
+Removed 0 unused modules.
+
+8.23. Printing statistics.
+
+=== layer_sequencer_sta ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       69 wires
+       85 wire bits
+       26 public wires
+       34 public wire bits
+        6 ports
+        6 port bits
+       65 cells
+       15   $_AND_
+        9   $_DFF_P_
+       13   $_NOT_
+       15   $_OR_
+        8   $_SDFF_PN0_
+        4   $_XOR_
+        1   $scopeinfo
+
+8.24. Executing CHECK pass (checking for obvious problems).
+Checking module layer_sequencer_sta...
+Found and reported 0 problems.
+
+9. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__edfxtp_1 (noninv, pins=4, area=30.03) is a direct match for cell type $_DFFE_PP_.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    \sky130_fd_sc_hd__edfxtp_1 _DFFE_PP_ (.CLK( C), .D( D), .DE( E), .Q( Q));
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+9.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~24 debug messages>
+Mapping DFF cells in module `\layer_sequencer_sta':
+  mapped 17 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
+
+10. Executing ABC pass (technology mapping using ABC).
+
+10.1. Extracting gate netlist of module `\layer_sequencer_sta' to `<abc-temp-dir>/input.blif'..
+ABC: using cached merged SCL: /var/folders/8g/t_1gk85s4m70jtjyvhs3xc5h0000gn/T/yosys-liberty-scl-cache/yosys_merged_5e93c8fc.scl (1 files)
+
+10.1.1. Executed ABC.
+Extracted 55 gates and 75 wires to a netlist network with 18 inputs and 17 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_scl /var/folders/8g/t_1gk85s4m70jtjyvhs3xc5h0000gn/T/yosys-liberty-scl-cache/yosys_merged_5e93c8fc.scl 
+ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + source /Users/toprakgundogdu/qwen-ffn-rom/artifacts/eda/abc_strash_nf.script 
+ABC: WireLoad = "none"  Gates =     24 ( 16.7 %)   Cap =  3.3 ff ( 36.0 %)   Area =      186.43 (  8.3 %)   Delay =   662.65 ps  ( 12.5 %)               
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+10.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a22o_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a31o_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__and3_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_isobufsrc_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xnor3_1 cells:        2
+ABC RESULTS:        internal signals:       40
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:       17
+Removing temp directory.
+Removing global temp directory.
+
+11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \layer_sequencer_sta..
+Removed 0 unused cells and 69 unused wires.
+<suppressed ~1 debug messages>
+
+12. Printing statistics.
+
+=== layer_sequencer_sta ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+       50        - wires
+       58        - wire bits
+       26        - public wires
+       34        - public wire bits
+        6        - ports
+        6        - port bits
+       42  526.755 cells
+        1        -   $scopeinfo
+        2   17.517   sky130_fd_sc_hd__a22o_1
+        2   17.517   sky130_fd_sc_hd__a31o_1
+        6   37.536   sky130_fd_sc_hd__and2_0
+        5    31.28   sky130_fd_sc_hd__and3_1
+        4   15.014   sky130_fd_sc_hd__clkinv_1
+       17  340.326   sky130_fd_sc_hd__dfxtp_1
+        1    6.256   sky130_fd_sc_hd__lpflow_isobufsrc_1
+        1    7.507   sky130_fd_sc_hd__o21a_1
+        1    8.758   sky130_fd_sc_hd__o221ai_1
+        2   45.043   sky130_fd_sc_hd__xnor3_1
+
+   Area for cell type $scopeinfo is unknown!
+
+   Chip area for module '\layer_sequencer_sta': 526.755200
+     of which used for sequential elements: 340.326400 (64.61%)
+
+End of script. Logfile hash: 457d52ab5d, time: 0.23s, user: 0.12s, system: 0.02s, MEM: 35.88 MB peak
+Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 16.0.0.16000026)
+Time spent: 38% 1x abc (0 sec), 22% 1x dfflibmap (0 sec), ...
+
+

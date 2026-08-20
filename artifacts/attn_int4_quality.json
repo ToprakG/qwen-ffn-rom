@@ -1,0 +1,135 @@
+{
+  "gate": "int4 KV vs fp32 softmax attention, cosine >= 0.98",
+  "status": "PASS",
+  "n": 24,
+  "d": 64,
+  "S": 128,
+  "mean_cosine_int4_dequant_fp32": 0.9883314713984256,
+  "min_cosine_int4_dequant_fp32": 0.9790166153781705,
+  "mean_cosine_int8_qkv_fp32": 0.9999049918530695,
+  "mean_cosine_online_int4_fp32": 0.2809768242033444,
+  "note": "Dequant int4 KV (per-channel symmetric along D) vs fp32 is the cache-format gate. Online integer softmax is a separate LUT/shift approx; it is bit-exact to RTL, not to fp32. Threshold 0.98 on dequant cosine.",
+  "threshold": 0.98,
+  "rows": [
+    {
+      "i": 0,
+      "cos_int4_dequant_fp32": 0.9878389990302562,
+      "cos_online_int4_fp32": 0.21793607078216626
+    },
+    {
+      "i": 1,
+      "cos_int4_dequant_fp32": 0.9954446048976201,
+      "cos_online_int4_fp32": 0.32430427286234376
+    },
+    {
+      "i": 2,
+      "cos_int4_dequant_fp32": 0.9790166153781705,
+      "cos_online_int4_fp32": 0.4859857174822758
+    },
+    {
+      "i": 3,
+      "cos_int4_dequant_fp32": 0.9913894533775692,
+      "cos_online_int4_fp32": 0.43971787509257704
+    },
+    {
+      "i": 4,
+      "cos_int4_dequant_fp32": 0.9908108777962663,
+      "cos_online_int4_fp32": 0.5285535608982989
+    },
+    {
+      "i": 5,
+      "cos_int4_dequant_fp32": 0.9856479706407801,
+      "cos_online_int4_fp32": 0.04971051564678484
+    },
+    {
+      "i": 6,
+      "cos_int4_dequant_fp32": 0.9904598971025791,
+      "cos_online_int4_fp32": 0.42949777624957985
+    },
+    {
+      "i": 7,
+      "cos_int4_dequant_fp32": 0.9790917647627356,
+      "cos_online_int4_fp32": 0.19769846138840777
+    },
+    {
+      "i": 8,
+      "cos_int4_dequant_fp32": 0.98774320315074,
+      "cos_online_int4_fp32": 0.31870823073411236
+    },
+    {
+      "i": 9,
+      "cos_int4_dequant_fp32": 0.9895813469659464,
+      "cos_online_int4_fp32": 0.3235569586550446
+    },
+    {
+      "i": 10,
+      "cos_int4_dequant_fp32": 0.9916581617130381,
+      "cos_online_int4_fp32": 0.24385100021901815
+    },
+    {
+      "i": 11,
+      "cos_int4_dequant_fp32": 0.9930274945531314,
+      "cos_online_int4_fp32": 0.39974440861548505
+    },
+    {
+      "i": 12,
+      "cos_int4_dequant_fp32": 0.9900044918341999,
+      "cos_online_int4_fp32": 0.32174900690441
+    },
+    {
+      "i": 13,
+      "cos_int4_dequant_fp32": 0.9820468227135019,
+      "cos_online_int4_fp32": 0.2792873011922371
+    },
+    {
+      "i": 14,
+      "cos_int4_dequant_fp32": 0.9940314487756063,
+      "cos_online_int4_fp32": 0.11435633242541678
+    },
+    {
+      "i": 15,
+      "cos_int4_dequant_fp32": 0.9898268572171195,
+      "cos_online_int4_fp32": 0.37940982767797965
+    },
+    {
+      "i": 16,
+      "cos_int4_dequant_fp32": 0.9912313307589271,
+      "cos_online_int4_fp32": 0.1291989201814294
+    },
+    {
+      "i": 17,
+      "cos_int4_dequant_fp32": 0.9886434715936079,
+      "cos_online_int4_fp32": 0.13516183104047613
+    },
+    {
+      "i": 18,
+      "cos_int4_dequant_fp32": 0.9894478880657446,
+      "cos_online_int4_fp32": 0.17937682079287326
+    },
+    {
+      "i": 19,
+      "cos_int4_dequant_fp32": 0.9830242862921337,
+      "cos_online_int4_fp32": 0.1885487059290861
+    },
+    {
+      "i": 20,
+      "cos_int4_dequant_fp32": 0.9867934702389161,
+      "cos_online_int4_fp32": 0.3336061229345094
+    },
+    {
+      "i": 21,
+      "cos_int4_dequant_fp32": 0.9910268000384224,
+      "cos_online_int4_fp32": 0.3452588762569587
+    },
+    {
+      "i": 22,
+      "cos_int4_dequant_fp32": 0.987369685082402,
+      "cos_online_int4_fp32": 0.21996729536811022
+    },
+    {
+      "i": 23,
+      "cos_int4_dequant_fp32": 0.9847983715827974,
+      "cos_online_int4_fp32": 0.15825789155068454
+    }
+  ]
+}

@@ -1,0 +1,531 @@
+{
+  "assumptions": {
+    "reticle_mm": [
+      26.0,
+      33.0
+    ],
+    "reticle_mm2": 858.0,
+    "array_efficiency": 0.62,
+    "rom_model": "via-programmed ROM at 18 F\u00b2, but not denser than SRAM/8 (\u226528 nm) or SRAM/4 (FinFET)",
+    "stdcell_um2_per_weight": 509.375,
+    "stdcell_source": "OpenLane sky130_fd_sc_hd ffn_tile_8x8_b4 32600 \u00b5m\u00b2 / 64 weights. Not via-ROM."
+  },
+  "target": {
+    "checkpoint": "Qwen/Qwen3.5-0.8B",
+    "tensor": "model.language_model.layers.0.mlp.down_proj.weight",
+    "shape": [
+      1024,
+      3584
+    ],
+    "weights": 3670016,
+    "ffn_per_layer": 11010048,
+    "ffn_all_layers": 264241152,
+    "ffn_fraction_08b": 0.33030144
+  },
+  "nodes": [
+    {
+      "id": "sky130",
+      "name": "Sky130 (open)",
+      "nm": 130,
+      "sram_um2": 1.896,
+      "rom_cell_um2": 0.30419999999999997,
+      "rom_vs_sram": 6.232741617357003,
+      "bits": 1748717948.717949,
+      "gbit": 1.748717948717949,
+      "by_bitwidth": [
+        {
+          "bitwidth": 1,
+          "ffn_weights_fit": 1748717948.717949,
+          "equiv_dense_params": 3769517778.619788,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 476.4878269516942,
+          "full_08b_ffn_copies": 6.617886485440197,
+          "target_array_mm2": 1.8006755922580644,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 2,
+          "ffn_weights_fit": 874358974.3589745,
+          "equiv_dense_params": 2112554834.8138452,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 238.2439134758471,
+          "full_08b_ffn_copies": 3.3089432427200984,
+          "target_array_mm2": 3.601351184516129,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 4,
+          "ffn_weights_fit": 437179487.1794872,
+          "equiv_dense_params": 1198108523.259728,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 119.12195673792355,
+          "full_08b_ffn_copies": 1.6544716213600492,
+          "target_array_mm2": 7.202702369032258,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 8,
+          "ffn_weights_fit": 218589743.5897436,
+          "equiv_dense_params": 662393162.3931625,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": false,
+          "target_matrix_copies": 59.56097836896178,
+          "full_08b_ffn_copies": 0.8272358106800246,
+          "target_array_mm2": 14.405404738064515,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 16,
+          "ffn_weights_fit": 109294871.7948718,
+          "equiv_dense_params": 331196581.19658124,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": false,
+          "target_matrix_copies": 29.78048918448089,
+          "full_08b_ffn_copies": 0.4136179053400123,
+          "target_array_mm2": 28.81080947612903,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        }
+      ]
+    },
+    {
+      "id": "ihp130",
+      "name": "IHP SG13G2",
+      "nm": 130,
+      "sram_um2": 1.5,
+      "rom_cell_um2": 0.30419999999999997,
+      "rom_vs_sram": 4.930966469428008,
+      "bits": 1748717948.717949,
+      "gbit": 1.748717948717949,
+      "by_bitwidth": [
+        {
+          "bitwidth": 1,
+          "ffn_weights_fit": 1748717948.717949,
+          "equiv_dense_params": 3769517778.619788,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 476.4878269516942,
+          "full_08b_ffn_copies": 6.617886485440197,
+          "target_array_mm2": 1.8006755922580644,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 2,
+          "ffn_weights_fit": 874358974.3589745,
+          "equiv_dense_params": 2112554834.8138452,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 238.2439134758471,
+          "full_08b_ffn_copies": 3.3089432427200984,
+          "target_array_mm2": 3.601351184516129,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 4,
+          "ffn_weights_fit": 437179487.1794872,
+          "equiv_dense_params": 1198108523.259728,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 119.12195673792355,
+          "full_08b_ffn_copies": 1.6544716213600492,
+          "target_array_mm2": 7.202702369032258,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 8,
+          "ffn_weights_fit": 218589743.5897436,
+          "equiv_dense_params": 662393162.3931625,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": false,
+          "target_matrix_copies": 59.56097836896178,
+          "full_08b_ffn_copies": 0.8272358106800246,
+          "target_array_mm2": 14.405404738064515,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 16,
+          "ffn_weights_fit": 109294871.7948718,
+          "equiv_dense_params": 331196581.19658124,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": false,
+          "target_matrix_copies": 29.78048918448089,
+          "full_08b_ffn_copies": 0.4136179053400123,
+          "target_array_mm2": 28.81080947612903,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        }
+      ]
+    },
+    {
+      "id": "n65",
+      "name": "65 nm",
+      "nm": 65,
+      "sram_um2": 0.5,
+      "rom_cell_um2": 0.07604999999999999,
+      "rom_vs_sram": 6.574621959237344,
+      "bits": 6994871794.871796,
+      "gbit": 6.994871794871796,
+      "by_bitwidth": [
+        {
+          "bitwidth": 1,
+          "ffn_weights_fit": 6994871794.871796,
+          "equiv_dense_params": 12349204144.680223,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 1905.9513078067769,
+          "full_08b_ffn_copies": 26.471545941760787,
+          "target_array_mm2": 0.4501688980645161,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 2,
+          "ffn_weights_fit": 3497435897.435898,
+          "equiv_dense_params": 6793794792.316392,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 952.9756539033884,
+          "full_08b_ffn_copies": 13.235772970880394,
+          "target_array_mm2": 0.9003377961290322,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 4,
+          "ffn_weights_fit": 1748717948.717949,
+          "equiv_dense_params": 3769517778.619788,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 476.4878269516942,
+          "full_08b_ffn_copies": 6.617886485440197,
+          "target_array_mm2": 1.8006755922580644,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 8,
+          "ffn_weights_fit": 874358974.3589745,
+          "equiv_dense_params": 2112554834.8138452,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 238.2439134758471,
+          "full_08b_ffn_copies": 3.3089432427200984,
+          "target_array_mm2": 3.601351184516129,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 16,
+          "ffn_weights_fit": 437179487.1794872,
+          "equiv_dense_params": 1198108523.259728,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 119.12195673792355,
+          "full_08b_ffn_copies": 1.6544716213600492,
+          "target_array_mm2": 7.202702369032258,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        }
+      ]
+    },
+    {
+      "id": "n28",
+      "name": "28 nm",
+      "nm": 28,
+      "sram_um2": 0.127,
+      "rom_cell_um2": 0.015875,
+      "rom_vs_sram": 8.0,
+      "bits": 33509291338.582676,
+      "gbit": 33.50929133858268,
+      "by_bitwidth": [
+        {
+          "bitwidth": 1,
+          "ffn_weights_fit": 33509291338.582676,
+          "equiv_dense_params": 52853771827.41747,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 9130.557288737346,
+          "full_08b_ffn_copies": 126.81329567690757,
+          "target_array_mm2": 0.09397016774193548,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 2,
+          "ffn_weights_fit": 16754645669.291338,
+          "equiv_dense_params": 26495043671.023582,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 4565.278644368673,
+          "full_08b_ffn_copies": 63.406647838453786,
+          "target_array_mm2": 0.18794033548387096,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 4,
+          "ffn_weights_fit": 8377322834.645669,
+          "equiv_dense_params": 14444594940.332644,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 2282.6393221843364,
+          "full_08b_ffn_copies": 31.703323919226893,
+          "target_array_mm2": 0.3758806709677419,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 8,
+          "ffn_weights_fit": 4188661417.3228345,
+          "equiv_dense_params": 7930599444.857439,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 1141.3196610921682,
+          "full_08b_ffn_copies": 15.851661959613446,
+          "target_array_mm2": 0.7517613419354838,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 16,
+          "ffn_weights_fit": 2094330708.6614172,
+          "equiv_dense_params": 4389954475.759252,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 570.6598305460841,
+          "full_08b_ffn_copies": 7.925830979806723,
+          "target_array_mm2": 1.5035226838709677,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        }
+      ]
+    },
+    {
+      "id": "n16",
+      "name": "16 nm FinFET",
+      "nm": 16,
+      "sram_um2": 0.07,
+      "rom_cell_um2": 0.0175,
+      "rom_vs_sram": 4.0,
+      "bits": 30397714285.714283,
+      "gbit": 30.397714285714283,
+      "by_bitwidth": [
+        {
+          "bitwidth": 1,
+          "ffn_weights_fit": 30397714285.714283,
+          "equiv_dense_params": 47945921586.30013,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 8282.719826211734,
+          "full_08b_ffn_copies": 115.03777536405185,
+          "target_array_mm2": 0.1035891612903226,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 2,
+          "ffn_weights_fit": 15198857142.857141,
+          "equiv_dense_params": 24319449189.113914,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 4141.359913105867,
+          "full_08b_ffn_copies": 57.51888768202593,
+          "target_array_mm2": 0.2071783225806452,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 4,
+          "ffn_weights_fit": 7599428571.428571,
+          "equiv_dense_params": 13270843789.862978,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 2070.6799565529336,
+          "full_08b_ffn_copies": 28.759443841012963,
+          "target_array_mm2": 0.4143566451612904,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 8,
+          "ffn_weights_fit": 3799714285.7142854,
+          "equiv_dense_params": 7294013641.03641,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 1035.3399782764668,
+          "full_08b_ffn_copies": 14.379721920506482,
+          "target_array_mm2": 0.8287132903225808,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 16,
+          "ffn_weights_fit": 1899857142.8571427,
+          "equiv_dense_params": 4042649852.2587547,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 517.6699891382334,
+          "full_08b_ffn_copies": 7.189860960253241,
+          "target_array_mm2": 1.6574265806451616,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        }
+      ]
+    },
+    {
+      "id": "n7",
+      "name": "7 nm FinFET",
+      "nm": 7,
+      "sram_um2": 0.027,
+      "rom_cell_um2": 0.00675,
+      "rom_vs_sram": 4.0,
+      "bits": 78808888888.88889,
+      "gbit": 78.80888888888889,
+      "by_bitwidth": [
+        {
+          "bitwidth": 1,
+          "ffn_weights_fit": 78808888888.88889,
+          "equiv_dense_params": 124304241149.667,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 21473.71806795635,
+          "full_08b_ffn_copies": 298.2460842771715,
+          "target_array_mm2": 0.03995581935483871,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 2,
+          "ffn_weights_fit": 39404444444.44444,
+          "equiv_dense_params": 62152120574.8335,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 10736.859033978175,
+          "full_08b_ffn_copies": 149.12304213858576,
+          "target_array_mm2": 0.07991163870967742,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 4,
+          "ffn_weights_fit": 19702222222.22222,
+          "equiv_dense_params": 31076060287.41675,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 5368.4295169890875,
+          "full_08b_ffn_copies": 74.56152106929288,
+          "target_array_mm2": 0.15982327741935484,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 8,
+          "ffn_weights_fit": 9851111111.11111,
+          "equiv_dense_params": 16635791223.56889,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 2684.2147584945437,
+          "full_08b_ffn_copies": 37.28076053464644,
+          "target_array_mm2": 0.3196465548387097,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 16,
+          "ffn_weights_fit": 4925555555.555555,
+          "equiv_dense_params": 9117762286.53829,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 1342.1073792472719,
+          "full_08b_ffn_copies": 18.64038026732322,
+          "target_array_mm2": 0.6392931096774194,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "name": "5 nm FinFET",
+      "nm": 5,
+      "sram_um2": 0.021,
+      "rom_cell_um2": 0.00525,
+      "rom_vs_sram": 4.0,
+      "bits": 101325714285.71428,
+      "gbit": 101.32571428571428,
+      "by_bitwidth": [
+        {
+          "bitwidth": 1,
+          "ffn_weights_fit": 101325714285.71428,
+          "equiv_dense_params": 159819738621.00043,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 27609.06608737245,
+          "full_08b_ffn_copies": 383.4592512135062,
+          "target_array_mm2": 0.031076748387096783,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 2,
+          "ffn_weights_fit": 50662857142.85714,
+          "equiv_dense_params": 79909869310.50021,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 13804.533043686224,
+          "full_08b_ffn_copies": 191.7296256067531,
+          "target_array_mm2": 0.062153496774193566,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 4,
+          "ffn_weights_fit": 25331428571.42857,
+          "equiv_dense_params": 39954934655.25011,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 6902.266521843112,
+          "full_08b_ffn_copies": 95.86481280337655,
+          "target_array_mm2": 0.12430699354838713,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 8,
+          "ffn_weights_fit": 12665714285.714285,
+          "equiv_dense_params": 20724454568.872078,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 3451.133260921556,
+          "full_08b_ffn_copies": 47.932406401688276,
+          "target_array_mm2": 0.24861398709677426,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        },
+        {
+          "bitwidth": 16,
+          "ffn_weights_fit": 6332857142.857142,
+          "equiv_dense_params": 11329373851.987087,
+          "target_matrix_fit": true,
+          "full_08b_ffn_fit": true,
+          "target_matrix_copies": 1725.566630460778,
+          "full_08b_ffn_copies": 23.966203200844138,
+          "target_array_mm2": 0.4972279741935485,
+          "target_array_mm2_stdcell": 1869.4144,
+          "full_08b_ffn_mm2_stdcell": 134597.8368
+        }
+      ]
+    }
+  ]
+}

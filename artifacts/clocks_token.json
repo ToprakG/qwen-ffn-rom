@@ -1,0 +1,484 @@
+{
+  "story": {
+    "until_farm": "FFN is 99.97% of a 27B token with one 8\u00d78 tap (serial).",
+    "after_farm": "FFN extra clocks \u2192 one mixer epilogue. Fused online-softmax attention is ceil(S/P)+2. Newton RMS is 2 clk; SiLU is folded into the farm (0 extra). Norms+activation = 256 clk/token (gate \u2264500).",
+    "ordering": [
+      "serial FFN",
+      "DeltaNet mixer",
+      "attention KV sweep",
+      "two RMSNorms"
+    ]
+  },
+  "pieces": {
+    "ffn_8x8_handshake_clk": {
+      "value": 2,
+      "kind": "measured",
+      "detail": "tb/test_ffn_tap_cycles.py \u2192 artifacts/ffn_tap_cycles.json"
+    },
+    "mixer_d128_clk_per_layer": {
+      "value": 130,
+      "kind": "measured",
+      "detail": "tb fused column-stream PE \u2192 artifacts/delta_d128_fused_equiv.json"
+    },
+    "attn_clk_per_layer": {
+      "value": "ceil(S/512)+2",
+      "kind": "measured",
+      "detail": "tb fused online-softmax P-way PE \u2192 artifacts/attn_online_equiv.json. pipe=2 measured (S=4/8/16/32). 27B uses P=512 (256 banks \u00d7 int4 pack-2). Old 2+2S is attn_decode.v, no softmax."
+    },
+    "attn_p_eff": {
+      "value": 512,
+      "kind": "derived",
+      "detail": "KV-SRAM 1R1W banks, Phase-1 discipline. int4 packs 2 positions in an int8-wide port \u2192 P_eff=512. 16\u00d7(ceil(S/512)+2): 4k=160, 32k=1056."
+    },
+    "attn_gqa_reuse": {
+      "value": "4 KV \u00d7 6 Q, same ceil(S/P)+2",
+      "kind": "measured",
+      "detail": "rtl/attn_online_gqa_d8.v: 4 KV heads, 6 Q each. Cycles equal 1-head PE. artifacts/attn_online_gqa_equiv.json"
+    },
+    "attn_int4_kv": {
+      "value": 0.9883314713984256,
+      "kind": "measured",
+      "detail": "Per-channel int4 KV vs fp32 softmax, cosine gate 0.98. artifacts/attn_int4_quality.json"
+    },
+    "rms_clk_each": {
+      "value": 2,
+      "kind": "measured",
+      "detail": "tb Newton rsqrt RMSNorm \u2192 artifacts/rmsnorm_fast_equiv.json. 2 clk handshake, combo LUT+NR. Was 58 (16+32 restoring + kick). 64 layers \u00d7 2 = 256 clk/token. Gate \u2264500 with SiLU at 0 extra."
+    },
+    "silu_clk_extra": {
+      "value": 0,
+      "kind": "measured",
+      "detail": "rtl/ffn_tap_swiglu.v: SiLU+gate in the tap output register. Handshake stays 2 clk/tile. artifacts/ffn_swiglu_equiv.json"
+    },
+    "rsqrt_quality": {
+      "value": 0.9997328638301597,
+      "kind": "measured",
+      "detail": "NR vs restoring |dy|\u22641 and cosine vs fp32 \u22650.99 at H=8/16. artifacts/rsqrt_quality.json"
+    },
+    "mixer_sram_floor": {
+      "value": "D+2 at P=D",
+      "kind": "derived",
+      "detail": "16384 elems, 1 pass, P lanes: ceil(16384/P)+pipe. P=32 \u2192 512+pipe; P=64 \u2192 256+pipe; P=128=D \u2192 130 measured. Below 130 needs P>D or chunkwise DeltaNet."
+    },
+    "gqa_k_reuse": {
+      "value": "3 V-heads / K-head, same D+2",
+      "kind": "measured",
+      "detail": "rtl/gated_delta_gqa3.v: shared q/k/g/\u03b2, 3 S banks. Layer cycles = one PE. Serial 3 V-heads would be 3\u00d7; that was the 'heads do not cut cycles' bug."
+    },
+    "ffn_farm_hide": {
+      "value": "next-layer overlap",
+      "kind": "derived",
+      "detail": "FFN needs rms2(mid), so it cannot overlap the same-layer mixer. Farm-hidden means FFN(L) finishes inside body(L+1). Epilogue = 130 clk (one mixer window)."
+    },
+    "qwen_layer_h16": {
+      "value": 308,
+      "kind": "measured",
+      "detail": "rtl/qwen_layer.v vs Python, artifacts/qwen_layer_equiv.json"
+    },
+    "sky130_fused_d16_yosys_um2": {
+      "value": 618624.56,
+      "kind": "measured",
+      "detail": "Yosys sky130_fd_sc_hd mapped (synth -noabc + abc strash;&nf). Not post-route, no Fmax. Default synth ABC fraig did not finish on the combo 4-mul EX. PnR skipped (56k cells, same class as d16_par). D=128 not synthesized."
+    },
+    "sky130_qwen_layer_stdcell_um2": {
+      "value": 1382420,
+      "kind": "measured",
+      "detail": "OpenLane post-route design__instance__area__stdcell. Die is larger (15% util); quote stdcell, not die. Magic DRC/LVS unmeasured."
+    },
+    "sky130_qwen_layer_fmax_mhz": {
+      "value": 34.81206288047436,
+      "kind": "measured",
+      "detail": "Post-route OpenSTA worst slack @ 50 ns. H=16 slice Fmax, not 27B / not 28 nm."
+    },
+    "sky130_qwen_layer_7nm_f2_um2": {
+      "value": 4008.2000000000003,
+      "kind": "derived",
+      "detail": "stdcell area \u00d7 (7/130)\u00b2. Scale only \u2014 no 7 nm liberty/STA."
+    },
+    "fmax_28nm": {
+      "value": null,
+      "kind": "unmeasured",
+      "detail": "No 28 nm liberty/STA in this repo. 330 MHz is a goal, not a number."
+    },
+    "fmax_7nm": {
+      "value": 195.0,
+      "kind": "derived",
+      "detail": "Sky130 chip estimate \u00d7 6.5 FO4. Not 7 nm STA. 1.0 / 1.65 GHz are goals."
+    },
+    "sky130_chip_fmax_est_mhz": {
+      "value": {
+        "lo": 20.0,
+        "nom": 30.0,
+        "hi": 40.0
+      },
+      "kind": "derived",
+      "detail": "Estimate, not post-route. D=128 mixer STA (3.23 MHz) is a fanout-1922 flop-RAM artifact; do not use. Band is D=4 mixer 41 MHz and H=16 layer 35 MHz, with a 128-tree EX a bit slower. Attn sweep / rsqrt unrouted, same family. \u00b12\u00d7. 7 nm is \u00d76.5 FO4, labeled projected."
+    },
+    "sky130_tok_s_4k_est": {
+      "value": {
+        "lo": 2947.2443265546713,
+        "nom": 4420.866489832007,
+        "hi": 5894.4886531093425
+      },
+      "kind": "derived",
+      "detail": "tok/s = Fmax_est / 6786 at 4k farm-hidden. Not mixer STA 3.23 MHz."
+    }
+  },
+  "freqs": [
+    {
+      "hz": 41280000.0,
+      "label": "41.28MHz",
+      "tag": "measured_sky130_d4_mixer_fmax",
+      "kind": "measured_proxy"
+    },
+    {
+      "hz": 200000000.0,
+      "label": "200MHz",
+      "tag": "fpga_assumed",
+      "kind": "unmeasured"
+    },
+    {
+      "hz": 330000000.0,
+      "label": "330MHz",
+      "tag": "28nm_goal_not_sta",
+      "kind": "unmeasured"
+    },
+    {
+      "hz": 1000000000.0,
+      "label": "1000MHz",
+      "tag": "7nm_class_not_sta",
+      "kind": "unmeasured"
+    },
+    {
+      "hz": 1650000000.0,
+      "label": "1650MHz",
+      "tag": "7nm_50k_goal_not_sta",
+      "kind": "unmeasured"
+    }
+  ],
+  "rows": [
+    {
+      "model": "qwen08b",
+      "seq": 256,
+      "softmax_in_attn": false,
+      "cycles": {
+        "rms_each": 2,
+        "rms_both_per_layer": 4,
+        "rms_token_total": 96,
+        "act_token_total": 0,
+        "norms_plus_act_token": 96,
+        "mixer_per_delta_layer": 130,
+        "attn_per_attn_layer": 3,
+        "attn_token_total": 18,
+        "ffn_serial_per_layer": 344064,
+        "ffn_hidden_epilogue": 130,
+        "body_delta_layer": 134,
+        "body_attn_layer": 7,
+        "token_ffn_serial": 8259990,
+        "token_ffn_farm_hidden": 2584
+      },
+      "taps_to_hide_under_mixer": 2647,
+      "tok_s_farm_hidden": {
+        "41.28MHz": 15975.232198142416,
+        "200MHz": 77399.38080495356,
+        "330MHz": 127708.97832817337,
+        "1000MHz": 386996.9040247678,
+        "1650MHz": 638544.8916408669
+      },
+      "tok_s_serial": {
+        "41.28MHz": 4.997584742838672,
+        "200MHz": 24.21310437421837,
+        "330MHz": 39.95162221746031,
+        "1000MHz": 121.06552187109186,
+        "1650MHz": 199.75811108730156
+      },
+      "f_for_10k_hz": 25840000,
+      "f_for_50k_hz": 129200000
+    },
+    {
+      "model": "qwen08b",
+      "seq": 4096,
+      "softmax_in_attn": false,
+      "cycles": {
+        "rms_each": 2,
+        "rms_both_per_layer": 4,
+        "rms_token_total": 96,
+        "act_token_total": 0,
+        "norms_plus_act_token": 96,
+        "mixer_per_delta_layer": 130,
+        "attn_per_attn_layer": 10,
+        "attn_token_total": 60,
+        "ffn_serial_per_layer": 344064,
+        "ffn_hidden_epilogue": 130,
+        "body_delta_layer": 134,
+        "body_attn_layer": 14,
+        "token_ffn_serial": 8260032,
+        "token_ffn_farm_hidden": 2626
+      },
+      "taps_to_hide_under_mixer": 2647,
+      "tok_s_farm_hidden": {
+        "41.28MHz": 15719.72581873572,
+        "200MHz": 76161.46230007616,
+        "330MHz": 125666.41279512567,
+        "1000MHz": 380807.3115003808,
+        "1650MHz": 628332.0639756283
+      },
+      "tok_s_serial": {
+        "41.28MHz": 4.997559331489272,
+        "200MHz": 24.212981257215468,
+        "330MHz": 39.95141907440552,
+        "1000MHz": 121.06490628607735,
+        "1650MHz": 199.7570953720276
+      },
+      "f_for_10k_hz": 26260000,
+      "f_for_50k_hz": 131300000
+    },
+    {
+      "model": "qwen08b",
+      "seq": 32768,
+      "softmax_in_attn": false,
+      "cycles": {
+        "rms_each": 2,
+        "rms_both_per_layer": 4,
+        "rms_token_total": 96,
+        "act_token_total": 0,
+        "norms_plus_act_token": 96,
+        "mixer_per_delta_layer": 130,
+        "attn_per_attn_layer": 66,
+        "attn_token_total": 396,
+        "ffn_serial_per_layer": 344064,
+        "ffn_hidden_epilogue": 130,
+        "body_delta_layer": 134,
+        "body_attn_layer": 70,
+        "token_ffn_serial": 8260368,
+        "token_ffn_farm_hidden": 2962
+      },
+      "taps_to_hide_under_mixer": 2647,
+      "tok_s_farm_hidden": {
+        "41.28MHz": 13936.529372045916,
+        "200MHz": 67521.9446320054,
+        "330MHz": 111411.20864280891,
+        "1000MHz": 337609.723160027,
+        "1650MHz": 557056.0432140445
+      },
+      "tok_s_serial": {
+        "41.28MHz": 4.997356049996804,
+        "200MHz": 24.211996366263584,
+        "330MHz": 39.94979400433492,
+        "1000MHz": 121.05998183131793,
+        "1650MHz": 199.74897002167458
+      },
+      "f_for_10k_hz": 29620000,
+      "f_for_50k_hz": 148100000
+    },
+    {
+      "model": "qwen27b",
+      "seq": 256,
+      "softmax_in_attn": false,
+      "cycles": {
+        "rms_each": 2,
+        "rms_both_per_layer": 4,
+        "rms_token_total": 256,
+        "act_token_total": 0,
+        "norms_plus_act_token": 256,
+        "mixer_per_delta_layer": 130,
+        "attn_per_attn_layer": 3,
+        "attn_token_total": 48,
+        "ffn_serial_per_layer": 8355840,
+        "ffn_hidden_epilogue": 130,
+        "body_delta_layer": 134,
+        "body_attn_layer": 7,
+        "token_ffn_serial": 534780304,
+        "token_ffn_farm_hidden": 6674
+      },
+      "taps_to_hide_under_mixer": 64276,
+      "tok_s_farm_hidden": {
+        "41.28MHz": 6185.196284087504,
+        "200MHz": 29967.036260113873,
+        "330MHz": 49445.609829187895,
+        "1000MHz": 149835.18130056938,
+        "1650MHz": 247228.04914593947
+      },
+      "tok_s_serial": {
+        "41.28MHz": 0.07719057656244573,
+        "200MHz": 0.37398535156223706,
+        "330MHz": 0.6170758300776911,
+        "1000MHz": 1.8699267578111851,
+        "1650MHz": 3.0853791503884556
+      },
+      "f_for_10k_hz": 66740000,
+      "f_for_50k_hz": 333700000
+    },
+    {
+      "model": "qwen27b",
+      "seq": 4096,
+      "softmax_in_attn": false,
+      "cycles": {
+        "rms_each": 2,
+        "rms_both_per_layer": 4,
+        "rms_token_total": 256,
+        "act_token_total": 0,
+        "norms_plus_act_token": 256,
+        "mixer_per_delta_layer": 130,
+        "attn_per_attn_layer": 10,
+        "attn_token_total": 160,
+        "ffn_serial_per_layer": 8355840,
+        "ffn_hidden_epilogue": 130,
+        "body_delta_layer": 134,
+        "body_attn_layer": 14,
+        "token_ffn_serial": 534780416,
+        "token_ffn_farm_hidden": 6786
+      },
+      "taps_to_hide_under_mixer": 64276,
+      "tok_s_farm_hidden": {
+        "41.28MHz": 6083.112290008842,
+        "200MHz": 29472.443265546714,
+        "330MHz": 48629.53138815208,
+        "1000MHz": 147362.21632773356,
+        "1650MHz": 243147.65694076038
+      },
+      "tok_s_serial": {
+        "41.28MHz": 0.07719056039628797,
+        "200MHz": 0.37398527323782926,
+        "330MHz": 0.6170757008424183,
+        "1000MHz": 1.8699263661891463,
+        "1650MHz": 3.0853785042120916
+      },
+      "f_for_10k_hz": 67860000,
+      "f_for_50k_hz": 339300000
+    },
+    {
+      "model": "qwen27b",
+      "seq": 32768,
+      "softmax_in_attn": false,
+      "cycles": {
+        "rms_each": 2,
+        "rms_both_per_layer": 4,
+        "rms_token_total": 256,
+        "act_token_total": 0,
+        "norms_plus_act_token": 256,
+        "mixer_per_delta_layer": 130,
+        "attn_per_attn_layer": 66,
+        "attn_token_total": 1056,
+        "ffn_serial_per_layer": 8355840,
+        "ffn_hidden_epilogue": 130,
+        "body_delta_layer": 134,
+        "body_attn_layer": 70,
+        "token_ffn_serial": 534781312,
+        "token_ffn_farm_hidden": 7682
+      },
+      "taps_to_hide_under_mixer": 64276,
+      "tok_s_farm_hidden": {
+        "41.28MHz": 5373.600624837282,
+        "200MHz": 26034.886748242647,
+        "330MHz": 42957.563134600365,
+        "1000MHz": 130174.43374121323,
+        "1650MHz": 214787.8156730018
+      },
+      "tok_s_serial": {
+        "41.28MHz": 0.07719043106726961,
+        "200MHz": 0.3739846466437481,
+        "330MHz": 0.6170746669621844,
+        "1000MHz": 1.8699232332187405,
+        "1650MHz": 3.085373334810922
+      },
+      "f_for_10k_hz": 76820000,
+      "f_for_50k_hz": 384100000
+    }
+  ],
+  "qwen_layer_dut": {
+    "gate": "qwen_layer == rms1 \u2192 4\u00d7(DeltaNet|attn) \u2192 residual \u2192 rms2 \u2192 16\u00d716 FFN \u2192 residual",
+    "status": "PASS",
+    "dut": "rtl/qwen_layer.v",
+    "hidden": 16,
+    "heads": 4,
+    "mixer_d": 4,
+    "s_max": 8,
+    "ffn": "ffn_tile 16x16 b4 from Qwen3.5-0.8B down_proj",
+    "tokens": 12,
+    "cycles_delta_layer": 308,
+    "cycles_attn_layer_mean": 68,
+    "cycles_attn_by_token": [
+      48,
+      56,
+      64,
+      72,
+      80,
+      88
+    ],
+    "cycles_delta_by_token": [
+      308,
+      308,
+      308,
+      308,
+      308,
+      308
+    ],
+    "simulator": "Verilator + cocotb",
+    "note": "Complete layer, not the H=8 toy. H=16 is 4 signed-off D=4 PEs + real 0.8B 16\u00d716 tile. 0.8B/27B clocks/token use this layer's RMS/FFN handshake plus measured D=128 mixer and attn ceil(S/512)+2, not these DUT mixer clocks."
+  },
+  "qwen_layer_eda": {
+    "yosys": {
+      "cell_count": 119384,
+      "area_um2": 937316.4608,
+      "sequential_cells": 6560,
+      "rtl": [
+        "rtl/isqrt32.v",
+        "rtl/idiv_u32.v",
+        "rtl/rmsnorm.v",
+        "rtl/gated_delta_step.v",
+        "rtl/attn_decode.v",
+        "rtl/ffn_tile_16x16_b4_reg.v",
+        "rtl/qwen_layer.v"
+      ],
+      "top": "qwen_layer",
+      "liberty": "/Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+      "clock_ns": 50.0
+    },
+    "openlane": {
+      "instance_count": 285680,
+      "stdcell_count": 285680,
+      "area_um2": 1382420,
+      "core_area_um2": 9171570,
+      "die_area_um2": 9280430,
+      "utilization": 0.150728,
+      "power_w": 0.017205718904733658,
+      "power_internal_w": 0.011073880828917027,
+      "power_switching_w": 0.006129878107458353,
+      "power_leakage_w": 1.9597200662246905e-06,
+      "setup_ws_ns": 21.274325125935377,
+      "hold_ws_ns": -0.011266321527924497,
+      "setup_wns_ns": 0,
+      "setup_vio": 0,
+      "hold_vio": 2,
+      "fmax_mhz_from_ws": 34.81206288047436,
+      "clock_period_ns": 50.0,
+      "drc": null,
+      "route_drc": 0,
+      "lvs": null,
+      "flow_errors": 0,
+      "metrics_source": "50-openroad-stapostpnr/state_out.json",
+      "tag": "qwen_layer",
+      "note": "Ingested post-route STA. Flow quit in Magic LEF/antenna after TritonRoute DRC=0. Magic DRC/LVS unmeasured."
+    },
+    "area_7nm_f2_um2": 4008.2000000000003,
+    "area_source": "50-openroad-stapostpnr/state_out.json",
+    "fmax_mhz_sky130": 34.81206288047436,
+    "fmax_source": "openlane_postroute_ws",
+    "note": "Complete decoder layer: 2\u00d7 RMSNorm H=16, 4\u00d7 gated_delta_step D=4, attn_decode D=4 S_MAX=8, 16\u00d716 CSD FFN from 0.8B down_proj. 7nm area is F\u00b2=(7/130)^2 on Sky130 instance area, not 7nm STA. 28nm Fmax is unmeasured."
+  },
+  "toy_h8": {
+    "gate": "decoder_layer == rms1 \u2192 gated_delta_step \u2192 residual \u2192 rms2 \u2192 W@h2 \u2192 residual",
+    "status": "PASS",
+    "dut": "rtl/decoder_layer.v",
+    "hidden": 8,
+    "mixer_d": 4,
+    "ffn": "8x8 ffn_rom_tap",
+    "tokens": 12,
+    "cycles_per_layer": 45,
+    "cycles_min": 45,
+    "cycles_max": 45,
+    "simulator": "Verilator + cocotb",
+    "note": "Toy width. Proves the layer flow, not 0.8B/27B dims."
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "target": {
+    "checkpoint": "Qwen/Qwen3.5-0.8B",
+    "hidden": 1024,
+    "intermediate": 3584,
+    "layers": 24,
+    "delta_layers": 18,
+    "attn_layers": 6,
+    "linear_heads": 16,
+    "linear_d": 128,
+    "attn_q_heads": 8,
+    "attn_kv_heads": 2,
+    "attn_d": 256,
+    "ffn_weights": 264241152,
+    "ffn_weights_27b": 17112760320
+  },
+  "step8_via_rom_gds": {
+    "status": "skipped",
+    "reason": "Magic/GDS via-ROM leaf is months of layout. Step 3 already ranked tap vs fetch as stdcell stand-ins; tap tracks 1-cycle CSD, fetch is the slow ROM."
+  },
+  "measured_um2_per_weight": {
+    "wordpar_csd_8x8": 509.375,
+    "rom_tap_8x8": 577.2921875,
+    "serial_csd_8x8": 435.8671875,
+    "rom_fetch_8x8": 342.0265625,
+    "winner": "wordpar_csd_8x8",
+    "note": "stdcell, not via-ROM density"
+  },
+  "measured": {
+    "clock_power_mhz": 20.0,
+    "note": "PE numbers from Sky130 OpenLane. nJ uses P(Fmax)=P(50ns)*(Fmax/20).",
+    "tiles": {
+      "ffn_tile_8x8_b4": {
+        "um2": 32600,
+        "um2_per_weight": 509.375,
+        "fmax_mhz": 75.08747493395039,
+        "cycles": 1.0,
+        "tok_s": 75087474.9339504,
+        "p_50ns_w": 0.0005405148,
+        "p_fmax_w": 0.0020292945748214605,
+        "power_model": "opensta_vcd_activity_spef"
+      },
+      "ffn_rom_tap_8x8_b4": {
+        "um2": 36946.7,
+        "um2_per_weight": 577.2921875,
+        "cycles": 1,
+        "fmax_mhz": 75.56116494605159
+      },
+      "ffn_col_serial_8x8_b4": {
+        "um2": 27895.5,
+        "um2_per_weight": 435.8671875,
+        "cycles": 9
+      },
+      "ffn_rom_fetch_8x8_b4": {
+        "um2": 21889.7,
+        "um2_per_weight": 342.0265625,
+        "cycles": 66
+      }
+    },
+    "mixers": {
+      "gated_delta_d4": {
+        "um2": 87465.1,
+        "fmax_mhz": 41.27987668758302,
+        "cycles": 70,
+        "tok_s": 589712.5241083289,
+        "p_50ns_w": 0.0024119827430695295,
+        "p_fmax_w": 0.004978317510324421,
+        "nJ_fmax": 8.441939600743353
+      },
+      "gated_delta_d16": {
+        "um2": 268567.5776,
+        "area_source": "yosys",
+        "fmax_mhz": 41.27987668758302,
+        "fmax_source": "d4_fmax_proxy",
+        "cycles": 1042,
+        "tok_s": 39616.00449864013,
+        "p_50ns_w": 0.007406158142152548,
+        "p_fmax_w": 0.015286264741839807,
+        "nJ_fmax": 385.8608392061478,
+        "yosys_cells": 21647
+      },
+      "gated_delta_d16_par": {
+        "um2": 658243.808,
+        "area_source": "yosys",
+        "fmax_mhz": 41.27987668758302,
+        "fmax_source": "d4_fmax_proxy",
+        "cycles": 67,
+        "tok_s": 616117.5625012391,
+        "mac": 16,
+        "yosys_cells": 80865,
+        "pnr": "skipped_80k_cells"
+      }
+    },
+    "hybrid_layer_d4_ffn8": {
+      "um2": 114967,
+      "fmax_mhz": 43.415161577519896,
+      "cycles": 71,
+      "tok_s": 611481.1489791535,
+      "p_50ns_w": 0.006186663173139095,
+      "p_fmax_w": 0.013429749064376289,
+      "nJ_fmax": 21.962654264643785
+    }
+  },
+  "scaled_mixer_d128": {
+    "cycles": 66688.0,
+    "fmax_mhz": 41.27987668758302,
+    "tok_s_one_head": 619.0000702912521,
+    "um2_one_pe": 21210460.688381154,
+    "p_fmax_w_one_pe": 1.2072518964365864,
+    "heads_parallel": 16,
+    "tok_s_layer": 619.0000702912521,
+    "um2_16_pes": 339367371.01409847,
+    "p_fmax_w_16_pes": 19.316030342985382,
+    "fit": "Yosys area(D)=a+c D^2 from D=4 and D=16, then OpenLane/Yosys ratio from D=4. Cycles from D=16 *(128/16)^2."
+  },
+  "scaled_mixer_d128_dpar": {
+    "mac": 128,
+    "cycles": 515,
+    "fmax_mhz": 41.27987668758302,
+    "fmax_source": "d4_openlane_proxy",
+    "tok_s_one_head": 80155.10036423888,
+    "tok_s_layer": 80155.10036423888,
+    "heads_parallel": 16,
+    "fit": "FSM is 4D+3 (measured 67 at D=16). D=128 with D MACs \u2192 515 cycles. Fmax is D=4 PnR proxy. Area not scaled (only D=16 Yosys).",
+    "d16_par_yosys_um2": 658243.808,
+    "d16_par_yosys_cells": 80865,
+    "pnr": "skipped_d16_par_80k_cells"
+  },
+  "ffn_live": {
+    "tiles_to_hide_under_mixer": 3,
+    "um2": 97800,
+    "p_fmax_w": 0.006087883724464381
+  },
+  "sky130_08b": {
+    "fits": false,
+    "tok_s": 619.0000702912521,
+    "watt_fmax": 19.322118226709847,
+    "mm2": {
+      "ffn_all_layers_stdcell": 134597.8368,
+      "ffn_live_tiles_to_hide_mixer": 0.0978,
+      "delta_pes_16x_d128": 339.36737101409847,
+      "delta_S_sram": 143.143206912,
+      "kv_4096": 763.430436864,
+      "kv_32768": 6107.443494912,
+      "lora_r8_sram": 11.928600576
+    },
+    "why_not": "FFN as measured CSD is ~134,000 mm\u00b2; via-ROM 18 F\u00b2 is ~500 mm\u00b2. Neither is a Sky130 die."
+  },
+  "n7_08b_paper": {
+    "fits_reticle": true,
+    "tok_s": 619.0000702912521,
+    "tok_s_note": "Sky130 Fmax, not a 7 nm STA number. 7 nm would be faster.",
+    "watt_fmax": 19.322118226709847,
+    "watt_note": "Sky130 OpenSTA scaled by area; 7 nm watt would drop with Vdd/capacitance.",
+    "mm2": {
+      "ffn_via_rom_4b": 11.507275974193549,
+      "ffn_stdcell_f2_scaled": 390.2540830295858,
+      "delta_pes_f2_scaled": 0.983964566845611,
+      "delta_S_sram": 2.038431744,
+      "kv_4096": 10.871635968,
+      "kv_32768": 86.973087744,
+      "lora_r8_sram": 0.169869312,
+      "total_via_rom_ffn_ctx4k": 25.57117756503916,
+      "total_via_rom_ffn_ctx32k": 101.67262934103915
+    }
+  },
+  "n7_27b_estimator": {
+    "ffn_via_rom_4b_mm2": 745.2331107096775,
+    "tok_s": 619.0000702912521,
+    "tok_s_note": "Same 1-MAC D=128 FSM; more heads still parallel so tok/s does not rise. 27B is estimator-only.",
+    "watt_note": "Not quoted. No 27B mixer PnR."
+  },
+  "via_rom_cell_um2": {
+    "sky130": 0.30419999999999997,
+    "n7": 0.00675
+  },
+  "ffn_all_layers_mm2": {
+    "sky130_stdcell_csd": 134597.8368,
+    "sky130_via_rom_4b": 518.5945705703225,
+    "n7_stdcell_f2": 390.2540830295858,
+    "n7_via_rom_4b": 11.507275974193549
+  }
+}

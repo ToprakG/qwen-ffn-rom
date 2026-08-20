@@ -1,0 +1,34 @@
+{
+  "gate": "fused online-softmax, P-way KV, int4 cache, == attn_online_int",
+  "status": "PASS",
+  "dut": "rtl/attn_online_gqa_d8.v",
+  "d": 8,
+  "p": 4,
+  "n_kv": 4,
+  "n_q_per_kv": 6,
+  "kv_w": 4,
+  "measured": [
+    {
+      "S": 4,
+      "cycles": 3,
+      "n_steps": 1,
+      "overhead": 2
+    },
+    {
+      "S": 8,
+      "cycles": 4,
+      "n_steps": 2,
+      "overhead": 2
+    },
+    {
+      "S": 16,
+      "cycles": 6,
+      "n_steps": 4,
+      "overhead": 2
+    }
+  ],
+  "formula": "cycles = ceil(S/4) + 2",
+  "pipe": 2,
+  "note": "One pass, no S-length score vector. GQA reuses each KV head across 6 Q heads; cycles do not scale with Q or KV head count.",
+  "simulator": "Verilator + cocotb"
+}

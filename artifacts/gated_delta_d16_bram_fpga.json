@@ -1,0 +1,36 @@
+{
+  "platform": "fpga_xc7",
+  "dut": "gated_delta_d16_bram",
+  "d": 16,
+  "mac": 16,
+  "n_layers": 1,
+  "note": "BRAM S, D registered MACs, 3-cycle row. 0.8B walks 24 layers in time on one farm. Fmax is assumed 200 MHz until Vivado. Headline is model tok/s.",
+  "yosys_xilinx": {
+    "lut": 2676,
+    "ff": 2738,
+    "dsp": 64,
+    "ramb18": 16,
+    "ramb36": 0,
+    "bram18_equiv": 16,
+    "cell_count": 9448,
+    "carry4": 307,
+    "rtl": [
+      "rtl/delta_s_col_ram.v",
+      "rtl/gated_delta_bram.v",
+      "rtl/gated_delta_d16_bram.v"
+    ],
+    "top": "gated_delta_d16_bram",
+    "family": "xc7",
+    "tool": "yosys synth_xilinx"
+  },
+  "equiv_status": "PASS",
+  "cycles_per_layer": 195,
+  "cycles_per_token": 195,
+  "cycles_per_model_token_08b": 4680,
+  "cycles_per_model_token_27b": 12480,
+  "fmax_mhz": 200.0,
+  "fmax_source": "assumed_200mhz_xc7",
+  "model_tok_s_08b": 42735.042735042734,
+  "model_tok_s_27b": 16025.641025641025,
+  "layer_tok_s": 1025641.0256410256
+}

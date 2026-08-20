@@ -1,0 +1,11 @@
+{
+  "gate": "ffn_tap_swiglu == silu(sat8(W@x>>7))*up, 2 clk (no extra stall)",
+  "status": "PASS",
+  "dut": "rtl/ffn_tap_swiglu.v",
+  "n": 24,
+  "cycles_per_tile": 2,
+  "cycles_min": 2,
+  "cycles_max": 2,
+  "note": "SiLU+gate folded into the existing tap handshake. 27B activation clocks = 0 extra.",
+  "simulator": "Verilator + cocotb"
+}

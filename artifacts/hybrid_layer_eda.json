@@ -1,0 +1,52 @@
+{
+  "pdk": "sky130A",
+  "liberty": "sky130_fd_sc_hd tt 25C 1.80V",
+  "clock_ns": 50.0,
+  "scale_7nm_f2": 0.0028994082840236688,
+  "scale_7nm_sram_cell": 0.014240506329113925,
+  "dut": "hybrid_layer_stub",
+  "d": 4,
+  "n": 8,
+  "bits": 4,
+  "note": "One-layer decode stub: gated_delta_d4 + ffn_tile_8x8_b4 on a shared int8 x. q=k=v=x[0:3]. FFN runs in parallel with the mixer. cycles/token and tok/s are the layer, not per-PE FFN.",
+  "yosys": {
+    "cell_count": 9016,
+    "area_um2": 78121.1744,
+    "sequential_cells": 1088,
+    "rtl": [
+      "rtl/gated_delta_step.v",
+      "rtl/ffn_tile_8x8_b4_reg.v",
+      "rtl/hybrid_layer_stub.v"
+    ],
+    "top": "hybrid_layer_stub",
+    "liberty": "/Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+    "clock_ns": 50.0
+  },
+  "area_7nm_f2_um2": 226.50518021301778,
+  "area_7nm_sram_um2": 1112.4850784810128,
+  "openlane": {
+    "returncode": 0,
+    "tag": "hybrid_layer_stub",
+    "instance_count": 19424,
+    "stdcell_count": 19424,
+    "area_um2": 114967,
+    "core_area_um2": 527831,
+    "die_area_um2": 552987,
+    "utilization": 0.217809,
+    "power_w": 0.006186663173139095,
+    "power_internal_w": 0.00303133693523705,
+    "power_switching_w": 0.0031551658175885677,
+    "power_leakage_w": 1.6027129845497257e-07,
+    "setup_ws_ns": 26.966571960939245,
+    "hold_ws_ns": 0.10915146873073416,
+    "setup_wns_ns": 0,
+    "setup_vio": 0,
+    "hold_vio": 0,
+    "fmax_mhz_from_ws": 43.415161577519896,
+    "clock_period_ns": 50.0,
+    "drc": 0,
+    "lvs": 0,
+    "flow_errors": 0,
+    "run_dir": "/Users/toprakgundogdu/qwen-ffn-rom/openlane/runs/hybrid_layer_stub"
+  }
+}

@@ -1,0 +1,33 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+
+PWD := $(shell pwd)
+ROOT := $(abspath $(PWD)/..)
+
+XBAR_DUT ?= ffn_col_serial
+FFN_TILE_N ?= 8
+export XBAR_DUT
+export FFN_TILE_N
+
+ifeq ($(XBAR_DUT),ffn_rom_tap_reg)
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_rom_tap.v
+else ifeq ($(XBAR_DUT),ffn_tile_reg)
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_tile_$(FFN_TILE_N)x$(FFN_TILE_N)_b4_reg.v
+else ifeq ($(FFN_TILE_N),8)
+VERILOG_SOURCES += $(ROOT)/rtl/$(XBAR_DUT).v
+else
+VERILOG_SOURCES += $(ROOT)/rtl/$(XBAR_DUT)_$(FFN_TILE_N)x$(FFN_TILE_N)_b4.v
+endif
+
+TOPLEVEL := $(XBAR_DUT)
+COCOTB_TEST_MODULES := test_xbar
+SIM_BUILD := sim_build_$(XBAR_DUT)_n$(FFN_TILE_N)
+
+ifeq ($(SIM),verilator)
+EXTRA_ARGS += --timescale 1ns/1ps -Wno-fatal -Wno-WIDTH -Wno-SELRANGE
+ifeq ($(WAVES),1)
+EXTRA_ARGS += --trace --trace-structs
+endif
+endif
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

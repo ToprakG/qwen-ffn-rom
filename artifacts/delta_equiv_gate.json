@@ -1,0 +1,17 @@
+{
+  "gate": "rtl_o == numpy gated_delta_step (integer Q0.8)",
+  "status": "PASS",
+  "dut": "rtl/gated_delta_step.v",
+  "d": 4,
+  "qk_w": 8,
+  "v_w": 8,
+  "o_w": 24,
+  "shift": 8,
+  "sequences": 7,
+  "tokens": 31,
+  "cycles_per_token": 70,
+  "cycles_min": 70,
+  "cycles_max": 70,
+  "mac": 1,
+  "simulator": "Verilator + cocotb"
+}

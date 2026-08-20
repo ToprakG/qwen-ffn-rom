@@ -1,0 +1,1881 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 16.0.0.16000026)
+
+-- Running command `
+read_verilog -sv /Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v
+hierarchy -check -top ffn_rom_fetch
+proc; flatten
+opt_expr; opt_clean
+synth -top ffn_rom_fetch
+dfflibmap -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+opt_clean
+stat -liberty /Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+' --
+
+1. Executing Verilog-2005 frontend: /Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v
+Parsing SystemVerilog input from `/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v' to AST representation.
+Generating RTLIL representation for module `\ffn_rom_fetch'.
+Warning: Replacing memory \x_r with list of registers. See /Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:62
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \ffn_rom_fetch
+
+2.2. Analyzing design hierarchy..
+Top module:  \ffn_rom_fetch
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$133 in module ffn_rom_fetch.
+Marked 1 switch rules as full_case in process $proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$133 in module ffn_rom_fetch.
+Marked 5 switch rules as full_case in process $proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36 in module ffn_rom_fetch.
+Removed a total of 1 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 30 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~6 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$133'.
+     1/1: $1$mem2reg_rd$\x_r$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$6_DATA[7:0]$135
+Creating decoders for process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+     1/80: $0\y_flat[119:0] [119:105]
+     2/80: $0\y_flat[119:0] [104:90]
+     3/80: $0\y_flat[119:0] [89:75]
+     4/80: $0\y_flat[119:0] [74:60]
+     5/80: $0\y_flat[119:0] [59:45]
+     6/80: $0\y_flat[119:0] [44:30]
+     7/80: $0\y_flat[119:0] [29:15]
+     8/80: $0\y_flat[119:0] [14:0]
+     9/80: $3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$118
+    10/80: $3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$117
+    11/80: $3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$116
+    12/80: $3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$115
+    13/80: $3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$114
+    14/80: $3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$113
+    15/80: $3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$112
+    16/80: $3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$111
+    17/80: $3\ci[31:0]
+    18/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$99
+    19/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$98
+    20/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$97
+    21/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$96
+    22/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$95
+    23/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$94
+    24/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$93
+    25/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$92
+    26/80: $2\ri[31:0]
+    27/80: $2\ci[31:0]
+    28/80: $2$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$31[31:0]$110
+    29/80: $2$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$30[31:0]$109
+    30/80: $2$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$29[31:0]$108
+    31/80: $2$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$28[31:0]$107
+    32/80: $2$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$27[31:0]$106
+    33/80: $2$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$26[31:0]$105
+    34/80: $2$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$25[31:0]$104
+    35/80: $2$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$24[31:0]$103
+    36/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$102
+    37/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$101
+    38/80: $2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_ADDR[2:0]$100
+    39/80: $1\ri[31:0]
+    40/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$72
+    41/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$71
+    42/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$70
+    43/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$69
+    44/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$68
+    45/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$67
+    46/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$66
+    47/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$65
+    48/80: $1\ci[31:0]
+    49/80: $1$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$31[31:0]$91
+    50/80: $1$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$30[31:0]$90
+    51/80: $1$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$29[31:0]$89
+    52/80: $1$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$28[31:0]$88
+    53/80: $1$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$27[31:0]$87
+    54/80: $1$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$26[31:0]$86
+    55/80: $1$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$25[31:0]$85
+    56/80: $1$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$24[31:0]$84
+    57/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$83
+    58/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$82
+    59/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_ADDR[2:0]$81
+    60/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$80
+    61/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$79
+    62/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$78
+    63/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$77
+    64/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$76
+    65/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$75
+    66/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$74
+    67/80: $1$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$73
+    68/80: $0\done[0:0]
+    69/80: $0\x_r[7][7:0]
+    70/80: $0\x_r[6][7:0]
+    71/80: $0\x_r[5][7:0]
+    72/80: $0\x_r[4][7:0]
+    73/80: $0\x_r[3][7:0]
+    74/80: $0\x_r[2][7:0]
+    75/80: $0\x_r[1][7:0]
+    76/80: $0\x_r[0][7:0]
+    77/80: $0\j[2:0]
+    78/80: $0\st[1:0]
+    79/80: $3\ri[31:0]
+    80/80: $0\i[2:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\ffn_rom_fetch.$mem2reg_rd$\x_r$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$6_DATA' from process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$133'.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\ffn_rom_fetch.\i' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$680' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\y_flat' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$681' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\done' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$682' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\st' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$683' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\j' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$684' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\ci' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$685' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\ri' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$686' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\x_r[0]' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$687' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\x_r[1]' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$688' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\x_r[2]' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$689' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\x_r[3]' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$690' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\x_r[4]' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$691' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\x_r[5]' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$692' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\x_r[6]' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$693' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.\x_r[7]' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$694' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$695' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$696' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$697' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$698' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$699' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$700' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$701' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$702' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$703' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$704' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$705' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$706' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$707' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$708' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$709' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$710' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_ADDR' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$711' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$712' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$713' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$24' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$714' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$25' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$715' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$26' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$716' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$27' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$717' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$28' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$718' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$29' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$719' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$30' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$720' with positive edge clock.
+Creating register for signal `\ffn_rom_fetch.$mem2bits$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$31' using process `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+  created $dff cell `$procdff$721' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$133'.
+Removing empty process `ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$133'.
+Found and cleaned up 5 empty switches in `\ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+Removing empty process `ffn_rom_fetch.$proc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:54$36'.
+Cleaned up 6 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~112 debug messages>
+
+4. Executing FLATTEN pass (flatten design).
+
+5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~3 debug messages>
+
+6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 79 unused cells and 302 unused wires.
+<suppressed ~83 debug messages>
+
+7. Executing SYNTH pass.
+
+7.1. Executing HIERARCHY pass (managing design hierarchy).
+
+7.1.1. Analyzing design hierarchy..
+Top module:  \ffn_rom_fetch
+
+7.1.2. Analyzing design hierarchy..
+Top module:  \ffn_rom_fetch
+Removed 0 unused modules.
+
+7.2. Executing PROC pass (convert processes to netlists).
+
+7.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+7.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+7.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+7.2.4. Executing PROC_INIT pass (extract init attributes).
+
+7.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+7.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+7.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+7.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+7.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+7.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+7.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+7.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+
+7.5. Executing CHECK pass (checking for obvious problems).
+Checking module ffn_rom_fetch...
+Found and reported 0 problems.
+
+7.6. Executing OPT pass (performing simple optimizations).
+
+7.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 218 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 178 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+<suppressed ~120 debug messages>
+Removed a total of 40 cells.
+
+7.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$438.
+    dead port 2/2 on $mux $procmux$431.
+    dead port 2/2 on $mux $procmux$424.
+    dead port 2/2 on $mux $procmux$354.
+    dead port 2/2 on $mux $procmux$346.
+    dead port 2/2 on $mux $procmux$338.
+    dead port 2/2 on $mux $procmux$330.
+    dead port 2/2 on $mux $procmux$322.
+    dead port 2/2 on $mux $procmux$314.
+    dead port 2/2 on $mux $procmux$306.
+    dead port 2/2 on $mux $procmux$298.
+    dead port 2/2 on $mux $procmux$279.
+    dead port 2/2 on $mux $procmux$276.
+    dead port 2/2 on $mux $procmux$268.
+    dead port 2/2 on $mux $procmux$265.
+    dead port 2/2 on $mux $procmux$257.
+    dead port 2/2 on $mux $procmux$254.
+    dead port 2/2 on $mux $procmux$246.
+    dead port 2/2 on $mux $procmux$243.
+    dead port 2/2 on $mux $procmux$235.
+    dead port 2/2 on $mux $procmux$232.
+    dead port 2/2 on $mux $procmux$224.
+    dead port 2/2 on $mux $procmux$221.
+    dead port 2/2 on $mux $procmux$213.
+    dead port 2/2 on $mux $procmux$210.
+    dead port 2/2 on $mux $procmux$202.
+    dead port 2/2 on $mux $procmux$199.
+Removed 27 multiplexer ports.
+<suppressed ~162 debug messages>
+
+7.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+    Consolidated identical input bits for $mux cell $procmux$421:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$421_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$421_Y [0]
+      New connections: $procmux$421_Y [31:1] = { $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] $procmux$421_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$274:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$274_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$274_Y [0]
+      New connections: $procmux$274_Y [31:1] = { $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] $procmux$274_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$263:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$263_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$263_Y [0]
+      New connections: $procmux$263_Y [31:1] = { $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] $procmux$263_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$252:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$252_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$252_Y [0]
+      New connections: $procmux$252_Y [31:1] = { $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] $procmux$252_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$465:
+      Old ports: A=32'11111111111111111111111111111111, B=0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37
+      New ports: A=1'1, B=1'0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$7_EN[31:0]$37 [0] }
+    Consolidated identical input bits for $mux cell $procmux$462:
+      Old ports: A=32'11111111111111111111111111111111, B=0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38
+      New ports: A=1'1, B=1'0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$8_EN[31:0]$38 [0] }
+    Consolidated identical input bits for $mux cell $procmux$241:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$241_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$241_Y [0]
+      New connections: $procmux$241_Y [31:1] = { $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] $procmux$241_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$459:
+      Old ports: A=32'11111111111111111111111111111111, B=0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39
+      New ports: A=1'1, B=1'0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$9_EN[31:0]$39 [0] }
+    Consolidated identical input bits for $mux cell $procmux$456:
+      Old ports: A=32'11111111111111111111111111111111, B=0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40
+      New ports: A=1'1, B=1'0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$10_EN[31:0]$40 [0] }
+    Consolidated identical input bits for $mux cell $procmux$230:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$230_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$230_Y [0]
+      New connections: $procmux$230_Y [31:1] = { $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] $procmux$230_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$453:
+      Old ports: A=32'11111111111111111111111111111111, B=0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41
+      New ports: A=1'1, B=1'0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$11_EN[31:0]$41 [0] }
+    Consolidated identical input bits for $mux cell $procmux$450:
+      Old ports: A=32'11111111111111111111111111111111, B=0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42
+      New ports: A=1'1, B=1'0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$12_EN[31:0]$42 [0] }
+    Consolidated identical input bits for $mux cell $procmux$219:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$219_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$219_Y [0]
+      New connections: $procmux$219_Y [31:1] = { $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] $procmux$219_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$447:
+      Old ports: A=32'11111111111111111111111111111111, B=0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43
+      New ports: A=1'1, B=1'0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$13_EN[31:0]$43 [0] }
+    Consolidated identical input bits for $mux cell $procmux$444:
+      Old ports: A=32'11111111111111111111111111111111, B=0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44
+      New ports: A=1'1, B=1'0, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:64$14_EN[31:0]$44 [0] }
+    Consolidated identical input bits for $mux cell $procmux$208:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$208_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$208_Y [0]
+      New connections: $procmux$208_Y [31:1] = { $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] $procmux$208_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$197:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$197_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$197_Y [0]
+      New connections: $procmux$197_Y [31:1] = { $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] $procmux$197_Y [0] }
+  Optimizing cells in module \ffn_rom_fetch.
+    Consolidated identical input bits for $mux cell $procmux$351:
+      Old ports: A=0, B=$3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$111, Y=$procmux$351_Y
+      New ports: A=1'0, B=$procmux$274_Y [0], Y=$procmux$351_Y [0]
+      New connections: $procmux$351_Y [31:1] = { $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] $procmux$351_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$343:
+      Old ports: A=0, B=$3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$112, Y=$procmux$343_Y
+      New ports: A=1'0, B=$procmux$263_Y [0], Y=$procmux$343_Y [0]
+      New connections: $procmux$343_Y [31:1] = { $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] $procmux$343_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$335:
+      Old ports: A=0, B=$3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$113, Y=$procmux$335_Y
+      New ports: A=1'0, B=$procmux$252_Y [0], Y=$procmux$335_Y [0]
+      New connections: $procmux$335_Y [31:1] = { $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] $procmux$335_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$327:
+      Old ports: A=0, B=$3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$114, Y=$procmux$327_Y
+      New ports: A=1'0, B=$procmux$241_Y [0], Y=$procmux$327_Y [0]
+      New connections: $procmux$327_Y [31:1] = { $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] $procmux$327_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$495:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$102, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55
+      New ports: A=1'0, B=$procmux$421_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_EN[31:0]$55 [0] }
+    Consolidated identical input bits for $mux cell $procmux$319:
+      Old ports: A=0, B=$3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$115, Y=$procmux$319_Y
+      New ports: A=1'0, B=$procmux$230_Y [0], Y=$procmux$319_Y [0]
+      New connections: $procmux$319_Y [31:1] = { $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] $procmux$319_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$311:
+      Old ports: A=0, B=$3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$116, Y=$procmux$311_Y
+      New ports: A=1'0, B=$procmux$219_Y [0], Y=$procmux$311_Y [0]
+      New connections: $procmux$311_Y [31:1] = { $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] $procmux$311_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$303:
+      Old ports: A=0, B=$3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$117, Y=$procmux$303_Y
+      New ports: A=1'0, B=$procmux$208_Y [0], Y=$procmux$303_Y [0]
+      New connections: $procmux$303_Y [31:1] = { $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] $procmux$303_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$295:
+      Old ports: A=0, B=$3$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$118, Y=$procmux$295_Y
+      New ports: A=1'0, B=$procmux$197_Y [0], Y=$procmux$295_Y [0]
+      New connections: $procmux$295_Y [31:1] = { $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] $procmux$295_Y [0] }
+  Optimizing cells in module \ffn_rom_fetch.
+    Consolidated identical input bits for $mux cell $procmux$513:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$96, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49
+      New ports: A=1'0, B=$procmux$319_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$19_EN[31:0]$49 [0] }
+    Consolidated identical input bits for $mux cell $procmux$510:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$97, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50
+      New ports: A=1'0, B=$procmux$311_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$20_EN[31:0]$50 [0] }
+    Consolidated identical input bits for $mux cell $procmux$507:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$98, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51
+      New ports: A=1'0, B=$procmux$303_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$21_EN[31:0]$51 [0] }
+    Consolidated identical input bits for $mux cell $procmux$504:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$99, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52
+      New ports: A=1'0, B=$procmux$295_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$22_EN[31:0]$52 [0] }
+    Consolidated identical input bits for $mux cell $procmux$516:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$95, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48
+      New ports: A=1'0, B=$procmux$327_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$18_EN[31:0]$48 [0] }
+    Consolidated identical input bits for $mux cell $procmux$525:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$92, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45
+      New ports: A=1'0, B=$procmux$351_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$15_EN[31:0]$45 [0] }
+    Consolidated identical input bits for $mux cell $procmux$522:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$93, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46
+      New ports: A=1'0, B=$procmux$343_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$16_EN[31:0]$46 [0] }
+    Consolidated identical input bits for $mux cell $procmux$519:
+      Old ports: A=0, B=$2$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$94, Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47
+      New ports: A=1'0, B=$procmux$335_Y [0], Y=$0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0]
+      New connections: $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [31:1] = { $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:72$17_EN[31:0]$47 [0] }
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 34 changes.
+
+7.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 151 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 137 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 130 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 123 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+<suppressed ~84 debug messages>
+Removed a total of 28 cells.
+
+7.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 0 unused cells and 95 unused wires.
+<suppressed ~1 debug messages>
+
+7.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~93 debug messages>
+
+7.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 0 changes.
+
+7.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 123 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+
+7.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+7.7. Executing FSM pass (extract and optimize FSM).
+
+7.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register ffn_rom_fetch.st.
+
+7.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\st' from module `\ffn_rom_fetch'.
+  found $dff cell for state register: $procdff$683
+  root of input selection tree: $0\st[1:0]
+  found reset state: 2'00 (guessed from mux tree)
+  found ctrl input: \rst_n
+  found state code: 2'00
+  found ctrl input: $procmux$422_CMP
+  found ctrl input: $procmux$200_CMP
+  found ctrl input: $eq$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:80$121_Y
+  found ctrl input: $eq$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:82$122_Y
+  found state code: 2'10
+  found ctrl input: \en
+  found state code: 2'01
+  found ctrl output: $procmux$147_CMP
+  found ctrl output: $procmux$200_CMP
+  found ctrl output: $procmux$422_CMP
+  ctrl inputs: { $eq$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:82$122_Y $eq$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:80$121_Y \en \rst_n }
+  ctrl outputs: { $procmux$422_CMP $procmux$200_CMP $procmux$147_CMP $0\st[1:0] }
+  transition:       2'00 4'---0 ->       2'00 5'01000
+  transition:       2'00 4'--01 ->       2'00 5'01000
+  transition:       2'00 4'--11 ->       2'01 5'01001
+  transition:       2'10 4'---0 ->       2'00 5'00100
+  transition:       2'10 4'---1 ->       2'00 5'00100
+  transition:       2'01 4'---0 ->       2'00 5'10000
+  transition:       2'01 4'-0-1 ->       2'01 5'10001
+  transition:       2'01 4'01-1 ->       2'01 5'10001
+  transition:       2'01 4'11-1 ->       2'10 5'10010
+
+7.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\st$739' from module `\ffn_rom_fetch'.
+  Merging pattern 4'---0 and 4'---1 from group (1 0 5'00100).
+  Merging pattern 4'---1 and 4'---0 from group (1 0 5'00100).
+
+7.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 9 unused cells and 9 unused wires.
+<suppressed ~10 debug messages>
+
+7.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\st$739' from module `\ffn_rom_fetch'.
+  Removing unused output signal $0\st[1:0] [0].
+  Removing unused output signal $0\st[1:0] [1].
+
+7.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\st$739' from module `\ffn_rom_fetch' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> --1
+  10 -> -1-
+  01 -> 1--
+
+7.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\st$739' from module `ffn_rom_fetch':
+-------------------------------------
+
+  Information on FSM $fsm$\st$739 (\st):
+
+  Number of input signals:    4
+  Number of output signals:   3
+  Number of state bits:       3
+
+  Input signals:
+    0: \rst_n
+    1: \en
+    2: $eq$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:80$121_Y
+    3: $eq$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:82$122_Y
+
+  Output signals:
+    0: $procmux$147_CMP
+    1: $procmux$200_CMP
+    2: $procmux$422_CMP
+
+  State encoding:
+    0:      3'--1  <RESET STATE>
+    1:      3'-1-
+    2:      3'1--
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 4'---0   ->     0 3'010
+      1:     0 4'--01   ->     0 3'010
+      2:     0 4'--11   ->     2 3'010
+      3:     1 4'----   ->     0 3'001
+      4:     2 4'---0   ->     0 3'100
+      5:     2 4'11-1   ->     1 3'100
+      6:     2 4'-0-1   ->     2 3'100
+      7:     2 4'01-1   ->     2 3'100
+
+-------------------------------------
+
+7.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\st$739' from module `\ffn_rom_fetch'.
+
+7.8. Executing OPT pass (performing simple optimizations).
+
+7.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~1 debug messages>
+
+7.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 128 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~87 debug messages>
+
+7.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 0 changes.
+
+7.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 128 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$680 ($dff) from module ffn_rom_fetch (D = $procmux$671_Y, Q = \i, rval = 3'000).
+Adding EN signal on $auto$ff.cc:337:slice$772 ($sdff) from module ffn_rom_fetch (D = $procmux$671_Y, Q = \i).
+Adding SRST signal on $procdff$681 ($dff) from module ffn_rom_fetch (D = { $procmux$146_Y $procmux$152_Y $procmux$158_Y $procmux$164_Y $procmux$170_Y $procmux$176_Y $procmux$182_Y $procmux$188_Y }, Q = \y_flat, rval = 120'000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding EN signal on $auto$ff.cc:337:slice$784 ($sdff) from module ffn_rom_fetch (D = { $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$132_DATA [14:0] $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$131_DATA [14:0] $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$130_DATA [14:0] $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$129_DATA [14:0] $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$128_DATA [14:0] $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$127_DATA [14:0] $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$126_DATA [14:0] $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$125_DATA [14:0] }, Q = \y_flat).
+Adding SRST signal on $procdff$682 ($dff) from module ffn_rom_fetch (D = $procmux$528_Y, Q = \done, rval = 1'0).
+Adding SRST signal on $procdff$684 ($dff) from module ffn_rom_fetch (D = $procmux$626_Y, Q = \j, rval = 3'000).
+Adding EN signal on $auto$ff.cc:337:slice$787 ($sdff) from module ffn_rom_fetch (D = $procmux$626_Y, Q = \j).
+Adding SRST signal on $procdff$694 ($dff) from module ffn_rom_fetch (D = $procmux$539_Y, Q = \x_r[7], rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$795 ($sdff) from module ffn_rom_fetch (D = \x_flat [63:56], Q = \x_r[7]).
+Adding SRST signal on $procdff$693 ($dff) from module ffn_rom_fetch (D = $procmux$550_Y, Q = \x_r[6], rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$799 ($sdff) from module ffn_rom_fetch (D = \x_flat [55:48], Q = \x_r[6]).
+Adding SRST signal on $procdff$692 ($dff) from module ffn_rom_fetch (D = $procmux$561_Y, Q = \x_r[5], rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$803 ($sdff) from module ffn_rom_fetch (D = \x_flat [47:40], Q = \x_r[5]).
+Adding SRST signal on $procdff$691 ($dff) from module ffn_rom_fetch (D = $procmux$572_Y, Q = \x_r[4], rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$807 ($sdff) from module ffn_rom_fetch (D = \x_flat [39:32], Q = \x_r[4]).
+Adding SRST signal on $procdff$690 ($dff) from module ffn_rom_fetch (D = $procmux$583_Y, Q = \x_r[3], rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$811 ($sdff) from module ffn_rom_fetch (D = \x_flat [31:24], Q = \x_r[3]).
+Adding SRST signal on $procdff$689 ($dff) from module ffn_rom_fetch (D = $procmux$594_Y, Q = \x_r[2], rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$815 ($sdff) from module ffn_rom_fetch (D = \x_flat [23:16], Q = \x_r[2]).
+Adding SRST signal on $procdff$688 ($dff) from module ffn_rom_fetch (D = $procmux$605_Y, Q = \x_r[1], rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$819 ($sdff) from module ffn_rom_fetch (D = \x_flat [15:8], Q = \x_r[1]).
+Adding SRST signal on $procdff$687 ($dff) from module ffn_rom_fetch (D = $procmux$616_Y, Q = \x_r[0], rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$823 ($sdff) from module ffn_rom_fetch (D = \x_flat [7:0], Q = \x_r[0]).
+
+7.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 43 unused cells and 42 unused wires.
+<suppressed ~44 debug messages>
+
+7.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~2 debug messages>
+
+7.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~28 debug messages>
+
+7.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 0 changes.
+
+7.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 101 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 91 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+<suppressed ~30 debug messages>
+Removed a total of 10 cells.
+
+7.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 0 unused cells and 10 unused wires.
+<suppressed ~1 debug messages>
+
+7.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~30 debug messages>
+
+7.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 0 changes.
+
+7.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 91 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+
+7.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+7.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$726 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$732 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$733 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$734 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$735 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$728 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$722 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$724 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$725 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$730 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$723 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$729 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$727 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$731 (acc).
+Removed top 29 address bits (of 32) from memory read port ffn_rom_fetch.$memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$132 (acc).
+Removed top 29 address bits (of 32) from memory read port ffn_rom_fetch.$memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$131 (acc).
+Removed top 29 address bits (of 32) from memory read port ffn_rom_fetch.$memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$130 (acc).
+Removed top 29 address bits (of 32) from memory read port ffn_rom_fetch.$memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$129 (acc).
+Removed top 29 address bits (of 32) from memory read port ffn_rom_fetch.$memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$128 (acc).
+Removed top 29 address bits (of 32) from memory read port ffn_rom_fetch.$memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$127 (acc).
+Removed top 29 address bits (of 32) from memory read port ffn_rom_fetch.$memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$126 (acc).
+Removed top 29 address bits (of 32) from memory read port ffn_rom_fetch.$memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:91$125 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$736 (acc).
+Removed top 29 address bits (of 32) from memory init port ffn_rom_fetch.$auto$proc_memwr.cc:45:proc_memwr$737 (acc).
+Removed top 1 bits (of 2) from port B of cell ffn_rom_fetch.$auto$opt_dff.cc:320:make_patterns_logic$779 ($ne).
+Removed top 1 bits (of 3) from port B of cell ffn_rom_fetch.$auto$fsm_map.cc:77:implement_pattern_cache$768 ($eq).
+Removed top 1 bits (of 2) from port B of cell ffn_rom_fetch.$auto$fsm_map.cc:77:implement_pattern_cache$764 ($eq).
+Removed top 1 bits (of 2) from port B of cell ffn_rom_fetch.$auto$fsm_map.cc:77:implement_pattern_cache$751 ($eq).
+Removed top 23 bits (of 32) from port B of cell ffn_rom_fetch.$shiftx$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:50$34 ($shiftx).
+Converting cell ffn_rom_fetch.$mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35 ($mul) from unsigned to signed.
+Removed top 28 bits (of 32) from port A of cell ffn_rom_fetch.$mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35 ($mul).
+Removed top 24 bits (of 32) from port B of cell ffn_rom_fetch.$mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35 ($mul).
+Removed top 20 bits (of 32) from port Y of cell ffn_rom_fetch.$mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35 ($mul).
+Removed top 20 bits (of 32) from port B of cell ffn_rom_fetch.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$120 ($add).
+Removed top 2 bits (of 3) from port B of cell ffn_rom_fetch.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:85$123 ($add).
+Removed top 2 bits (of 3) from port B of cell ffn_rom_fetch.$add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:87$124 ($add).
+Removed top 1 bits (of 3) from port B of cell ffn_rom_fetch.$procmux$141_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell ffn_rom_fetch.$procmux$142_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell ffn_rom_fetch.$procmux$143_CMP0 ($eq).
+
+7.10. Executing PEEPOPT pass (run peephole optimizers).
+shiftpow2 pattern in ffn_rom_fetch: shift=$shiftx$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:50$34, index={ \i \j }, stride=4, width=4, ways=64
+
+7.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+
+7.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module ffn_rom_fetch:
+  creating $macc model for $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:87$124 ($add).
+  creating $macc model for $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:85$123 ($add).
+  creating $macc model for $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$120 ($add).
+  creating $macc model for $mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35 ($mul).
+  merging $macc model for $mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35 into $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$120.
+  creating $alu model for $macc $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:85$123.
+  creating $alu model for $macc $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:87$124.
+  creating $macc cell for $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$120: $auto$alumacc.cc:399:replace_macc$828
+  creating $alu cell for $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:87$124: $auto$alumacc.cc:548:replace_alu$829
+  creating $alu cell for $add$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:85$123: $auto$alumacc.cc:548:replace_alu$832
+  created 2 $alu and 1 $macc cells.
+
+7.13. Executing SHARE pass (SAT-based resource sharing).
+Found 2 cells in module ffn_rom_fetch that may be considered for resource sharing.
+  Analyzing resource sharing options for $mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35 ($mul):
+    Found cell that is never activated: $mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$119 ($memrd):
+    Found 1 activation_patterns using ctrl signal { \st [2] \rst_n }.
+    No candidates found.
+Removing 1 cells in module ffn_rom_fetch:
+  Removing cell $mul$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$35 ($mul).
+
+7.14. Executing OPT pass (performing simple optimizations).
+
+7.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 90 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~30 debug messages>
+
+7.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 0 changes.
+
+7.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 90 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+
+7.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+7.15. Executing MEMORY pass.
+
+7.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+7.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 56 transformations.
+
+7.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing ffn_rom_fetch.acc write port 0.
+  Analyzing ffn_rom_fetch.acc write port 1.
+  Analyzing ffn_rom_fetch.acc write port 2.
+  Analyzing ffn_rom_fetch.acc write port 3.
+  Analyzing ffn_rom_fetch.acc write port 4.
+  Analyzing ffn_rom_fetch.acc write port 5.
+  Analyzing ffn_rom_fetch.acc write port 6.
+  Analyzing ffn_rom_fetch.acc write port 7.
+  Analyzing ffn_rom_fetch.acc write port 8.
+  Analyzing ffn_rom_fetch.acc write port 9.
+  Analyzing ffn_rom_fetch.acc write port 10.
+  Analyzing ffn_rom_fetch.acc write port 11.
+  Analyzing ffn_rom_fetch.acc write port 12.
+  Analyzing ffn_rom_fetch.acc write port 13.
+  Analyzing ffn_rom_fetch.acc write port 14.
+  Analyzing ffn_rom_fetch.acc write port 15.
+  Analyzing ffn_rom_fetch.acc write port 16.
+
+7.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+7.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `$auto$memory_bmux2rom.cc:63:execute$835'[0] in module `\ffn_rom_fetch': no output FF found.
+Checking read port `\acc'[0] in module `\ffn_rom_fetch': no output FF found.
+Checking read port `\acc'[1] in module `\ffn_rom_fetch': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+    Write port 4: don't care on collision.
+    Write port 5: don't care on collision.
+    Write port 6: don't care on collision.
+    Write port 7: don't care on collision.
+    Write port 8: don't care on collision.
+    Write port 9: don't care on collision.
+    Write port 10: don't care on collision.
+    Write port 11: don't care on collision.
+    Write port 12: don't care on collision.
+    Write port 13: don't care on collision.
+    Write port 14: don't care on collision.
+    Write port 15: don't care on collision.
+    Write port 16: don't care on collision.
+Checking read port `\acc'[2] in module `\ffn_rom_fetch': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+    Write port 4: don't care on collision.
+    Write port 5: don't care on collision.
+    Write port 6: don't care on collision.
+    Write port 7: don't care on collision.
+    Write port 8: don't care on collision.
+    Write port 9: don't care on collision.
+    Write port 10: don't care on collision.
+    Write port 11: don't care on collision.
+    Write port 12: don't care on collision.
+    Write port 13: don't care on collision.
+    Write port 14: don't care on collision.
+    Write port 15: don't care on collision.
+    Write port 16: don't care on collision.
+Checking read port `\acc'[3] in module `\ffn_rom_fetch': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+    Write port 4: don't care on collision.
+    Write port 5: don't care on collision.
+    Write port 6: don't care on collision.
+    Write port 7: don't care on collision.
+    Write port 8: don't care on collision.
+    Write port 9: don't care on collision.
+    Write port 10: don't care on collision.
+    Write port 11: don't care on collision.
+    Write port 12: don't care on collision.
+    Write port 13: don't care on collision.
+    Write port 14: don't care on collision.
+    Write port 15: don't care on collision.
+    Write port 16: don't care on collision.
+Checking read port `\acc'[4] in module `\ffn_rom_fetch': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+    Write port 4: don't care on collision.
+    Write port 5: don't care on collision.
+    Write port 6: don't care on collision.
+    Write port 7: don't care on collision.
+    Write port 8: don't care on collision.
+    Write port 9: don't care on collision.
+    Write port 10: don't care on collision.
+    Write port 11: don't care on collision.
+    Write port 12: don't care on collision.
+    Write port 13: don't care on collision.
+    Write port 14: don't care on collision.
+    Write port 15: don't care on collision.
+    Write port 16: don't care on collision.
+Checking read port `\acc'[5] in module `\ffn_rom_fetch': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+    Write port 4: don't care on collision.
+    Write port 5: don't care on collision.
+    Write port 6: don't care on collision.
+    Write port 7: don't care on collision.
+    Write port 8: don't care on collision.
+    Write port 9: don't care on collision.
+    Write port 10: don't care on collision.
+    Write port 11: don't care on collision.
+    Write port 12: don't care on collision.
+    Write port 13: don't care on collision.
+    Write port 14: don't care on collision.
+    Write port 15: don't care on collision.
+    Write port 16: don't care on collision.
+Checking read port `\acc'[6] in module `\ffn_rom_fetch': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+    Write port 4: don't care on collision.
+    Write port 5: don't care on collision.
+    Write port 6: don't care on collision.
+    Write port 7: don't care on collision.
+    Write port 8: don't care on collision.
+    Write port 9: don't care on collision.
+    Write port 10: don't care on collision.
+    Write port 11: don't care on collision.
+    Write port 12: don't care on collision.
+    Write port 13: don't care on collision.
+    Write port 14: don't care on collision.
+    Write port 15: don't care on collision.
+    Write port 16: don't care on collision.
+Checking read port `\acc'[7] in module `\ffn_rom_fetch': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+    Write port 4: don't care on collision.
+    Write port 5: don't care on collision.
+    Write port 6: don't care on collision.
+    Write port 7: don't care on collision.
+    Write port 8: don't care on collision.
+    Write port 9: don't care on collision.
+    Write port 10: don't care on collision.
+    Write port 11: don't care on collision.
+    Write port 12: don't care on collision.
+    Write port 13: don't care on collision.
+    Write port 14: don't care on collision.
+    Write port 15: don't care on collision.
+    Write port 16: don't care on collision.
+Checking read port `\acc'[8] in module `\ffn_rom_fetch': merging output FF to cell.
+    Write port 0: don't care on collision.
+    Write port 1: don't care on collision.
+    Write port 2: don't care on collision.
+    Write port 3: don't care on collision.
+    Write port 4: don't care on collision.
+    Write port 5: don't care on collision.
+    Write port 6: don't care on collision.
+    Write port 7: don't care on collision.
+    Write port 8: don't care on collision.
+    Write port 9: don't care on collision.
+    Write port 10: don't care on collision.
+    Write port 11: don't care on collision.
+    Write port 12: don't care on collision.
+    Write port 13: don't care on collision.
+    Write port 14: don't care on collision.
+    Write port 15: don't care on collision.
+    Write port 16: don't care on collision.
+Checking read port address `$auto$memory_bmux2rom.cc:63:execute$835'[0] in module `\ffn_rom_fetch': no address FF found.
+Checking read port address `\acc'[0] in module `\ffn_rom_fetch': merged address FF to cell.
+
+7.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 1 unused cells and 120 unused wires.
+<suppressed ~2 debug messages>
+
+7.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory ffn_rom_fetch.acc by address:
+Consolidating write ports of memory ffn_rom_fetch.acc by address:
+  Merging ports 0, 1 (address 3'000).
+  Merging ports 0, 2 (address 3'000).
+  Merging ports 0, 3 (address 3'000).
+  Merging ports 0, 4 (address 3'000).
+  Merging ports 5, 12 (address 3'101).
+  Merging ports 5, 13 (address 3'100).
+  Merging ports 5, 14 (address 3'100).
+  Merging ports 5, 15 (address 3'100).
+  Merging ports 6, 7 (address 3'110).
+  Merging ports 8, 9 (address 3'000).
+  Merging ports 8, 10 (address 3'000).
+  Merging ports 8, 11 (address 3'000).
+Consolidating write ports of memory ffn_rom_fetch.acc by address:
+  Merging ports 1, 2 (address 3'100).
+  Merging ports 1, 3 (address 3'100).
+Consolidating write ports of memory ffn_rom_fetch.acc by address:
+Consolidating write ports of memory ffn_rom_fetch.acc using sat-based resource sharing:
+  Checking group clocked with posedge \clk, width 256: ports 0, 1.
+  Common input cone for all EN signals: 6 cells.
+  Size of unconstrained SAT problem: 42 variables, 101 clauses
+  According to SAT solver sharing of port 0 with port 1 is not possible.
+
+7.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+7.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+
+7.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+7.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+
+7.17. Executing OPT pass (performing simple optimizations).
+
+7.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~20 debug messages>
+
+7.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 66 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 57 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+<suppressed ~27 debug messages>
+Removed a total of 9 cells.
+
+7.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 1 unused cells and 22 unused wires.
+<suppressed ~2 debug messages>
+
+7.17.5. Finished fast OPT passes.
+
+7.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \acc in module \ffn_rom_fetch:
+  created 8 $dff cells and 0 static cells of width 32.
+Extracted addr FF from read port 0 of ffn_rom_fetch.acc: $\acc$rdreg[0]
+Extracted data FF from read port 1 of ffn_rom_fetch.acc: $\acc$rdreg[1]
+Extracted data FF from read port 2 of ffn_rom_fetch.acc: $\acc$rdreg[2]
+Extracted data FF from read port 3 of ffn_rom_fetch.acc: $\acc$rdreg[3]
+Extracted data FF from read port 4 of ffn_rom_fetch.acc: $\acc$rdreg[4]
+Extracted data FF from read port 5 of ffn_rom_fetch.acc: $\acc$rdreg[5]
+Extracted data FF from read port 6 of ffn_rom_fetch.acc: $\acc$rdreg[6]
+Extracted data FF from read port 7 of ffn_rom_fetch.acc: $\acc$rdreg[7]
+Extracted data FF from read port 8 of ffn_rom_fetch.acc: $\acc$rdreg[8]
+  read interface: 9 $dff and 63 $mux cells.
+  write interface: 24 write mux blocks.
+Mapping memory $auto$memory_bmux2rom.cc:63:execute$835 in module \ffn_rom_fetch:
+  created 64 $dff cells and 0 static cells of width 4.
+  read interface: 0 $dff and 63 $mux cells.
+  write interface: 0 write mux blocks.
+
+7.19. Executing OPT pass (performing simple optimizations).
+
+7.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~464 debug messages>
+
+7.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 198 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~108 debug messages>
+
+7.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][21]$1869:
+      Old ports: A=4'0101, B=4'0111, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$b$1790
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$b$1790 [1]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$b$1790 [3:2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$b$1790 [0] } = 3'011
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][28]$1890:
+      Old ports: A=4'0011, B=4'1011, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$a$1801
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$a$1801 [3]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$a$1801 [2:0] = 3'011
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][20]$1866:
+      Old ports: A=4'0100, B=4'0000, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$a$1789
+      New ports: A=1'1, B=1'0, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$a$1789 [2]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$a$1789 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$a$1789 [1:0] } = 3'000
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][18]$1860:
+      Old ports: A=4'0100, B=4'1001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786
+      New ports: A=2'10, B=2'01, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786 [0] }
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786 [1] } = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][19]$1863:
+      Old ports: A=4'0001, B=4'1100, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787
+      New ports: A=2'01, B=2'10, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787 [0] }
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787 [1] } = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787 [2] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][16]$1854:
+      Old ports: A=4'1101, B=4'0001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$a$1783
+      New ports: A=1'1, B=1'0, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$a$1783 [2]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$a$1783 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$a$1783 [1:0] } = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$a$1783 [2] 2'01 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][17]$1857:
+      Old ports: A=4'0010, B=4'1101, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$b$1784
+      New ports: A=2'10, B=2'01, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$b$1784 [1:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$b$1784 [3:2] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$b$1784 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$b$1784 [0] }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][14]$1848:
+      Old ports: A=4'1110, B=4'1011, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][7]$a$1780
+      New ports: A=2'10, B=2'01, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][7]$a$1780 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][7]$a$1780 [0] }
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][7]$a$1780 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][7]$a$1780 [1] } = 2'11
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][15]$1851:
+      Old ports: A=4'1001, B=4'0001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][7]$b$1781
+      New ports: A=1'1, B=1'0, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][7]$b$1781 [3]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][7]$b$1781 [2:0] = 3'001
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][12]$1842:
+      Old ports: A=4'0010, B=4'0100, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$a$1777
+      New ports: A=2'01, B=2'10, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$a$1777 [2:1]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$a$1777 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$a$1777 [0] } = 2'00
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][13]$1845:
+      Old ports: A=4'0010, B=4'1001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$b$1778
+      New ports: A=2'10, B=2'01, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$b$1778 [1:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$b$1778 [3:2] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$b$1778 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][10]$1836:
+      Old ports: A=4'0101, B=4'1011, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][5]$a$1774
+      New ports: A=2'10, B=2'01, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][5]$a$1774 [2:1]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][5]$a$1774 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][5]$a$1774 [0] } = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][5]$a$1774 [1] 1'1 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][11]$1839:
+      Old ports: A=4'0010, B=4'1010, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][5]$b$1775
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][5]$b$1775 [3]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][5]$b$1775 [2:0] = 3'010
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][8]$1830:
+      Old ports: A=4'1111, B=4'0100, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$a$1771
+      New ports: A=1'1, B=1'0, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$a$1771 [0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$a$1771 [3:1] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$a$1771 [0] 1'1 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$a$1771 [0] }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][9]$1833:
+      Old ports: A=4'0010, B=4'1001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$b$1772
+      New ports: A=2'10, B=2'01, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$b$1772 [1:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$b$1772 [3:2] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$b$1772 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][6]$1824:
+      Old ports: A=4'1111, B=4'1001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][3]$a$1768
+      New ports: A=1'1, B=1'0, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][3]$a$1768 [1]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][3]$a$1768 [3:2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][3]$a$1768 [0] } = { 1'1 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][3]$a$1768 [1] 1'1 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][26]$1884:
+      Old ports: A=4'1010, B=4'0001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][13]$a$1798
+      New ports: A=2'10, B=2'01, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][13]$a$1798 [1:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][13]$a$1798 [3:2] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][13]$a$1798 [1] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][4]$1818:
+      Old ports: A=4'0001, B=4'1110, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$a$1765
+      New ports: A=2'01, B=2'10, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$a$1765 [1:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$a$1765 [3:2] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$a$1765 [1] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$a$1765 [1] }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][5]$1821:
+      Old ports: A=4'0001, B=4'0101, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$b$1766
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$b$1766 [2]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$b$1766 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$b$1766 [1:0] } = 3'001
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][2]$1812:
+      Old ports: A=4'1001, B=4'1111, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][1]$a$1762
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][1]$a$1762 [1]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][1]$a$1762 [3:2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][1]$a$1762 [0] } = { 1'1 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][1]$a$1762 [1] 1'1 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][24]$1878:
+      Old ports: A=4'0111, B=4'0010, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$a$1795
+      New ports: A=1'1, B=1'0, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$a$1795 [0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$a$1795 [3:1] = { 1'0 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$a$1795 [0] 1'1 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][0]$1806:
+      Old ports: A=4'0000, B=4'1101, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$a$1759
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$a$1759 [0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$a$1759 [3:1] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$a$1759 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$a$1759 [0] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][25]$1881:
+      Old ports: A=4'0001, B=4'1101, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$b$1796
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$b$1796 [2]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$b$1796 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$b$1796 [1:0] } = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][12]$b$1796 [2] 2'01 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][23]$1875:
+      Old ports: A=4'0011, B=4'0110, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$b$1793
+      New ports: A=2'01, B=2'10, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$b$1793 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$b$1793 [0] }
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$b$1793 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$b$1793 [1] } = 2'01
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][29]$1893:
+      Old ports: A=4'0011, B=4'1010, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$b$1802
+      New ports: A=2'01, B=2'10, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$b$1802 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$b$1802 [0] }
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$b$1802 [2:1] = 2'01
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][22]$1872:
+      Old ports: A=4'0010, B=4'1111, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792 [0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792 [3:1] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792 [0] 1'1 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][27]$1887:
+      Old ports: A=4'1111, B=4'1101, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][13]$b$1799
+      New ports: A=1'1, B=1'0, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][13]$b$1799 [1]
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][13]$b$1799 [3:2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][13]$b$1799 [0] } = 3'111
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][30]$1896:
+      Old ports: A=4'1111, B=4'0000, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804
+      New ports: A=1'1, B=1'0, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804 [0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804 [3:1] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804 [0] }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][5][31]$1899:
+      Old ports: A=4'0010, B=4'0111, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$b$1805
+      New ports: A=1'0, B=1'1, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$b$1805 [0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$b$1805 [3:1] = { 1'0 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$b$1805 [0] 1'1 }
+  Optimizing cells in module \ffn_rom_fetch.
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$1803:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$b$1805, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$b$1757
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$a$1804 [0] }, B={ 2'01 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][15]$b$1805 [0] }, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$b$1757 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$b$1757 [1:0] }
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$b$1757 [2] = $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$b$1757 [0]
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$1800:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$a$1801, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$b$1802, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$a$1756
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$a$1801 [3] 1'1 }, B={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$b$1802 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][14]$b$1802 [0] }, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$a$1756 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$a$1756 [0] }
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][7]$a$1756 [2:1] = 2'01
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$1791:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$b$1793, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][5]$b$1751
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$a$1792 [0] }, B={ 1'0 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$b$1793 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][11]$b$1793 [0] }, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][5]$b$1751 [3:2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][5]$b$1751 [0] }
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][5]$b$1751 [1] = 1'1
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$1788:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$a$1789, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$b$1790, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][5]$a$1750
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$a$1789 [2] 2'00 }, B={ 1'1 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][10]$b$1790 [1] 1'1 }, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][5]$a$1750 [2:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][5]$a$1750 [3] = 1'0
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$1785:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][4]$b$1748
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$a$1786 [0] }, B={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][9]$b$1787 [0] }, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][4]$b$1748 [3:2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][4]$b$1748 [0] }
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][4]$b$1748 [1] = 1'0
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$1758:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$a$1759, B=4'0001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$a$1735
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$a$1759 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][0]$a$1759 [0] }, B=2'01, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$a$1735 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$a$1735 [0] }
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$a$1735 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$a$1735 [1] } = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$a$1735 [2] 1'0 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][1]$1761:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][1]$a$1762, B=4'0001, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$b$1736
+      New ports: A={ 1'1 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][1]$a$1762 [1] }, B=2'00, Y={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$b$1736 [3] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$b$1736 [1] }
+      New connections: { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$b$1736 [2] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$b$1736 [0] } = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][0]$b$1736 [1] 1'1 }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$1764:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$a$1765, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$b$1766, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$a$1738
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$a$1765 [1] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$a$1765 [1:0] }, B={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][2]$b$1766 [2] 2'01 }, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$a$1738 [2:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$a$1738 [3] = $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$a$1738 [1]
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][3]$1767:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][3]$a$1768, B=4'0000, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$b$1739
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][3]$a$1768 [1] 1'1 }, B=2'00, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$b$1739 [1:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$b$1739 [3:2] = { $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$b$1739 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][1]$b$1739 [1] }
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$1770:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$a$1771, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$b$1772, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][2]$a$1741
+      New ports: A={ 1'1 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$a$1771 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$a$1771 [0] }, B={ 1'0 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][4]$b$1772 [1:0] }, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][2]$a$1741 [2:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][2]$a$1741 [3] = $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][2]$a$1741 [0]
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$1776:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$a$1777, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$b$1778, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][3]$a$1744
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$a$1777 [2:1] 1'0 }, B={ 1'0 $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][6]$b$1778 [1:0] }, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][3]$a$1744 [2:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][3]$a$1744 [3] = $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][3]$a$1744 [0]
+    Consolidated identical input bits for $mux cell $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$1782:
+      Old ports: A=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$a$1783, B=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$b$1784, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][4]$a$1747
+      New ports: A={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$a$1783 [2] 2'01 }, B={ $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$b$1784 [0] $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][4][8]$b$1784 [1:0] }, Y=$memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][4]$a$1747 [2:0]
+      New connections: $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][4]$a$1747 [3] = $memory$auto$memory_bmux2rom.cc:63:execute$835$rdmux[0][3][4]$a$1747 [2]
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 41 changes.
+
+7.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 198 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 173 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+<suppressed ~75 debug messages>
+Removed a total of 25 cells.
+
+7.19.6. Executing OPT_SHARE pass.
+
+7.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $\acc$rdreg[0] ($dff) from module ffn_rom_fetch (D = $auto$rtlil.cc:3402:Mux$987, Q = $\acc$rdreg[0]$q, rval = 3'000).
+
+7.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 18 unused cells and 629 unused wires.
+<suppressed ~19 debug messages>
+
+7.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~2 debug messages>
+
+7.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~94 debug messages>
+
+7.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 0 changes.
+
+7.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 154 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.19.14. Executing OPT_SHARE pass.
+
+7.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\acc[0]$998 ($dff) from module ffn_rom_fetch (D = $memory\acc$wrmux[0][2][0]$y$1602, Q = \acc[0]).
+Adding EN signal on $memory\acc[1]$1000 ($dff) from module ffn_rom_fetch (D = $memory\acc$wrmux[1][2][0]$y$1618, Q = \acc[1]).
+Adding EN signal on $memory\acc[2]$1002 ($dff) from module ffn_rom_fetch (D = $memory\acc$wrmux[2][2][0]$y$1636, Q = \acc[2]).
+Adding EN signal on $memory\acc[3]$1004 ($dff) from module ffn_rom_fetch (D = $memory\acc$wrmux[3][2][0]$y$1650, Q = \acc[3]).
+Adding EN signal on $memory\acc[4]$1006 ($dff) from module ffn_rom_fetch (D = $memory\acc$wrmux[4][2][0]$y$1668, Q = \acc[4]).
+Adding EN signal on $memory\acc[5]$1008 ($dff) from module ffn_rom_fetch (D = $memory\acc$wrmux[5][2][0]$y$1682, Q = \acc[5]).
+Adding EN signal on $memory\acc[6]$1010 ($dff) from module ffn_rom_fetch (D = $memory\acc$wrmux[6][2][0]$y$1698, Q = \acc[6]).
+Adding EN signal on $memory\acc[7]$1012 ($dff) from module ffn_rom_fetch (D = $memory\acc$wrmux[7][2][0]$y$1712, Q = \acc[7]).
+
+7.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+7.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~16 debug messages>
+
+7.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~81 debug messages>
+
+7.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 0 changes.
+
+7.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 149 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.19.22. Executing OPT_SHARE pass.
+
+7.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:337:slice$1903 ($dffe) from module ffn_rom_fetch (D = $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$54, Q = \acc[0], rval = 0).
+Adding SRST signal on $auto$ff.cc:337:slice$1906 ($dffe) from module ffn_rom_fetch (D = $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$54, Q = \acc[1], rval = 0).
+Adding SRST signal on $auto$ff.cc:337:slice$1909 ($dffe) from module ffn_rom_fetch (D = $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$54, Q = \acc[2], rval = 0).
+Adding SRST signal on $auto$ff.cc:337:slice$1912 ($dffe) from module ffn_rom_fetch (D = $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$54, Q = \acc[3], rval = 0).
+Adding SRST signal on $auto$ff.cc:337:slice$1915 ($dffe) from module ffn_rom_fetch (D = $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$54, Q = \acc[4], rval = 0).
+Adding SRST signal on $auto$ff.cc:337:slice$1918 ($dffe) from module ffn_rom_fetch (D = $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$54, Q = \acc[5], rval = 0).
+Adding SRST signal on $auto$ff.cc:337:slice$1921 ($dffe) from module ffn_rom_fetch (D = $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$54, Q = \acc[6], rval = 0).
+Adding SRST signal on $auto$ff.cc:337:slice$1924 ($dffe) from module ffn_rom_fetch (D = $0$memwr$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$23_DATA[31:0]$54, Q = \acc[7], rval = 0).
+
+7.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 8 unused cells and 21 unused wires.
+<suppressed ~9 debug messages>
+
+7.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.19.26. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.19.27. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ffn_rom_fetch..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~65 debug messages>
+
+7.19.28. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ffn_rom_fetch.
+Performed a total of 0 changes.
+
+7.19.29. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 141 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.19.30. Executing OPT_SHARE pass.
+
+7.19.31. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.19.32. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+
+7.19.33. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+
+7.19.34. Finished fast OPT passes. (There is nothing left to do.)
+
+7.20. Executing TECHMAP pass (map to technology primitives).
+
+7.20.1. Executing Verilog-2005 frontend: /opt/homebrew/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+7.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $sdffce.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc_v2.
+  add $0$mem2reg_rd$\x_r$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:51$6_DATA[7:0]$134 * \w_sel (8x4 bits, signed)
+  add $memrd$\acc$/Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:79$119_DATA (32 bits, signed)
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $pmux.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000011 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~747 debug messages>
+
+7.21. Executing OPT pass (performing simple optimizations).
+
+7.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~398 debug messages>
+
+7.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 2106 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 1957 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 1916 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 1873 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 1831 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 1810 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Computing hashes of 1770 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+<suppressed ~1008 debug messages>
+Removed a total of 336 cells.
+
+7.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 742 unused cells and 351 unused wires.
+<suppressed ~743 debug messages>
+
+7.21.5. Finished fast OPT passes.
+
+7.22. Executing ABC pass (technology mapping using ABC).
+
+7.22.1. Extracting gate netlist of module `\ffn_rom_fetch' to `<abc-temp-dir>/input.blif'..
+
+7.22.1.1. Executed ABC.
+Extracted 711 gates and 911 wires to a netlist network with 198 inputs and 46 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+7.22.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:      134
+ABC RESULTS:            ANDNOT cells:       25
+ABC RESULTS:               MUX cells:      115
+ABC RESULTS:              NAND cells:      236
+ABC RESULTS:               NOR cells:        6
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:        9
+ABC RESULTS:             ORNOT cells:       26
+ABC RESULTS:              XNOR cells:       12
+ABC RESULTS:               XOR cells:       85
+ABC RESULTS:        internal signals:      667
+ABC RESULTS:           input signals:      198
+ABC RESULTS:          output signals:       46
+Removing temp directory.
+Removing global temp directory.
+
+7.23. Executing OPT pass (performing simple optimizations).
+
+7.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ffn_rom_fetch.
+<suppressed ~3 debug messages>
+
+7.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ffn_rom_fetch'.
+Computing hashes of 967 cells of `\ffn_rom_fetch'.
+Finding duplicate cells in `\ffn_rom_fetch'.
+Removed a total of 0 cells.
+
+7.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 0 unused cells and 482 unused wires.
+<suppressed ~2 debug messages>
+
+7.23.5. Finished fast OPT passes.
+
+7.24. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `ffn_rom_fetch'. Setting top module to ffn_rom_fetch.
+
+7.24.1. Analyzing design hierarchy..
+Top module:  \ffn_rom_fetch
+
+7.24.2. Analyzing design hierarchy..
+Top module:  \ffn_rom_fetch
+Removed 0 unused modules.
+
+7.25. Printing statistics.
+
+=== ffn_rom_fetch ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      667 wires
+     1352 wire bits
+       27 public wires
+      555 public wire bits
+        6 ports
+      188 port bits
+      967 cells
+       25   $_ANDNOT_
+      134   $_AND_
+        3   $_DFF_P_
+      115   $_MUX_
+      236   $_NAND_
+        6   $_NOR_
+        2   $_NOT_
+       26   $_ORNOT_
+        9   $_OR_
+      120   $_SDFFCE_PN0P_
+      190   $_SDFFE_PN0P_
+        4   $_SDFF_PN0_
+       12   $_XNOR_
+       85   $_XOR_
+
+7.26. Executing CHECK pass (checking for obvious problems).
+Checking module ffn_rom_fetch...
+Found and reported 0 problems.
+
+8. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__edfxtp_1 (noninv, pins=4, area=30.03) is a direct match for cell type $_DFFE_PP_.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    \sky130_fd_sc_hd__edfxtp_1 _DFFE_PP_ (.CLK( C), .D( D), .DE( E), .Q( Q));
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+8.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~24 debug messages>
+Mapping DFF cells in module `\ffn_rom_fetch':
+  mapped 120 $_DFFE_PP_ cells to \sky130_fd_sc_hd__edfxtp_1 cells.
+  mapped 197 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
+
+9. Executing ABC pass (technology mapping using ABC).
+
+9.1. Extracting gate netlist of module `\ffn_rom_fetch' to `<abc-temp-dir>/input.blif'..
+ABC: using cached merged SCL: /var/folders/8g/t_1gk85s4m70jtjyvhs3xc5h0000gn/T/yosys-liberty-scl-cache/yosys_merged_5e93c8fc.scl (1 files)
+
+9.1.1. Executed ABC.
+Extracted 1154 gates and 1537 wires to a netlist network with 382 inputs and 325 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_scl /var/folders/8g/t_1gk85s4m70jtjyvhs3xc5h0000gn/T/yosys-liberty-scl-cache/yosys_merged_5e93c8fc.scl 
+ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+9.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a211o_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_0 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a21o_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:       21
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a222oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a22o_1 cells:      188
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_1 cells:       21
+ABC RESULTS:   sky130_fd_sc_hd__a31o_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a32oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__and3_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__and3b_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__and4_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_inputiso1p_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_isobufsrc_1 cells:       14
+ABC RESULTS:   sky130_fd_sc_hd__maj3_1 cells:       15
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__mux2i_1 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__mux4_2 cells:       30
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:       40
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_1 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:      145
+ABC RESULTS:   sky130_fd_sc_hd__nor2b_1 cells:       27
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2111ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_0 cells:       24
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o221a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o22a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o311ai_0 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o32a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o32ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or3_1 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__or4b_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:       55
+ABC RESULTS:   sky130_fd_sc_hd__xnor3_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:       22
+ABC RESULTS:   sky130_fd_sc_hd__xor3_1 cells:        1
+ABC RESULTS:        internal signals:      830
+ABC RESULTS:           input signals:      382
+ABC RESULTS:          output signals:      325
+Removing temp directory.
+Removing global temp directory.
+
+10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ffn_rom_fetch..
+Removed 0 unused cells and 1525 unused wires.
+<suppressed ~1 debug messages>
+
+11. Printing statistics.
+
+=== ffn_rom_fetch ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      766        - wires
+     1296        - wire bits
+       27        - public wires
+      555        - public wire bits
+        6        - ports
+      188        - port bits
+     1055 1.31E+04 cells
+        1    8.758   sky130_fd_sc_hd__a211o_1
+        2   15.014   sky130_fd_sc_hd__a211oi_1
+        5   37.536   sky130_fd_sc_hd__a21boi_0
+        4   30.029   sky130_fd_sc_hd__a21o_1
+       21  105.101   sky130_fd_sc_hd__a21oi_1
+        5   43.792   sky130_fd_sc_hd__a221oi_1
+        2   20.019   sky130_fd_sc_hd__a222oi_1
+      188 1.65E+03   sky130_fd_sc_hd__a22o_1
+       21  157.651   sky130_fd_sc_hd__a22oi_1
+        1    8.758   sky130_fd_sc_hd__a31o_1
+        2   12.512   sky130_fd_sc_hd__a31oi_1
+        2   17.517   sky130_fd_sc_hd__a32oi_1
+       11   68.816   sky130_fd_sc_hd__and2_0
+        6   37.536   sky130_fd_sc_hd__and3_1
+        3   26.275   sky130_fd_sc_hd__and3b_1
+        4   35.034   sky130_fd_sc_hd__and4_1
+       10   37.536   sky130_fd_sc_hd__clkinv_1
+      197 3.94E+03   sky130_fd_sc_hd__dfxtp_1
+      120  3.6E+03   sky130_fd_sc_hd__edfxtp_1
+        5    31.28   sky130_fd_sc_hd__lpflow_inputiso1p_1
+       14   87.584   sky130_fd_sc_hd__lpflow_isobufsrc_1
+       15  150.144   sky130_fd_sc_hd__maj3_1
+        1   11.261   sky130_fd_sc_hd__mux2_1
+       13  130.125   sky130_fd_sc_hd__mux2i_1
+       30  675.648   sky130_fd_sc_hd__mux4_2
+       40  150.144   sky130_fd_sc_hd__nand2_1
+        8   50.048   sky130_fd_sc_hd__nand2b_1
+       11   55.053   sky130_fd_sc_hd__nand3_1
+      145  544.272   sky130_fd_sc_hd__nor2_1
+       27  168.912   sky130_fd_sc_hd__nor2b_1
+        4   20.019   sky130_fd_sc_hd__nor3_1
+        4   30.029   sky130_fd_sc_hd__nor3b_1
+        1    6.256   sky130_fd_sc_hd__nor4_1
+        1    8.758   sky130_fd_sc_hd__o2111ai_1
+        3   22.522   sky130_fd_sc_hd__o21a_1
+       24  120.115   sky130_fd_sc_hd__o21ai_0
+        1    7.507   sky130_fd_sc_hd__o21bai_1
+        1   11.261   sky130_fd_sc_hd__o221a_1
+        1    8.758   sky130_fd_sc_hd__o22a_1
+        1    6.256   sky130_fd_sc_hd__o22ai_1
+        4   35.034   sky130_fd_sc_hd__o2bb2ai_1
+        1    8.758   sky130_fd_sc_hd__o311ai_0
+        2   15.014   sky130_fd_sc_hd__o31ai_1
+        1    10.01   sky130_fd_sc_hd__o32a_1
+        1    8.758   sky130_fd_sc_hd__o32ai_1
+        8   50.048   sky130_fd_sc_hd__or3_1
+        1    10.01   sky130_fd_sc_hd__or4b_1
+       55  481.712   sky130_fd_sc_hd__xnor2_1
+        4   90.086   sky130_fd_sc_hd__xnor3_1
+       22  192.685   sky130_fd_sc_hd__xor2_1
+        1   23.773   sky130_fd_sc_hd__xor3_1
+
+   Chip area for module '\ffn_rom_fetch': 13077.542400
+     of which used for sequential elements: 7547.238400 (57.71%)
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: 4656aca757, time: 1.27s, user: 0.65s, system: 0.07s, MEM: 45.88 MB peak
+Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 16.0.0.16000026)
+Time spent: 45% 2x abc (0 sec), 8% 1x dfflibmap (0 sec), ...
+
+
+Warning: Replacing memory \x_r with list of registers. See /Users/toprakgundogdu/qwen-ffn-rom/rtl/ffn_rom_fetch.v:62

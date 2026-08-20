@@ -1,0 +1,14 @@
+{
+  "gate": "rtl_y == numpy(W_int @ x_int)",
+  "status": "PASS",
+  "dut": "rtl/ffn_col_serial.v",
+  "name": "ffn_col_serial_16x16_b4",
+  "n": 16,
+  "bits": 4,
+  "vectors": 45,
+  "cycles_per_token": 9,
+  "cycles_min": 9,
+  "cycles_max": 9,
+  "weights": "artifacts/tile16_int4_xbar.npy",
+  "simulator": "Verilator + cocotb"
+}

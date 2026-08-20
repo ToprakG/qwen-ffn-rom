@@ -1,0 +1,40 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+PWD := $(shell pwd)
+ROOT := $(abspath $(PWD)/..)
+
+DUT ?= pe
+ifeq ($(DUT),gqa)
+export ATTN_N_KV := 4
+export ATTN_N_Q_PER := 6
+export ATTN_EQUIV := attn_online_gqa_equiv.json
+export ATTN_DUT := rtl/attn_online_gqa_d8.v
+TOPLEVEL := attn_online_gqa_d8
+SIM_BUILD := sim_build_attn_online_gqa
+else
+export ATTN_N_KV := 1
+export ATTN_N_Q_PER := 1
+export ATTN_EQUIV := attn_online_equiv.json
+export ATTN_DUT := rtl/attn_online_d8_p4.v
+TOPLEVEL := attn_online_d8_p4
+SIM_BUILD := sim_build_attn_online
+endif
+
+export ATTN_D := 8
+export ATTN_P := 4
+
+VERILOG_SOURCES += $(ROOT)/rtl/kv_seq_ram.v
+VERILOG_SOURCES += $(ROOT)/rtl/attn_exp_lut.v
+VERILOG_SOURCES += $(ROOT)/rtl/attn_online.v
+ifeq ($(DUT),gqa)
+VERILOG_SOURCES += $(ROOT)/rtl/attn_online_gqa_d8.v
+else
+VERILOG_SOURCES += $(ROOT)/rtl/attn_online_d8_p4.v
+endif
+
+COCOTB_TEST_MODULES := test_attn_online
+
+ifeq ($(SIM),verilator)
+EXTRA_ARGS += --timescale 1ns/1ps -Wno-fatal -Wno-WIDTH -Wno-SELRANGE
+endif
+include $(shell cocotb-config --makefiles)/Makefile.sim

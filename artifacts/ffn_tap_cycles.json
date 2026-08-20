@@ -1,0 +1,8 @@
+{
+  "gate": "ffn_tap_unit y == W_int @ x",
+  "status": "PASS",
+  "dut": "rtl/ffn_tap_unit.v",
+  "cycles_per_tile": 2,
+  "note": "Combo tap is 0 sequential clocks. This is the registered handshake.",
+  "simulator": "Verilator + cocotb"
+}

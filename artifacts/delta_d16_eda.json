@@ -1,0 +1,50 @@
+{
+  "pdk": "sky130A",
+  "liberty": "sky130_fd_sc_hd tt 25C 1.80V",
+  "clock_ns": 50.0,
+  "scale_7nm_f2": 0.0028994082840236688,
+  "scale_7nm_sram_cell": 0.014240506329113925,
+  "dut": "gated_delta_d16",
+  "d": 16,
+  "mac": 1,
+  "note": "Integer Gated DeltaNet PE, D=16, one MAC + D\u00d7D state. Work is O(D^2) cycles/token, independent of sequence length. Do not unroll. 7nm F\u00b2=(7/130)^2.",
+  "yosys": {
+    "cell_count": 21647,
+    "area_um2": 268567.5776,
+    "sequential_cells": 10496,
+    "rtl": [
+      "rtl/gated_delta_step.v",
+      "rtl/gated_delta_d16.v"
+    ],
+    "top": "gated_delta_d16",
+    "liberty": "/Users/toprakgundogdu/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+    "clock_ns": 50.0
+  },
+  "area_7nm_f2_um2": 778.6870593136096,
+  "area_7nm_sram_um2": 3824.5382886075954,
+  "openlane": {
+    "returncode": 0,
+    "tag": "gated_delta_d16",
+    "instance_count": 51909,
+    "stdcell_count": 51909,
+    "area_um2": 404335,
+    "core_area_um2": 1427020,
+    "die_area_um2": 1468470,
+    "utilization": 0.283342,
+    "power_w": 0.014656336046755314,
+    "power_internal_w": 0.010145117528736591,
+    "power_switching_w": 0.004510614089667797,
+    "power_leakage_w": 6.040015705366386e-07,
+    "setup_ws_ns": 21.94189425591685,
+    "hold_ws_ns": 0.10565693063959174,
+    "setup_wns_ns": 0,
+    "setup_vio": 0,
+    "hold_vio": 0,
+    "fmax_mhz_from_ws": 35.64032472900914,
+    "clock_period_ns": 50.0,
+    "drc": 0,
+    "lvs": 0,
+    "flow_errors": 0,
+    "run_dir": "/Users/toprakgundogdu/qwen-ffn-rom/openlane/runs/gated_delta_d16"
+  }
+}

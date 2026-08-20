@@ -1,0 +1,19 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+PWD := $(shell pwd)
+ROOT := $(abspath $(PWD)/..)
+VERILOG_SOURCES += $(ROOT)/rtl/add_tree_bal.v
+VERILOG_SOURCES += $(ROOT)/rtl/rsqrt_lut.v
+VERILOG_SOURCES += $(ROOT)/rtl/inv_rsqrt.v
+VERILOG_SOURCES += $(ROOT)/rtl/rmsnorm.v
+VERILOG_SOURCES += $(ROOT)/rtl/gated_delta_step.v
+VERILOG_SOURCES += $(ROOT)/rtl/attn_decode.v
+VERILOG_SOURCES += $(ROOT)/rtl/ffn_tile_16x16_b4_reg.v
+VERILOG_SOURCES += $(ROOT)/rtl/qwen_layer.v
+TOPLEVEL := qwen_layer
+COCOTB_TEST_MODULES := test_qwen_layer
+SIM_BUILD := sim_build_qwen_layer
+ifeq ($(SIM),verilator)
+EXTRA_ARGS += --timescale 1ns/1ps -Wno-fatal -Wno-WIDTH -Wno-SELRANGE
+endif
+include $(shell cocotb-config --makefiles)/Makefile.sim

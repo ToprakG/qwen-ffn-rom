@@ -1,0 +1,1 @@
+{"scheme": "symmetric_per_output_row", "bits": 3, "qmin": -3, "qmax": 3, "n_scales": 1024, "scale_mean": 0.011478066444396973}
